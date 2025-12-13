@@ -1,0 +1,3 @@
+[console_scripts]
+pyqt-bundle = pyqtbuild.bundle.bundle_main:main
+pyqt-qt-wheel = pyqtbuild.bundle.qt_wheel_main:main

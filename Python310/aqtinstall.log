@@ -1,0 +1,87 @@
+2025-08-11 10:31:43,010 - aqt.main - ERROR - installer 15868 Invalid version: 'msvc2019_64'! Please use the form '5.X.Y'.
+2025-08-11 10:31:52,558 - aqt.main - ERROR - installer 17836 Invalid version: 'msvc2019_64'! Please use the form '5.X.Y'.
+2025-08-11 10:33:24,699 - aqt.main - INFO - installer 4880 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:33:24,699 - aqt.helper - DEBUG - helper 4880 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:27,821 - aqt.helper - DEBUG - helper 4880 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:30,979 - aqt.helper - DEBUG - helper 4880 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:34,119 - aqt.helper - DEBUG - helper 4880 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:37,259 - aqt.helper - DEBUG - helper 4880 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:40,387 - aqt.archives - WARNING - archives 4880 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:33:42,449 - aqt.main - ERROR - installer 4880 Failed to locate XML data for Qt version '5.15.14'.
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt windows desktop' to show versions available.
+2025-08-11 10:33:46,349 - aqt.main - INFO - installer 8256 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:33:46,350 - aqt.helper - DEBUG - helper 8256 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:47,592 - aqt.helper - DEBUG - helper 8256 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:48,750 - aqt.helper - DEBUG - helper 8256 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:49,892 - aqt.helper - DEBUG - helper 8256 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:51,048 - aqt.helper - DEBUG - helper 8256 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:33:52,144 - aqt.archives - WARNING - archives 8256 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:33:53,362 - aqt.main - ERROR - installer 8256 Failed to locate XML data for Qt version '5.15.14'.
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt windows desktop' to show versions available.
+2025-08-11 10:33:59,235 - aqt.main - INFO - installer 7876 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:33:59,235 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:02,388 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:05,543 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:08,653 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:11,824 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:14,958 - aqt.archives - WARNING - archives 7876 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:34:18,130 - aqt.helper - WARNING - helper 7876 Connection to 'https://download.qt.io' failed. Retrying with fallback 'https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/'.
+2025-08-11 10:34:18,130 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:21,296 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:24,418 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:27,510 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:30,670 - aqt.helper - DEBUG - helper 7876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml.sha256
+2025-08-11 10:34:33,794 - aqt.archives - WARNING - archives 7876 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:34:36,938 - aqt.main - ERROR - installer 7876 Failure to connect to https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/online/qtsdkrepository/windows_x86/desktop/qt5_51514/Updates.xml: ProxyError
+2025-08-11 10:35:05,250 - aqt.main - INFO - installer 15200 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:35:05,251 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:08,404 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:11,526 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:14,675 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:17,830 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:20,953 - aqt.archives - WARNING - archives 15200 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:35:24,094 - aqt.helper - WARNING - helper 15200 Connection to 'https://mirrors.tuna.tsinghua.edu.cn/qt/online/qtsdkrepository/' failed. Retrying with fallback 'https://master.qt.io/'.
+2025-08-11 10:35:24,094 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:27,207 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:30,379 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:33,461 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:36,576 - aqt.helper - DEBUG - helper 15200 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:39,736 - aqt.archives - WARNING - archives 15200 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:35:42,881 - aqt.main - ERROR - installer 15200 Failure to connect to https://master.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml: ProxyError
+2025-08-11 10:35:44,117 - aqt.main - INFO - installer 15508 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:35:44,117 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:47,273 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:50,392 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:53,544 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:56,681 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:35:59,821 - aqt.archives - WARNING - archives 15508 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:36:02,942 - aqt.helper - WARNING - helper 15508 Connection to 'https://download.qt.io/online/qtsdkrepository/' failed. Retrying with fallback 'https://ftp2.nluug.nl/languages/qt/'.
+2025-08-11 10:36:02,942 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:36:06,077 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:36:09,210 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:36:12,367 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:36:15,524 - aqt.helper - DEBUG - helper 15508 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:36:18,663 - aqt.archives - WARNING - archives 15508 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:36:21,822 - aqt.main - ERROR - installer 15508 Failure to connect to https://ftp2.nluug.nl/languages/qt/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml: ProxyError
+2025-08-11 10:37:14,341 - aqt.main - INFO - installer 14456 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:37:14,342 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:17,471 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:20,585 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:23,711 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:26,844 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:29,997 - aqt.archives - WARNING - archives 14456 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:37:33,144 - aqt.helper - WARNING - helper 14456 Connection to 'https://mirrors.tuna.tsinghua.edu.cn/qt/online/qtsdkrepository/' failed. Retrying with fallback 'https://qt.mirror.constant.com/'.
+2025-08-11 10:37:33,144 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:36,275 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:39,392 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:42,546 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:45,660 - aqt.helper - DEBUG - helper 14456 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:37:48,787 - aqt.archives - WARNING - archives 14456 Failed to download checksum for the file 'online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml'. This may happen on unofficial mirrors.
+2025-08-11 10:37:51,897 - aqt.main - ERROR - installer 14456 Failure to connect to https://qt.mirror.constant.com/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml: ProxyError
+2025-08-11 10:38:04,266 - aqt.main - INFO - installer 17704 aqtinstall(aqt) v3.3.0 on Python 3.10.0 [CPython MSC v.1929 64 bit (AMD64)]
+2025-08-11 10:38:04,266 - aqt.helper - DEBUG - helper 17704 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt5_5152/Updates.xml.sha256
+2025-08-11 10:38:05,623 - aqt.main - ERROR - installer 17704 Failed to locate XML data for Qt version '5.15.2'.
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt windows desktop' to show versions available.

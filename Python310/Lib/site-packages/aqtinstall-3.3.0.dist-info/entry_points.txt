@@ -1,0 +1,2 @@
+[console_scripts]
+aqt = aqt.__main__:main
