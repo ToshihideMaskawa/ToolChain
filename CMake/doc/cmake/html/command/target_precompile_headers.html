@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>target_precompile_headers &mdash; CMake 3.27.4 Documentation</title>
+  <title>target_precompile_headers &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="target_sources" href="target_sources.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="target_link_options.html" title="target_link_options"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -61,16 +62,16 @@
           <div class="body" role="main">
             
   <section id="target-precompile-headers">
-<span id="command:target_precompile_headers"></span><h1>target_precompile_headers<a class="headerlink" href="#target-precompile-headers" title="Permalink to this heading">¶</a></h1>
+<span id="command:target_precompile_headers"></span><h1>target_precompile_headers<a class="headerlink" href="#target-precompile-headers" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.16.</span></p>
+<p><span class="versionmodified added">Added in version 3.16.</span></p>
 </div>
 <p>Add a list of header files to precompile.</p>
 <p>Precompiling header files can speed up compilation by creating a partially
 processed version of some header files, and then using that version during
 compilations rather than repeatedly parsing the original headers.</p>
 <section id="main-form">
-<h2>Main Form<a class="headerlink" href="#main-form" title="Permalink to this heading">¶</a></h2>
+<h2>Main Form<a class="headerlink" href="#main-form" title="Link to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_precompile_headers(</span><span class="nv">&lt;target&gt;</span>
 <span class="w">  </span><span class="o">&lt;</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">PRIVATE</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="nb">header1...</span><span class="p">]</span>
 <span class="w">  </span><span class="p">[</span><span class="o">&lt;</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">PRIVATE</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="nb">header2...</span><span class="p">]</span><span class="w"> </span><span class="p">...]</span><span class="nf">)</span>
@@ -82,14 +83,14 @@ The named <code class="docutils literal notranslate"><span class="pre">&lt;targe
 <span class="target" id="index-0-command:add_executable"></span><a class="reference internal" href="add_executable.html#command:add_executable" title="add_executable"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_executable()</span></code></a> or <span class="target" id="index-0-command:add_library"></span><a class="reference internal" href="add_library.html#command:add_library" title="add_library"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_library()</span></code></a> and must not be an
 <a class="reference internal" href="../manual/cmake-buildsystem.7.html#alias-targets"><span class="std std-ref">ALIAS target</span></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code>, <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> and <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code> keywords are required to
-specify the <a class="reference internal" href="../manual/cmake-buildsystem.7.html#target-usage-requirements"><span class="std std-ref">scope</span></a> of the following arguments.
+specify the <a class="reference internal" href="../manual/cmake-buildsystem.7.html#target-command-scope"><span class="std std-ref">scope</span></a> of the following arguments.
 <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code> and <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> items will populate the <span class="target" id="index-1-prop_tgt:PRECOMPILE_HEADERS"></span><a class="reference internal" href="../prop_tgt/PRECOMPILE_HEADERS.html#prop_tgt:PRECOMPILE_HEADERS" title="PRECOMPILE_HEADERS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">PRECOMPILE_HEADERS</span></code></a>
 property of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>.  <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> and <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> items will populate the
 <span class="target" id="index-1-prop_tgt:INTERFACE_PRECOMPILE_HEADERS"></span><a class="reference internal" href="../prop_tgt/INTERFACE_PRECOMPILE_HEADERS.html#prop_tgt:INTERFACE_PRECOMPILE_HEADERS" title="INTERFACE_PRECOMPILE_HEADERS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_PRECOMPILE_HEADERS</span></code></a> property of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>
 (<a class="reference internal" href="../manual/cmake-buildsystem.7.html#imported-targets"><span class="std std-ref">IMPORTED targets</span></a> only support <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> items).
 Repeated calls for the same <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> will append items in the order called.</p>
 <p>Projects should generally avoid using <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> or <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> for targets
-that will be <a class="reference internal" href="install.html#install-export"><span class="std std-ref">exported</span></a>, or they should at least use
+that will be <span class="target" id="index-0-command:install"></span><a class="reference internal" href="install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">exported</span></code></a>, or they should at least use
 the <span class="target" id="index-0-genex:BUILD_INTERFACE"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:BUILD_INTERFACE" title="BUILD_INTERFACE"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">$&lt;BUILD_INTERFACE:...&gt;</span></code></a> generator expression to prevent precompile
 headers from appearing in an installed exported target.  Consumers of a target
 should typically be in control of what precompile headers they use, not have
@@ -122,12 +123,9 @@ included by absolute path.  For example:</p>
 <span class="nf">)</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>for more on defining buildsystem properties.</p>
-</div></blockquote>
 <p>Arguments to <code class="docutils literal notranslate"><span class="pre">target_precompile_headers</span></code> may use generator expressions
 with the syntax <code class="docutils literal notranslate"><span class="pre">$&lt;...&gt;</span></code>. See the <span class="target" id="index-0-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake-generator-expressions(7)</span></code></a>
-manual for available expressions.  The <span class="target" id="index-1-genex:COMPILE_LANGUAGE"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:COMPILE_LANGUAGE" title="COMPILE_LANGUAGE"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">$&lt;COMPILE_LANGUAGE:...&gt;</span></code></a> generator
+manual for available expressions.  The <span class="target" id="index-1-genex:COMPILE_LANGUAGE:languages"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:COMPILE_LANGUAGE:languages" title="COMPILE_LANGUAGE:languages"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">$&lt;COMPILE_LANGUAGE:...&gt;</span></code></a> generator
 expression is particularly useful for specifying a language-specific header
 to precompile for only one language (e.g. <code class="docutils literal notranslate"><span class="pre">CXX</span></code> and not <code class="docutils literal notranslate"><span class="pre">C</span></code>).  In this
 case, header file names that are not explicitly in double quotes or angle
@@ -143,9 +141,9 @@ brackets inside a generator expression, be sure to encode the closing
 </div>
 </section>
 <section id="reusing-precompile-headers">
-<h2>Reusing Precompile Headers<a class="headerlink" href="#reusing-precompile-headers" title="Permalink to this heading">¶</a></h2>
+<h2>Reusing Precompile Headers<a class="headerlink" href="#reusing-precompile-headers" title="Link to this heading">¶</a></h2>
 <p>The command also supports a second signature which can be used to specify that
-one target re-uses a precompiled header file artifact from another target
+one target reuses a precompiled header file artifact from another target
 instead of generating its own:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_precompile_headers(</span><span class="nv">&lt;target&gt;</span><span class="w"> </span><span class="no">REUSE_FROM</span><span class="w"> </span><span class="nv">&lt;other_target&gt;</span><span class="nf">)</span>
 </pre></div>
@@ -164,7 +162,7 @@ precompiled header file cannot be used (<code class="docutils literal notranslat
 </div>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>To disable precompile headers for specific targets, see the
 <span class="target" id="index-0-prop_tgt:DISABLE_PRECOMPILE_HEADERS"></span><a class="reference internal" href="../prop_tgt/DISABLE_PRECOMPILE_HEADERS.html#prop_tgt:DISABLE_PRECOMPILE_HEADERS" title="DISABLE_PRECOMPILE_HEADERS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">DISABLE_PRECOMPILE_HEADERS</span></code></a> target property.</p></li>
@@ -187,10 +185,10 @@ source file, see the <span class="target" id="index-0-prop_sf:SKIP_PRECOMPILE_HE
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">target_precompile_headers</a><ul>
 <li><a class="reference internal" href="#main-form">Main Form</a></li>
@@ -218,7 +216,7 @@ source file, see the <span class="target" id="index-0-prop_sf:SKIP_PRECOMPILE_HE
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -226,13 +224,13 @@ source file, see the <span class="target" id="index-0-prop_sf:SKIP_PRECOMPILE_HE
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -245,14 +243,15 @@ source file, see the <span class="target" id="index-0-prop_sf:SKIP_PRECOMPILE_HE
           <a href="target_link_options.html" title="target_link_options"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -261,8 +260,17 @@ source file, see the <span class="target" id="index-0-prop_sf:SKIP_PRECOMPILE_HE
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

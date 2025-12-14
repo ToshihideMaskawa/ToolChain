@@ -24,9 +24,8 @@ The ``cmake_policy`` command is used to set policies to ``OLD`` or ``NEW``
 behavior.  While setting policies individually is supported, we
 encourage projects to set policies based on CMake versions:
 
-.. code-block:: cmake
-
-  cmake_policy(VERSION <min>[...<max>])
+.. signature:: cmake_policy(VERSION <min>[...<max>])
+  :target: VERSION
 
 .. versionadded:: 3.12
   The optional ``<max>`` version.
@@ -40,27 +39,18 @@ CMake is older than 3.12, the extra ``...`` dots will be seen as version
 component separators, resulting in the ``...<max>`` part being ignored and
 preserving the pre-3.12 behavior of basing policies on ``<min>``.
 
-This specifies that the current CMake code is written for the given
-range of CMake versions.  All policies known to the running version of CMake
-and introduced in the ``<min>`` (or ``<max>``, if specified) version
-or earlier will be set to use ``NEW`` behavior.  All policies
-introduced in later versions will be unset (unless the
-:variable:`CMAKE_POLICY_DEFAULT_CMP<NNNN>` variable sets a default).
-This effectively requests behavior preferred as of a given CMake
-version and tells newer CMake versions to warn about their new policies.
+.. include:: include/POLICY_VERSION.rst
 
 Note that the :command:`cmake_minimum_required(VERSION)`
 command implicitly calls ``cmake_policy(VERSION)`` too.
 
-.. include:: DEPRECATED_POLICY_VERSIONS.txt
+.. include:: include/DEPRECATED_POLICY_VERSIONS.rst
 
 Setting Policies Explicitly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: cmake
-
-  cmake_policy(SET CMP<NNNN> NEW)
-  cmake_policy(SET CMP<NNNN> OLD)
+.. signature:: cmake_policy(SET CMP<NNNN> NEW|OLD)
+  :target: SET
 
 Tell CMake to use the ``OLD`` or ``NEW`` behavior for a given policy.
 Projects depending on the old behavior of a given policy may silence a
@@ -68,14 +58,13 @@ policy warning by setting the policy state to ``OLD``.  Alternatively
 one may fix the project to work with the new behavior and set the
 policy state to ``NEW``.
 
-.. include:: ../policy/DEPRECATED.txt
+.. include:: ../policy/include/DEPRECATED.rst
 
 Checking Policy Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: cmake
-
-  cmake_policy(GET CMP<NNNN> <variable>)
+.. signature:: cmake_policy(GET CMP<NNNN> <variable>)
+  :target: GET
 
 Check whether a given policy is set to ``OLD`` or ``NEW`` behavior.
 The output ``<variable>`` value will be ``OLD`` or ``NEW`` if the
@@ -94,23 +83,27 @@ except when invoked with the ``NO_POLICY_SCOPE`` option
 The ``cmake_policy`` command provides an interface to manage custom
 entries on the policy stack:
 
-.. code-block:: cmake
+.. signature:: cmake_policy(PUSH)
+  :target: PUSH
 
-  cmake_policy(PUSH)
-  cmake_policy(POP)
+  Create a new entry on the policy stack.
+
+.. signature:: cmake_policy(POP)
+  :target: POP
+
+  Remove the last policy stack entry created with ``cmake_policy(PUSH)``.
 
 Each ``PUSH`` must have a matching ``POP`` to erase any changes.
 This is useful to make temporary changes to policy settings.
 Calls to the :command:`cmake_minimum_required(VERSION)`,
-``cmake_policy(VERSION)``, or ``cmake_policy(SET)`` commands
+:command:`cmake_policy(VERSION)`, or :command:`cmake_policy(SET)` commands
 influence only the current top of the policy stack.
 
 .. versionadded:: 3.25
-  The :command:`block` and :command:`endblock` commands offer a more flexible
+  The :command:`block(SCOPE_FOR POLICIES)` command offers a more flexible
   and more secure way to manage the policy stack. The pop action is done
-  automatically when the :command:`endblock` command is executed, so it avoid
-  to call the :command:`cmake_policy(POP)` command before each
-  :command:`return` command.
+  automatically when leaving the block scope, so there is no need to
+  precede each :command:`return` with a call to :command:`cmake_policy(POP)`.
 
   .. code-block:: cmake
 

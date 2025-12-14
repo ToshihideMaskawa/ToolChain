@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CMP0003 &mdash; CMake 3.27.4 Documentation</title>
+  <title>CMP0003 &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMP0002" href="CMP0002.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="CMP0004.html" title="CMP0004"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-policies.7.html" accesskey="U">cmake-policies(7)</a> &#187;</li>
@@ -61,12 +62,19 @@
           <div class="body" role="main">
             
   <section id="cmp0003">
-<span id="policy:CMP0003"></span><h1>CMP0003<a class="headerlink" href="#cmp0003" title="Permalink to this heading">¶</a></h1>
+<span id="policy:CMP0003"></span><h1>CMP0003<a class="headerlink" href="#cmp0003" title="Link to this heading">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior of this policy was removed
+in CMake version 4.0.
+This policy must be set to <code class="docutils literal notranslate"><span class="pre">NEW</span></code> by a call to
+<span class="target" id="index-0-command:cmake_minimum_required"></span><a class="reference internal" href="../command/cmake_minimum_required.html#command:cmake_minimum_required" title="cmake_minimum_required"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_minimum_required()</span></code></a> or <span class="target" id="index-0-command:cmake_policy"></span><a class="reference internal" href="../command/cmake_policy.html#command:cmake_policy" title="cmake_policy"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_policy()</span></code></a>.</p>
+</div>
 <p>Libraries linked via full path no longer produce linker search paths.</p>
 <p>This policy affects how libraries whose full paths are NOT known are
 found at link time, but was created due to a change in how CMake deals
 with libraries whose full paths are known.  Consider the code</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>target_link_libraries(myexe /path/to/libA.so)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_link_libraries(</span><span class="nb">myexe</span><span class="w"> </span><span class="na">/path/to/libA.so</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>CMake 2.4 and below implemented linking to libraries whose full paths
@@ -86,7 +94,7 @@ example code now produces something like</p>
 </pre></div>
 </div>
 <p>Unfortunately this change can break code like</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>target_link_libraries(myexe /path/to/libA.so B)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_link_libraries(</span><span class="nb">myexe</span><span class="w"> </span><span class="na">/path/to/libA.so</span><span class="w"> </span><span class="no">B</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">B</span></code> is meant to find <code class="docutils literal notranslate"><span class="pre">/path/to/libB.so</span></code>.  This code is wrong
@@ -112,22 +120,22 @@ this policy is set to NEW, CMake will produce a link line such as</p>
 <p>The setting for this policy used when generating the link line is that
 in effect when the target is created by an add_executable or
 add_library command.  For the example described above, the code</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cmake_policy(SET CMP0003 OLD) # or cmake_policy(VERSION 2.4)
-add_executable(myexe myexe.c)
-target_link_libraries(myexe /path/to/libA.so B)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cmake_policy(</span><span class="no">SET</span><span class="w"> </span><span class="no">CMP0003</span><span class="w"> </span><span class="no">OLD</span><span class="nf">)</span><span class="w"> </span><span class="c"># or cmake_policy(VERSION 2.4)</span>
+<span class="nf">add_executable(</span><span class="nb">myexe</span><span class="w"> </span><span class="nb">myexe.c</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">myexe</span><span class="w"> </span><span class="na">/path/to/libA.so</span><span class="w"> </span><span class="no">B</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>will work and suppress the warning for this policy.  It may also be
 updated to work with the corrected linking approach:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cmake_policy(SET CMP0003 NEW) # or cmake_policy(VERSION 2.6)
-link_directories(/path/to) # needed to find library B
-add_executable(myexe myexe.c)
-target_link_libraries(myexe /path/to/libA.so B)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cmake_policy(</span><span class="no">SET</span><span class="w"> </span><span class="no">CMP0003</span><span class="w"> </span><span class="no">NEW</span><span class="nf">)</span><span class="w"> </span><span class="c"># or cmake_policy(VERSION 2.6)</span>
+<span class="nf">link_directories(</span><span class="na">/path/to</span><span class="nf">)</span><span class="w"> </span><span class="c"># needed to find library B</span>
+<span class="nf">add_executable(</span><span class="nb">myexe</span><span class="w"> </span><span class="nb">myexe.c</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">myexe</span><span class="w"> </span><span class="na">/path/to/libA.so</span><span class="w"> </span><span class="no">B</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Even better, library B may be specified with a full path:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>add_executable(myexe myexe.c)
-target_link_libraries(myexe /path/to/libA.so /path/to/libB.so)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_executable(</span><span class="nb">myexe</span><span class="w"> </span><span class="nb">myexe.c</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">myexe</span><span class="w"> </span><span class="na">/path/to/libA.so</span><span class="w"> </span><span class="na">/path/to/libB.so</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>When all items on the link line have known paths CMake does not check
@@ -135,15 +143,10 @@ this policy so it has no effect.</p>
 <p>Note that the warning for this policy will be issued for at most one
 target.  This avoids flooding users with messages for every target
 when setting the policy once will probably fix all targets.</p>
-<p>This policy was introduced in CMake version 2.6.0.  CMake version
-3.27.4 warns when the policy is not set and uses <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior.  Use
-the <span class="target" id="index-0-command:cmake_policy"></span><a class="reference internal" href="../command/cmake_policy.html#command:cmake_policy" title="cmake_policy"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_policy()</span></code></a> command to set it to <code class="docutils literal notranslate"><span class="pre">OLD</span></code> or <code class="docutils literal notranslate"><span class="pre">NEW</span></code> explicitly.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior of a policy is
-<span class="target" id="index-0-manual:cmake-policies(7)"></span><a class="reference internal" href="../manual/cmake-policies.7.html#manual:cmake-policies(7)" title="cmake-policies(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">deprecated</span> <span class="pre">by</span> <span class="pre">definition</span></code></a>
-and may be removed in a future version of CMake.</p>
-</div>
+<p>This policy was introduced in CMake version 2.6.0.
+Prior to removal in CMake version 4.0, it could be
+set by <span class="target" id="index-1-command:cmake_policy"></span><a class="reference internal" href="../command/cmake_policy.html#command:cmake_policy" title="cmake_policy"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_policy()</span></code></a> or <span class="target" id="index-1-command:cmake_minimum_required"></span><a class="reference internal" href="../command/cmake_minimum_required.html#command:cmake_minimum_required" title="cmake_minimum_required"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_minimum_required()</span></code></a>.
+If it was not set, CMake warned, and used <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior.</p>
 </section>
 
 
@@ -151,7 +154,7 @@ and may be removed in a future version of CMake.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
@@ -170,7 +173,7 @@ and may be removed in a future version of CMake.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -178,13 +181,13 @@ and may be removed in a future version of CMake.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -197,14 +200,15 @@ and may be removed in a future version of CMake.</p>
           <a href="CMP0004.html" title="CMP0004"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-policies.7.html" >cmake-policies(7)</a> &#187;</li>
@@ -213,8 +217,17 @@ and may be removed in a future version of CMake.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

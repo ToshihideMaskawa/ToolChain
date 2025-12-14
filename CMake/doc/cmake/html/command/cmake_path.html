@@ -1,53 +1,54 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>cmake_path &mdash; CMake 3.27.4 Documentation</title>
+  <title>cmake_path &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="cmake_policy" href="cmake_policy.html" />
+    <link rel="next" title="cmake_pkg_config" href="cmake_pkg_config.html" />
     <link rel="prev" title="cmake_parse_arguments" href="cmake_parse_arguments.html" />
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="cmake_policy.html" title="cmake_policy"
+          <a href="cmake_pkg_config.html" title="cmake_pkg_config"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="cmake_parse_arguments.html" title="cmake_parse_arguments"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -61,9 +62,9 @@
           <div class="body" role="main">
             
   <section id="cmake-path">
-<span id="command:cmake_path"></span><h1>cmake_path<a class="headerlink" href="#cmake-path" title="Permalink to this heading">¶</a></h1>
+<span id="command:cmake_path"></span><h1>cmake_path<a class="headerlink" href="#cmake-path" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.20.</span></p>
+<p><span class="versionmodified added">Added in version 3.20.</span></p>
 </div>
 <p>This command is for the manipulation of paths.  Only syntactic aspects of
 paths are handled, there is no interaction of any kind with any underlying
@@ -80,7 +81,7 @@ platform (e.g. a drive letter when the host is not Windows), the results
 will be unpredictable.</p>
 </div>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading">¶</a></h2>
 <pre class="literal-block"><a class="reference internal" href="#conventions">Conventions</a>
 
 <a class="reference internal" href="#path-structure-and-terminology">Path Structure And Terminology</a>
@@ -134,7 +135,7 @@ will be unpredictable.</p>
   cmake_path(<a class="reference internal" href="#hash">HASH</a> &lt;path-var&gt; &lt;out-var&gt;)</pre>
 </section>
 <section id="conventions">
-<h2>Conventions<a class="headerlink" href="#conventions" title="Permalink to this heading">¶</a></h2>
+<h2>Conventions<a class="headerlink" href="#conventions" title="Link to this heading">¶</a></h2>
 <p>The following conventions are used in this command's documentation:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">&lt;path-var&gt;</span></code></dt><dd><p>Always the name of a variable.  For commands that expect a <code class="docutils literal notranslate"><span class="pre">&lt;path-var&gt;</span></code>
@@ -151,7 +152,7 @@ each command to see how this is interpreted.</p>
 </dl>
 </section>
 <section id="path-structure-and-terminology">
-<span id="id1"></span><h2>Path Structure And Terminology<a class="headerlink" href="#path-structure-and-terminology" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2>Path Structure And Terminology<a class="headerlink" href="#path-structure-and-terminology" title="Link to this heading">¶</a></h2>
 <p>A path has the following structure (all components are optional, with some
 constraints):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>root-name root-directory-separator (item-name directory-separator)* filename
@@ -168,14 +169,12 @@ absolute.  If it is missing and the first element other than the
 <dt><code class="docutils literal notranslate"><span class="pre">item-name</span></code></dt><dd><p>A sequence of characters that aren't directory separators.  This name may
 identify a file, a hard link, a symbolic link, or a directory.  Two special
 cases are recognized:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>The item name consisting of a single dot character <code class="docutils literal notranslate"><span class="pre">.</span></code> is a
 directory name that refers to the current directory.</p></li>
 <li><p>The item name consisting of two dot characters <code class="docutils literal notranslate"><span class="pre">..</span></code> is a
 directory name that refers to the parent directory.</p></li>
 </ul>
-</div></blockquote>
 <p>The <code class="docutils literal notranslate"><span class="pre">(...)*</span></code> pattern shown above is to indicate that there can be zero
 or more item names, with multiple items separated by a
 <code class="docutils literal notranslate"><span class="pre">directory-separator</span></code>.  The <code class="docutils literal notranslate"><span class="pre">()*</span></code> characters are not part of the path.</p>
@@ -195,14 +194,12 @@ the period) and until the end of the <code class="docutils literal notranslate">
 accept a <code class="docutils literal notranslate"><span class="pre">LAST_ONLY</span></code> keyword, <code class="docutils literal notranslate"><span class="pre">LAST_ONLY</span></code> changes the interpretation
 to the sub-string beginning at the right-most period.</p>
 <p>The following exceptions apply to the above interpretation:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>If the first character in the <code class="docutils literal notranslate"><span class="pre">filename</span></code> is a period, that period is
 ignored (i.e. a <code class="docutils literal notranslate"><span class="pre">filename</span></code> like <code class="docutils literal notranslate"><span class="pre">&quot;.profile&quot;</span></code> is treated as having
 no extension).</p></li>
 <li><p>If the <code class="docutils literal notranslate"><span class="pre">filename</span></code> is either <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">..</span></code>, it has no extension.</p></li>
 </ul>
-</div></blockquote>
 <p>The <em>stem</em> is the part of the <code class="docutils literal notranslate"><span class="pre">filename</span></code> before the extension.</p>
 </dd>
 </dl>
@@ -212,7 +209,7 @@ be empty.  A <code class="docutils literal notranslate"><span class="pre">relati
 removed.</p>
 </section>
 <section id="creating-a-path-variable">
-<h2>Creating A Path Variable<a class="headerlink" href="#creating-a-path-variable" title="Permalink to this heading">¶</a></h2>
+<h2>Creating A Path Variable<a class="headerlink" href="#creating-a-path-variable" title="Link to this heading">¶</a></h2>
 <p>While a path can be created with care using an ordinary <span class="target" id="index-0-command:set"></span><a class="reference internal" href="set.html#command:set" title="set"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set()</span></code></a>
 command, it is recommended to use <a class="reference internal" href="#cmake-path-set"><span class="std std-ref">cmake_path(SET)</span></a>
 instead, as it automatically converts the path to the required form where
@@ -233,7 +230,7 @@ keyword.  All other sub-commands store the result in a mandatory <code class="do
 variable.</p>
 </section>
 <section id="normalization">
-<span id="id2"></span><h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this heading">¶</a></h2>
+<span id="id2"></span><h2>Normalization<a class="headerlink" href="#normalization" title="Link to this heading">¶</a></h2>
 <p>Some sub-commands support <em>normalizing</em> a path.  The algorithm used to
 normalize a path is as follows:</p>
 <ol class="arabic simple">
@@ -256,7 +253,7 @@ is <code class="docutils literal notranslate"><span class="pre">.</span></code>)
 </ol>
 </section>
 <section id="decomposition">
-<span id="path-decomposition"></span><h2>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this heading">¶</a></h2>
+<span id="path-decomposition"></span><h2>Decomposition<a class="headerlink" href="#decomposition" title="Link to this heading">¶</a></h2>
 <p id="get-parent-path"><span id="get-relative-part"></span><span id="get-stem"></span><span id="get-extension"></span><span id="get-filename"></span><span id="get-root-path"></span><span id="get-root-directory"></span><span id="get-root-name"></span><span id="get"></span>The following forms of the <code class="docutils literal notranslate"><span class="pre">GET</span></code> subcommand each retrieve a different
 component or group of components from a path.  See
 <a class="reference internal" href="#path-structure-and-terminology">Path Structure And Terminology</a> for the meaning of each path component.</p>
@@ -280,7 +277,7 @@ directory is considered to have a parent, with that parent being itself.
 Where <a class="reference internal" href="#has-relative-part">HAS_RELATIVE_PART</a> returns true, the result will essentially be
 <code class="docutils literal notranslate"><span class="pre">&lt;path-var&gt;</span></code> with one less element.</p>
 <section id="root-examples">
-<h3>Root examples<a class="headerlink" href="#root-examples" title="Permalink to this heading">¶</a></h3>
+<h3>Root examples<a class="headerlink" href="#root-examples" title="Link to this heading">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;c:/a&quot;</span><span class="nf">)</span>
 
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="no">ROOT_NAME</span><span class="w"> </span><span class="nb">rootName</span><span class="nf">)</span>
@@ -299,7 +296,7 @@ Root path is &quot;c:/&quot;
 </div>
 </section>
 <section id="filename-examples">
-<h3>Filename examples<a class="headerlink" href="#filename-examples" title="Permalink to this heading">¶</a></h3>
+<h3>Filename examples<a class="headerlink" href="#filename-examples" title="Link to this heading">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;/a/b&quot;</span><span class="nf">)</span>
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="no">FILENAME</span><span class="w"> </span><span class="nb">filename</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="s">&quot;First filename is \&quot;${filename}\&quot;&quot;</span><span class="nf">)</span>
@@ -316,7 +313,7 @@ Second filename is &quot;&quot;
 </div>
 </section>
 <section id="extension-and-stem-examples">
-<h3>Extension and stem examples<a class="headerlink" href="#extension-and-stem-examples" title="Permalink to this heading">¶</a></h3>
+<h3>Extension and stem examples<a class="headerlink" href="#extension-and-stem-examples" title="Link to this heading">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;name.ext1.ext2&quot;</span><span class="nf">)</span>
 
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="no">EXTENSION</span><span class="w"> </span><span class="nb">fullExt</span><span class="nf">)</span>
@@ -338,8 +335,8 @@ Second filename is &quot;&quot;
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">dotPath</span><span class="w"> </span><span class="no">STEM</span><span class="w"> </span><span class="nb">dotStem</span><span class="nf">)</span>
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">dotDotPath</span><span class="w"> </span><span class="no">EXTENSION</span><span class="w"> </span><span class="nb">dotDotExt</span><span class="nf">)</span>
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">dotDotPath</span><span class="w"> </span><span class="no">STEM</span><span class="w"> </span><span class="nb">dotDotStem</span><span class="nf">)</span>
-<span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">dotMorePath</span><span class="w"> </span><span class="no">EXTENSION</span><span class="w"> </span><span class="nb">someMoreExt</span><span class="nf">)</span>
-<span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">dotMorePath</span><span class="w"> </span><span class="no">STEM</span><span class="w"> </span><span class="nb">someMoreStem</span><span class="nf">)</span>
+<span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">someMorePath</span><span class="w"> </span><span class="no">EXTENSION</span><span class="w"> </span><span class="nb">someMoreExt</span><span class="nf">)</span>
+<span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">someMorePath</span><span class="w"> </span><span class="no">STEM</span><span class="w"> </span><span class="nb">someMoreStem</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="s">&quot;Dot extension is \&quot;${dotExt}\&quot;&quot;</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="s">&quot;Dot stem is \&quot;${dotStem}\&quot;&quot;</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="s">&quot;Dot-dot extension is \&quot;${dotDotExt}\&quot;&quot;</span><span class="nf">)</span>
@@ -362,7 +359,7 @@ Dot-dot stem is &quot;..&quot;
 </div>
 </section>
 <section id="relative-part-examples">
-<h3>Relative part examples<a class="headerlink" href="#relative-part-examples" title="Permalink to this heading">¶</a></h3>
+<h3>Relative part examples<a class="headerlink" href="#relative-part-examples" title="Link to this heading">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;c:/a/b&quot;</span><span class="nf">)</span>
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="no">RELATIVE_PART</span><span class="w"> </span><span class="nb">result</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="s">&quot;Relative part is \&quot;${result}\&quot;&quot;</span><span class="nf">)</span>
@@ -383,7 +380,7 @@ Relative part is &quot;&quot;
 </div>
 </section>
 <section id="path-traversal-examples">
-<h3>Path traversal examples<a class="headerlink" href="#path-traversal-examples" title="Permalink to this heading">¶</a></h3>
+<h3>Path traversal examples<a class="headerlink" href="#path-traversal-examples" title="Link to this heading">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;c:/a/b&quot;</span><span class="nf">)</span>
 <span class="nf">cmake_path(</span><span class="no">GET</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="no">PARENT_PATH</span><span class="w"> </span><span class="nb">result</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="s">&quot;Parent path is \&quot;${result}\&quot;&quot;</span><span class="nf">)</span>
@@ -400,7 +397,7 @@ Parent path is &quot;c:/&quot;
 </section>
 </section>
 <section id="query">
-<span id="path-query"></span><h2>Query<a class="headerlink" href="#query" title="Permalink to this heading">¶</a></h2>
+<span id="path-query"></span><h2>Query<a class="headerlink" href="#query" title="Link to this heading">¶</a></h2>
 <p>Each of the <code class="docutils literal notranslate"><span class="pre">GET</span></code> subcommands has a corresponding <code class="docutils literal notranslate"><span class="pre">HAS_...</span></code>
 subcommand which can be used to discover whether a particular path
 component is present.  See <a class="reference internal" href="#path-structure-and-terminology">Path Structure And Terminology</a> for the
@@ -480,7 +477,7 @@ takes literal strings as input, not the names of variables.</p>
 </div>
 </section>
 <section id="modification">
-<span id="path-modification"></span><h2>Modification<a class="headerlink" href="#modification" title="Permalink to this heading">¶</a></h2>
+<span id="path-modification"></span><h2>Modification<a class="headerlink" href="#modification" title="Link to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate" id="cmake-path-set"><div class="highlight"><pre><span></span><span class="nf">cmake_path(</span><span class="no">SET</span><span class="w"> </span><span class="nv">&lt;path-var&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">NORMALIZE</span><span class="p">]</span><span class="w"> </span><span class="nv">&lt;input&gt;</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -548,7 +545,7 @@ any trailing <code class="docutils literal notranslate"><span class="pre">direct
 
 <span class="c"># filename is now already empty, the following removes nothing</span>
 <span class="nf">cmake_path(</span><span class="no">REMOVE_FILENAME</span><span class="w"> </span><span class="nb">path</span><span class="nf">)</span>
-<span class="nf">message(</span><span class="s">&quot;Second path is \&quot;${result}\&quot;&quot;</span><span class="nf">)</span>
+<span class="nf">message(</span><span class="s">&quot;Second path is \&quot;${path}\&quot;&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Output:</p>
@@ -566,7 +563,7 @@ equivalent to the following:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cmake_path(</span><span class="no">HAS_FILENAME</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="nb">has_filename</span><span class="nf">)</span>
 <span class="nf">if(</span><span class="nb">has_filename</span><span class="nf">)</span>
 <span class="w">  </span><span class="nf">cmake_path(</span><span class="no">REMOVE_FILENAME</span><span class="w"> </span><span class="nb">path</span><span class="nf">)</span>
-<span class="w">  </span><span class="nf">cmake_path(</span><span class="no">APPEND</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="nb">input</span><span class="nf">)</span><span class="p">;</span>
+<span class="w">  </span><span class="nf">cmake_path(</span><span class="no">APPEND</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;${input}&quot;</span><span class="nf">)</span>
 <span class="nf">endif()</span>
 </pre></div>
 </div>
@@ -582,15 +579,15 @@ equivalent to the following:</p>
 <p>Replaces the <a class="reference internal" href="#extension-def"><span class="std std-ref">extension</span></a> with <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code>.  Its effect
 is equivalent to the following:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cmake_path(</span><span class="no">REMOVE_EXTENSION</span><span class="w"> </span><span class="nb">path</span><span class="nf">)</span>
-<span class="nf">if(</span><span class="no">NOT</span><span class="w"> </span><span class="s">&quot;input&quot;</span><span class="w"> </span><span class="no">MATCHES</span><span class="w"> </span><span class="s">&quot;^\\.&quot;</span><span class="nf">)</span>
+<span class="nf">if(</span><span class="no">NOT</span><span class="w"> </span><span class="nb">input</span><span class="w"> </span><span class="no">MATCHES</span><span class="w"> </span><span class="s">&quot;^\\.&quot;</span><span class="nf">)</span>
 <span class="w">  </span><span class="nf">cmake_path(</span><span class="no">APPEND_STRING</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="nf">)</span>
 <span class="nf">endif()</span>
-<span class="nf">cmake_path(</span><span class="no">APPEND_STRING</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;input&quot;</span><span class="nf">)</span>
+<span class="nf">cmake_path(</span><span class="no">APPEND_STRING</span><span class="w"> </span><span class="nb">path</span><span class="w"> </span><span class="s">&quot;${input}&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </section>
 <section id="generation">
-<span id="path-generation"></span><h2>Generation<a class="headerlink" href="#generation" title="Permalink to this heading">¶</a></h2>
+<span id="path-generation"></span><h2>Generation<a class="headerlink" href="#generation" title="Link to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate" id="normal-path"><div class="highlight"><pre><span></span><span class="nf">cmake_path(</span><span class="no">NORMAL_PATH</span><span class="w"> </span><span class="nv">&lt;path-var&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;out-var&gt;</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -620,7 +617,7 @@ with symbolic links resolved and leading tildes expanded, use the
 <span class="target" id="index-1-command:file"></span><a class="reference internal" href="file.html#real-path" title="file(real_path)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(REAL_PATH)</span></code></a> command instead.</p>
 </section>
 <section id="native-conversion">
-<h2>Native Conversion<a class="headerlink" href="#native-conversion" title="Permalink to this heading">¶</a></h2>
+<h2>Native Conversion<a class="headerlink" href="#native-conversion" title="Link to this heading">¶</a></h2>
 <p>For commands in this section, <em>native</em> refers to the host platform, not the
 target platform when cross-compiling.</p>
 <div class="highlight-cmake notranslate" id="native-path"><span id="cmake-path-native-path"></span><div class="highlight"><pre><span></span><span class="nf">cmake_path(</span><span class="no">NATIVE_PATH</span><span class="w"> </span><span class="nv">&lt;path-var&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">NORMALIZE</span><span class="p">]</span><span class="w"> </span><span class="nv">&lt;out-var&gt;</span><span class="nf">)</span>
@@ -676,7 +673,7 @@ takes a literal string as input, not the name of a variable.</p>
 </div>
 </section>
 <section id="hashing">
-<h2>Hashing<a class="headerlink" href="#hashing" title="Permalink to this heading">¶</a></h2>
+<h2>Hashing<a class="headerlink" href="#hashing" title="Link to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate" id="hash"><div class="highlight"><pre><span></span><span class="nf">cmake_path(</span><span class="no">HASH</span><span class="w"> </span><span class="nv">&lt;path-var&gt;</span><span class="w"> </span><span class="nv">&lt;out-var&gt;</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -692,10 +689,10 @@ value of <code class="docutils literal notranslate"><span class="pre">p1</span><
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">cmake_path</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
@@ -728,8 +725,8 @@ value of <code class="docutils literal notranslate"><span class="pre">p1</span><
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="cmake_policy.html"
-                          title="next chapter">cmake_policy</a></p>
+    <p class="topless"><a href="cmake_pkg_config.html"
+                          title="next chapter">cmake_pkg_config</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -738,7 +735,7 @@ value of <code class="docutils literal notranslate"><span class="pre">p1</span><
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -746,33 +743,34 @@ value of <code class="docutils literal notranslate"><span class="pre">p1</span><
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="cmake_policy.html" title="cmake_policy"
+          <a href="cmake_pkg_config.html" title="cmake_pkg_config"
              >next</a> |</li>
         <li class="right" >
           <a href="cmake_parse_arguments.html" title="cmake_parse_arguments"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -781,8 +779,17 @@ value of <code class="docutils literal notranslate"><span class="pre">p1</span><
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

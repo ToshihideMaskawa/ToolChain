@@ -25,6 +25,7 @@ Properties of Global Scope
    /prop_gbl/CMAKE_C_KNOWN_FEATURES
    /prop_gbl/CMAKE_CUDA_KNOWN_FEATURES
    /prop_gbl/CMAKE_CXX_KNOWN_FEATURES
+   /prop_gbl/CMAKE_HIP_KNOWN_FEATURES
    /prop_gbl/CMAKE_ROLE
    /prop_gbl/DEBUG_CONFIGURATIONS
    /prop_gbl/DISABLED_FEATURES
@@ -39,11 +40,13 @@ Properties of Global Scope
    /prop_gbl/GENERATOR_IS_MULTI_CONFIG
    /prop_gbl/GLOBAL_DEPENDS_DEBUG_MODE
    /prop_gbl/GLOBAL_DEPENDS_NO_CYCLES
+   /prop_gbl/INSTALL_PARALLEL
    /prop_gbl/IN_TRY_COMPILE
    /prop_gbl/JOB_POOLS
    /prop_gbl/PACKAGES_FOUND
    /prop_gbl/PACKAGES_NOT_FOUND
    /prop_gbl/PREDEFINED_TARGETS_FOLDER
+   /prop_gbl/PROPAGATE_TOP_LEVEL_INCLUDES_TO_TRY_COMPILE
    /prop_gbl/REPORT_UNDEFINED_PROPERTIES
    /prop_gbl/RULE_LAUNCH_COMPILE
    /prop_gbl/RULE_LAUNCH_CUSTOM
@@ -94,6 +97,7 @@ Properties on Directories
    /prop_dir/VARIABLES
    /prop_dir/VS_GLOBAL_SECTION_POST_section
    /prop_dir/VS_GLOBAL_SECTION_PRE_section
+   /prop_dir/VS_SOLUTION_ITEMS
    /prop_dir/VS_STARTUP_PROJECT
 
 .. _`Target Properties`:
@@ -106,6 +110,7 @@ Properties on Targets
 
    /prop_tgt/ADDITIONAL_CLEAN_FILES
    /prop_tgt/AIX_EXPORT_ALL_SYMBOLS
+   /prop_tgt/AIX_SHARED_LIBRARY_ARCHIVE
    /prop_tgt/ALIAS_GLOBAL
    /prop_tgt/ALIASED_TARGET
    /prop_tgt/ANDROID_ANT_ADDITIONAL_OPTIONS
@@ -129,7 +134,9 @@ Properties on Targets
    /prop_tgt/ARCHIVE_OUTPUT_DIRECTORY_CONFIG
    /prop_tgt/ARCHIVE_OUTPUT_NAME
    /prop_tgt/ARCHIVE_OUTPUT_NAME_CONFIG
+   /prop_tgt/AUTOGEN_BETTER_GRAPH_MULTI_CONFIG
    /prop_tgt/AUTOGEN_BUILD_DIR
+   /prop_tgt/AUTOGEN_COMMAND_LINE_LENGTH_MAX
    /prop_tgt/AUTOGEN_ORIGIN_DEPENDS
    /prop_tgt/AUTOGEN_PARALLEL
    /prop_tgt/AUTOGEN_TARGET_DEPENDS
@@ -138,6 +145,7 @@ Properties on Targets
    /prop_tgt/AUTOMOC_COMPILER_PREDEFINES
    /prop_tgt/AUTOMOC_DEPEND_FILTERS
    /prop_tgt/AUTOMOC_EXECUTABLE
+   /prop_tgt/AUTOMOC_INCLUDE_DIRECTORIES
    /prop_tgt/AUTOMOC_MACRO_NAMES
    /prop_tgt/AUTOMOC_MOC_OPTIONS
    /prop_tgt/AUTOMOC_PATH_PREFIX
@@ -192,10 +200,12 @@ Properties on Targets
    /prop_tgt/CXX_MODULE_SET
    /prop_tgt/CXX_MODULE_SET_NAME
    /prop_tgt/CXX_MODULE_SETS
+   /prop_tgt/CXX_MODULE_STD
    /prop_tgt/CXX_SCAN_FOR_MODULES
    /prop_tgt/CXX_STANDARD
    /prop_tgt/CXX_STANDARD_REQUIRED
    /prop_tgt/DEBUG_POSTFIX
+   /prop_tgt/DEBUGGER_WORKING_DIRECTORY
    /prop_tgt/DEFINE_SYMBOL
    /prop_tgt/DEPLOYMENT_ADDITIONAL_FILES
    /prop_tgt/DEPLOYMENT_REMOTE_DIRECTORY
@@ -210,12 +220,14 @@ Properties on Targets
    /prop_tgt/EXCLUDE_FROM_ALL
    /prop_tgt/EXCLUDE_FROM_DEFAULT_BUILD
    /prop_tgt/EXCLUDE_FROM_DEFAULT_BUILD_CONFIG
+   /prop_tgt/EXPORT_BUILD_DATABASE
    /prop_tgt/EXPORT_COMPILE_COMMANDS
+   /prop_tgt/EXPORT_FIND_PACKAGE_NAME
    /prop_tgt/EXPORT_NAME
    /prop_tgt/EXPORT_NO_SYSTEM
    /prop_tgt/EXPORT_PROPERTIES
    /prop_tgt/FOLDER
-   /prop_tgt/Fortran_BUILDING_INSTRINSIC_MODULES
+   /prop_tgt/Fortran_BUILDING_INTRINSIC_MODULES
    /prop_tgt/Fortran_FORMAT
    /prop_tgt/Fortran_MODULE_DIRECTORY
    /prop_tgt/Fortran_PREPROCESS
@@ -240,6 +252,11 @@ Properties on Targets
    /prop_tgt/IMPORTED
    /prop_tgt/IMPORTED_COMMON_LANGUAGE_RUNTIME
    /prop_tgt/IMPORTED_CONFIGURATIONS
+   /prop_tgt/IMPORTED_CXX_MODULES_COMPILE_DEFINITIONS
+   /prop_tgt/IMPORTED_CXX_MODULES_COMPILE_FEATURES
+   /prop_tgt/IMPORTED_CXX_MODULES_COMPILE_OPTIONS
+   /prop_tgt/IMPORTED_CXX_MODULES_INCLUDE_DIRECTORIES
+   /prop_tgt/IMPORTED_CXX_MODULES_LINK_LIBRARIES
    /prop_tgt/IMPORTED_GLOBAL
    /prop_tgt/IMPORTED_IMPLIB
    /prop_tgt/IMPORTED_IMPLIB_CONFIG
@@ -257,7 +274,6 @@ Properties on Targets
    /prop_tgt/IMPORTED_LOCATION_CONFIG
    /prop_tgt/IMPORTED_NO_SONAME
    /prop_tgt/IMPORTED_NO_SONAME_CONFIG
-   /prop_tgt/IMPORTED_NO_SYSTEM
    /prop_tgt/IMPORTED_OBJECTS
    /prop_tgt/IMPORTED_OBJECTS_CONFIG
    /prop_tgt/IMPORTED_SONAME
@@ -290,7 +306,6 @@ Properties on Targets
    /prop_tgt/INTERFACE_SYSTEM_INCLUDE_DIRECTORIES
    /prop_tgt/INTERPROCEDURAL_OPTIMIZATION
    /prop_tgt/INTERPROCEDURAL_OPTIMIZATION_CONFIG
-   /prop_tgt/IOS_INSTALL_COMBINED
    /prop_tgt/ISPC_HEADER_DIRECTORY
    /prop_tgt/ISPC_HEADER_SUFFIX
    /prop_tgt/ISPC_INSTRUCTION_SETS
@@ -304,6 +319,7 @@ Properties on Targets
    /prop_tgt/LANG_CPPCHECK
    /prop_tgt/LANG_CPPLINT
    /prop_tgt/LANG_EXTENSIONS
+   /prop_tgt/LANG_ICSTAT
    /prop_tgt/LANG_INCLUDE_WHAT_YOU_USE
    /prop_tgt/LANG_LINKER_LAUNCHER
    /prop_tgt/LANG_STANDARD
@@ -313,6 +329,7 @@ Properties on Targets
    /prop_tgt/LIBRARY_OUTPUT_DIRECTORY_CONFIG
    /prop_tgt/LIBRARY_OUTPUT_NAME
    /prop_tgt/LIBRARY_OUTPUT_NAME_CONFIG
+   /prop_tgt/SPDX_LICENSE
    /prop_tgt/LINK_DEPENDS
    /prop_tgt/LINK_DEPENDS_NO_SHARED
    /prop_tgt/LINK_DIRECTORIES
@@ -324,13 +341,16 @@ Properties on Targets
    /prop_tgt/LINK_INTERFACE_MULTIPLICITY_CONFIG
    /prop_tgt/LINK_LIBRARIES
    /prop_tgt/LINK_LIBRARIES_ONLY_TARGETS
+   /prop_tgt/LINK_LIBRARIES_STRATEGY
    /prop_tgt/LINK_LIBRARY_OVERRIDE
    /prop_tgt/LINK_LIBRARY_OVERRIDE_LIBRARY
    /prop_tgt/LINK_OPTIONS
    /prop_tgt/LINK_SEARCH_END_STATIC
    /prop_tgt/LINK_SEARCH_START_STATIC
+   /prop_tgt/LINK_WARNING_AS_ERROR
    /prop_tgt/LINK_WHAT_YOU_USE
    /prop_tgt/LINKER_LANGUAGE
+   /prop_tgt/LINKER_TYPE
    /prop_tgt/LOCATION
    /prop_tgt/LOCATION_CONFIG
    /prop_tgt/MACHO_COMPATIBILITY_VERSION
@@ -342,6 +362,7 @@ Properties on Targets
    /prop_tgt/MANUALLY_ADDED_DEPENDENCIES
    /prop_tgt/MAP_IMPORTED_CONFIG_CONFIG
    /prop_tgt/MSVC_DEBUG_INFORMATION_FORMAT
+   /prop_tgt/MSVC_RUNTIME_CHECKS
    /prop_tgt/MSVC_RUNTIME_LIBRARY
    /prop_tgt/NAME
    /prop_tgt/NO_SONAME
@@ -386,17 +407,22 @@ Properties on Targets
    /prop_tgt/STATIC_LIBRARY_FLAGS_CONFIG
    /prop_tgt/STATIC_LIBRARY_OPTIONS
    /prop_tgt/SUFFIX
+   /prop_tgt/Swift_COMPILATION_MODE
    /prop_tgt/Swift_DEPENDENCIES_FILE
    /prop_tgt/Swift_LANGUAGE_VERSION
    /prop_tgt/Swift_MODULE_DIRECTORY
    /prop_tgt/Swift_MODULE_NAME
    /prop_tgt/SYSTEM
+   /prop_tgt/TEST_LAUNCHER
+   /prop_tgt/TRANSITIVE_COMPILE_PROPERTIES
+   /prop_tgt/TRANSITIVE_LINK_PROPERTIES
    /prop_tgt/TYPE
    /prop_tgt/UNITY_BUILD
    /prop_tgt/UNITY_BUILD_BATCH_SIZE
    /prop_tgt/UNITY_BUILD_CODE_AFTER_INCLUDE
    /prop_tgt/UNITY_BUILD_CODE_BEFORE_INCLUDE
    /prop_tgt/UNITY_BUILD_MODE
+   /prop_tgt/UNITY_BUILD_RELOCATABLE
    /prop_tgt/UNITY_BUILD_UNIQUE_ID
    /prop_tgt/VERIFY_INTERFACE_HEADER_SETS
    /prop_tgt/VERSION
@@ -415,6 +441,7 @@ Properties on Targets
    /prop_tgt/VS_DOTNET_STARTUP_OBJECT
    /prop_tgt/VS_DOTNET_TARGET_FRAMEWORK_VERSION
    /prop_tgt/VS_DPI_AWARE
+   /prop_tgt/VS_FRAMEWORK_REFERENCES
    /prop_tgt/VS_GLOBAL_KEYWORD
    /prop_tgt/VS_GLOBAL_PROJECT_TYPES
    /prop_tgt/VS_GLOBAL_ROOTNAMESPACE
@@ -436,10 +463,11 @@ Properties on Targets
    /prop_tgt/VS_SDK_REFERENCES
    /prop_tgt/VS_SOLUTION_DEPLOY
    /prop_tgt/VS_SOURCE_SETTINGS_tool
+   /prop_tgt/VS_USE_DEBUG_LIBRARIES
    /prop_tgt/VS_USER_PROPS
+   /prop_tgt/VS_FILTER_PROPS
    /prop_tgt/VS_WINDOWS_TARGET_PLATFORM_MIN_VERSION
    /prop_tgt/VS_WINRT_COMPONENT
-   /prop_tgt/VS_WINRT_EXTENSIONS
    /prop_tgt/VS_WINRT_REFERENCES
    /prop_tgt/WATCOM_RUNTIME_LIBRARY
    /prop_tgt/WIN32_EXECUTABLE
@@ -470,7 +498,9 @@ Properties on Targets
    /prop_tgt/XCODE_SCHEME_EXECUTABLE
    /prop_tgt/XCODE_SCHEME_GUARD_MALLOC
    /prop_tgt/XCODE_SCHEME_LAUNCH_CONFIGURATION
+   /prop_tgt/XCODE_SCHEME_TEST_CONFIGURATION
    /prop_tgt/XCODE_SCHEME_LAUNCH_MODE
+   /prop_tgt/XCODE_SCHEME_LLDB_INIT_FILE
    /prop_tgt/XCODE_SCHEME_MAIN_THREAD_CHECKER_STOP
    /prop_tgt/XCODE_SCHEME_MALLOC_GUARD_EDGES
    /prop_tgt/XCODE_SCHEME_MALLOC_SCRIBBLE
@@ -503,6 +533,7 @@ Properties on Tests
    /prop_test/FIXTURES_CLEANUP
    /prop_test/FIXTURES_REQUIRED
    /prop_test/FIXTURES_SETUP
+   /prop_test/GENERATED_RESOURCE_SPEC_FILE
    /prop_test/LABELS
    /prop_test/MEASUREMENT
    /prop_test/PASS_REGULAR_EXPRESSION
@@ -562,6 +593,7 @@ Properties on Source Files
    /prop_sf/UNITY_GROUP
    /prop_sf/VS_COPY_TO_OUT_DIR
    /prop_sf/VS_CSHARP_tagname
+   /prop_sf/VS_CUSTOM_COMMAND_DISABLE_PARALLEL_BUILD
    /prop_sf/VS_DEPLOYMENT_CONTENT
    /prop_sf/VS_DEPLOYMENT_LOCATION
    /prop_sf/VS_INCLUDE_IN_VSIX
@@ -634,8 +666,12 @@ Deprecated Properties on Targets
    :maxdepth: 1
 
    /prop_tgt/COMPILE_DEFINITIONS_CONFIG
+   /prop_tgt/Fortran_BUILDING_INSTRINSIC_MODULES
+   /prop_tgt/IMPORTED_NO_SYSTEM
+   /prop_tgt/IOS_INSTALL_COMBINED
    /prop_tgt/POST_INSTALL_SCRIPT
    /prop_tgt/PRE_INSTALL_SCRIPT
+   /prop_tgt/VS_WINRT_EXTENSIONS
 
 
 Deprecated Properties on Source Files

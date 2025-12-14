@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>ctest_start &mdash; CMake 3.27.4 Documentation</title>
+  <title>ctest_start &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ctest_submit" href="ctest_submit.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="ctest_sleep.html" title="ctest_sleep"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -61,7 +62,7 @@
           <div class="body" role="main">
             
   <section id="ctest-start">
-<span id="command:ctest_start"></span><h1>ctest_start<a class="headerlink" href="#ctest-start" title="Permalink to this heading">¶</a></h1>
+<span id="command:ctest_start"></span><h1>ctest_start<a class="headerlink" href="#ctest-start" title="Link to this heading">¶</a></h1>
 <p>Starts the testing for a given model</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nv">&lt;model&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;binary&gt;</span><span class="p">]]</span><span class="w"> </span><span class="p">[</span><span class="no">GROUP</span><span class="w"> </span><span class="nv">&lt;group&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">QUIET</span><span class="p">]</span><span class="nf">)</span>
 
@@ -108,7 +109,7 @@ in the first <code class="docutils literal notranslate"><span class="pre">ctest_
 new model and group will be used.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">QUIET</span></code></dt><dd><div class="versionadded">
-<p><span class="versionmodified added">New in version 3.3.</span></p>
+<p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">QUIET</span></code> is used, CTest will suppress any non-error messages that it
 otherwise would have printed to the console.</p>
@@ -127,8 +128,8 @@ equivalent:</p>
 </div>
 <p>However, for the sake of readability, it is recommended that you order your
 parameters in the order listed at the top of this page.</p>
-<p>If the <span class="target" id="index-0-variable:CTEST_CHECKOUT_COMMAND"></span><a class="reference internal" href="../variable/CTEST_CHECKOUT_COMMAND.html#variable:CTEST_CHECKOUT_COMMAND" title="CTEST_CHECKOUT_COMMAND"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CTEST_CHECKOUT_COMMAND</span></code></a> variable (or the
-<span class="target" id="index-0-variable:CTEST_CVS_CHECKOUT"></span><a class="reference internal" href="../variable/CTEST_CVS_CHECKOUT.html#variable:CTEST_CVS_CHECKOUT" title="CTEST_CVS_CHECKOUT"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CTEST_CVS_CHECKOUT</span></code></a> variable) is set, its content is treated as
+<p>If the <span class="target" id="index-0-variable:CTEST_CHECKOUT_COMMAND"></span><a class="reference internal" href="../variable/CTEST_CHECKOUT_COMMAND.html#variable:CTEST_CHECKOUT_COMMAND" title="CTEST_CHECKOUT_COMMAND"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CTEST_CHECKOUT_COMMAND</span></code></a> variable is set, its content is
+treated as
 command-line.  The command is invoked with the current working directory set
 to the parent of the source directory, even if the source directory already
 exists.  This can be used to create the source tree from a version control
@@ -140,7 +141,7 @@ repository.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
@@ -159,7 +160,7 @@ repository.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -167,13 +168,13 @@ repository.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -186,14 +187,15 @@ repository.</p>
           <a href="ctest_sleep.html" title="ctest_sleep"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -202,8 +204,17 @@ repository.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

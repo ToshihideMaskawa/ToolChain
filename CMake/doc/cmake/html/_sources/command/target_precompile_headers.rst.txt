@@ -25,7 +25,7 @@ The named ``<target>`` must have been created by a command such as
 :ref:`ALIAS target <Alias Targets>`.
 
 The ``INTERFACE``, ``PUBLIC`` and ``PRIVATE`` keywords are required to
-specify the :ref:`scope <Target Usage Requirements>` of the following arguments.
+specify the :ref:`scope <Target Command Scope>` of the following arguments.
 ``PRIVATE`` and ``PUBLIC`` items will populate the :prop_tgt:`PRECOMPILE_HEADERS`
 property of ``<target>``.  ``PUBLIC`` and ``INTERFACE`` items will populate the
 :prop_tgt:`INTERFACE_PRECOMPILE_HEADERS` property of ``<target>``
@@ -33,7 +33,7 @@ property of ``<target>``.  ``PUBLIC`` and ``INTERFACE`` items will populate the
 Repeated calls for the same ``<target>`` will append items in the order called.
 
 Projects should generally avoid using ``PUBLIC`` or ``INTERFACE`` for targets
-that will be :ref:`exported <install(EXPORT)>`, or they should at least use
+that will be :command:`exported <install(EXPORT)>`, or they should at least use
 the :genex:`$<BUILD_INTERFACE:...>` generator expression to prevent precompile
 headers from appearing in an installed exported target.  Consumers of a target
 should typically be in control of what precompile headers they use, not have
@@ -71,15 +71,16 @@ included by absolute path.  For example:
   )
 
 .. |command_name| replace:: ``target_precompile_headers``
-.. |more_see_also| replace:: The :genex:`$<COMPILE_LANGUAGE:...>` generator
+.. |more_see_also| replace:: The :genex:`$<COMPILE_LANGUAGE:...>
+   <COMPILE_LANGUAGE:languages>` generator
    expression is particularly useful for specifying a language-specific header
    to precompile for only one language (e.g. ``CXX`` and not ``C``).  In this
    case, header file names that are not explicitly in double quotes or angle
    brackets must be specified by absolute path.  Also, when specifying angle
    brackets inside a generator expression, be sure to encode the closing
    ``>`` as :genex:`$<ANGLE-R>`.  For example:
-.. include:: GENEX_NOTE.txt
-   :start-line: 1
+.. include:: include/GENEX_NOTE.rst
+   :start-line: 2
 
 .. code-block:: cmake
 
@@ -94,7 +95,7 @@ Reusing Precompile Headers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The command also supports a second signature which can be used to specify that
-one target re-uses a precompiled header file artifact from another target
+one target reuses a precompiled header file artifact from another target
 instead of generating its own:
 
 .. code-block:: cmake

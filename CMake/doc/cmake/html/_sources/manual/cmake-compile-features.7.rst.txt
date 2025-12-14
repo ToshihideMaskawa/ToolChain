@@ -115,7 +115,7 @@ of at-least C++ 11 (or C++ 14, C++ 17, ...), adding flags such as
 ``-std=gnu++11`` if necessary.  This applies to sources within ``mylib``
 as well as any dependents (that may include headers from ``mylib``).
 
-.. include:: ../prop_gbl/CMAKE_LANG_STD_FLAGS.txt
+.. include:: ../prop_gbl/include/CMAKE_LANG_STD_FLAGS.rst
 
 Availability of Compiler Extensions
 -----------------------------------
@@ -266,6 +266,7 @@ versions specified for each:
 * ``PGI``: PGI version 12.10+.
 * ``NVHPC``: NVIDIA HPC compilers version 11.0+.
 * ``TI``: Texas Instruments compiler.
+* ``TIClang``: Texas Instruments Clang-based compilers.
 * ``XL``: IBM XL version 10.1+.
 
 CMake is currently aware of the :prop_tgt:`C standards <C_STANDARD>` and

@@ -47,6 +47,11 @@ below for the meaning of other options.
   :ref:`configure-log try_compile event <try_compile configure-log event>`
   if the ``NO_LOG`` option is not specified.
 
+.. versionadded:: 3.30
+  If the :prop_gbl:`PROPAGATE_TOP_LEVEL_INCLUDES_TO_TRY_COMPILE` global
+  property is set to true, :variable:`CMAKE_PROJECT_TOP_LEVEL_INCLUDES` is
+  propagated into the project's build configuration.
+
 This command supports an alternate signature for CMake older than 3.25.
 The signature above is recommended for clarity.
 
@@ -65,6 +70,7 @@ Try Compiling Source Files
 .. code-block:: cmake
 
   try_compile(<compileResultVar>
+              [SOURCES_TYPE <type>]
               <SOURCES <srcfile...>                 |
                SOURCE_FROM_CONTENT <name> <content> |
                SOURCE_FROM_VAR <name> <var>         |
@@ -76,6 +82,7 @@ Try Compiling Source Files
               [COMPILE_DEFINITIONS <defs>...]
               [LINK_OPTIONS <options>...]
               [LINK_LIBRARIES <libs>...]
+              [LINKER_LANGUAGE <lang>]
               [OUTPUT_VARIABLE <var>]
               [COPY_FILE <fileName> [COPY_FILE_ERROR <var>]]
               [<LANG>_STANDARD <std>]
@@ -85,10 +92,11 @@ Try Compiling Source Files
 
 .. versionadded:: 3.25
 
-Try building an executable or static library from one or more source files
-(which one is determined by the :variable:`CMAKE_TRY_COMPILE_TARGET_TYPE`
-variable). Build success returns ``TRUE`` and build failure returns ``FALSE``
-in ``<compileResultVar>``.
+Try building an executable or static library from one or more source files.
+The binary type is determined by variable
+:variable:`CMAKE_TRY_COMPILE_TARGET_TYPE`.
+Build success returns boolean ``true`` and build failure returns boolean
+``false`` in ``<compileResultVar>`` (cached unless ``NO_CACHE`` is specified).
 
 In this form, one or more source files must be provided. Additionally, one of
 ``SOURCES`` and/or ``SOURCE_FROM_*`` must precede other keywords.
@@ -143,14 +151,20 @@ single output directory, such that you can only debug one such ``try_compile``
 call at a time.  Use of the newer signature is recommended to simplify
 debugging of multiple ``try_compile`` operations.
 
-The options are:
+.. _`try_compile Options`:
+
+Options
+^^^^^^^
+
+The options for the above signatures are:
 
 ``CMAKE_FLAGS <flags>...``
   Specify flags of the form :option:`-DVAR:TYPE=VALUE <cmake -D>` to be passed
   to the :manual:`cmake(1)` command-line used to drive the test build.
   The above example shows how values for variables
-  ``INCLUDE_DIRECTORIES``, ``LINK_DIRECTORIES``, and ``LINK_LIBRARIES``
-  are used.
+  ``COMPILE_DEFINITIONS``, ``INCLUDE_DIRECTORIES``, ``LINK_DIRECTORIES``,
+  ``LINK_LIBRARIES``, and ``LINK_OPTIONS`` are used. Compiler options
+  can be passed in like ``CMAKE_FLAGS -DCOMPILE_DEFINITIONS=-Werror``.
 
 ``COMPILE_DEFINITIONS <defs>...``
   Specify ``-Ddefinition`` arguments to pass to :command:`add_definitions`
@@ -171,12 +185,23 @@ The options are:
   If this option is specified, any ``-DLINK_LIBRARIES=...`` value
   given to the ``CMAKE_FLAGS`` option will be ignored.
 
+  .. versionadded:: 3.29
+    Alias targets to imported libraries are also supported.
+
 ``LINK_OPTIONS <options>...``
   .. versionadded:: 3.14
 
   Specify link step options to pass to :command:`target_link_options` or to
   set the :prop_tgt:`STATIC_LIBRARY_OPTIONS` target property in the generated
   project, depending on the :variable:`CMAKE_TRY_COMPILE_TARGET_TYPE` variable.
+
+``LINKER_LANGUAGE <lang>``
+  .. versionadded:: 3.29
+
+  Specify the :prop_tgt:`LINKER_LANGUAGE` target property of the generated
+  project.  When using multiple source files with different languages, set
+  this to the language of the source file containing the program entry point,
+  e.g., ``main``.
 
 ``LOG_DESCRIPTION <text>``
   .. versionadded:: 3.26
@@ -187,9 +212,10 @@ The options are:
 ``NO_CACHE``
   .. versionadded:: 3.25
 
-  The result will be stored in a normal variable rather than a cache entry.
+  ``<compileResultVar>`` will be stored in a normal variable rather than a
+  cache entry.
 
-  The result variable is normally cached so that a simple pattern can be used
+  ``<compileResultVar>`` is normally cached so that a simple pattern can be used
   to avoid repeating the test on subsequent executions of CMake:
 
   .. code-block:: cmake
@@ -244,6 +270,24 @@ The options are:
 
   ``SOURCE_FROM_VAR`` may be specified multiple times.
 
+``SOURCES_TYPE <type>``
+  .. versionadded:: 3.28
+
+  Sources may be classified using the ``SOURCES_TYPE`` argument. Once
+  specified, all subsequent sources specified will be treated as that type
+  until another ``SOURCES_TYPE`` is given. Available types are:
+
+  ``NORMAL``
+    Sources are not added to any ``FILE_SET`` in the generated project.
+
+  ``CXX_MODULE``
+    .. versionadded:: 3.28
+
+    Sources are added to a ``FILE_SET`` of type ``CXX_MODULES`` in the
+    generated project.
+
+  The default type of sources is ``NORMAL``.
+
 ``<LANG>_STANDARD <std>``
   .. versionadded:: 3.8
 
@@ -276,14 +320,13 @@ Other Behavior Settings
 
   * :variable:`CMAKE_CUDA_RUNTIME_LIBRARY`
   * :variable:`CMAKE_ENABLE_EXPORTS`
+  * :variable:`CMAKE_EXE_LINKER_FLAGS`, unless using CMake versions
+    prior to 4.0 without policy :policy:`CMP0056` set to ``NEW``
   * :variable:`CMAKE_LINK_SEARCH_START_STATIC`
   * :variable:`CMAKE_LINK_SEARCH_END_STATIC`
   * :variable:`CMAKE_MSVC_RUNTIME_LIBRARY`
   * :variable:`CMAKE_POSITION_INDEPENDENT_CODE`
   * :variable:`CMAKE_WATCOM_RUNTIME_LIBRARY`
-
-  If :policy:`CMP0056` is set to ``NEW``, then
-  :variable:`CMAKE_EXE_LINKER_FLAGS` is passed in as well.
 
 .. versionchanged:: 3.14
   If :policy:`CMP0083` is set to ``NEW``, then in order to obtain correct
@@ -291,8 +334,26 @@ Other Behavior Settings
   :module:`CheckPIESupported` module must be called before using the
   ``try_compile`` command.
 
-The current settings of :policy:`CMP0065` and :policy:`CMP0083` are propagated
-through to the generated test project.
+Some policies are set automatically in the generated test project
+as needed to honor the state of the calling project:
+
+* :policy:`CMP0065` (in CMake versions prior to 4.0)
+* :policy:`CMP0083`
+* :policy:`CMP0091`
+* :policy:`CMP0104`
+* :policy:`CMP0123`
+* :policy:`CMP0126`
+* :policy:`CMP0128`
+* :policy:`CMP0136`
+* :policy:`CMP0141`
+* :policy:`CMP0155`
+* :policy:`CMP0157`
+* :policy:`CMP0181`
+* :policy:`CMP0184`
+
+.. versionadded:: 4.0
+  The current setting of :policy:`CMP0181` policy is propagated through to the
+  generated test project.
 
 Set variable :variable:`CMAKE_TRY_COMPILE_CONFIGURATION` to choose a build
 configuration:
@@ -350,6 +411,17 @@ configuration:
   If :policy:`CMP0141` is set to ``NEW``, one can use
   :variable:`CMAKE_MSVC_DEBUG_INFORMATION_FORMAT` to specify the MSVC debug
   information format.
+
+.. versionadded:: 3.30
+  If the :prop_gbl:`PROPAGATE_TOP_LEVEL_INCLUDES_TO_TRY_COMPILE` global
+  property is set to true, :variable:`CMAKE_PROJECT_TOP_LEVEL_INCLUDES` is
+  propagated into the test project's build configuration when using the
+  :ref:`whole-project signature <Try Compiling Whole Projects>`.
+
+.. versionadded:: 4.0
+  If :policy:`CMP0184` is set to ``NEW``, one can use
+  :variable:`CMAKE_MSVC_RUNTIME_CHECKS` to specify the enabled MSVC runtime
+  checks.
 
 See Also
 ^^^^^^^^

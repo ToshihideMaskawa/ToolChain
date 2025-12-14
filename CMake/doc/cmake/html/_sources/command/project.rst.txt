@@ -11,6 +11,7 @@ Synopsis
  project(<PROJECT-NAME> [<language-name>...])
  project(<PROJECT-NAME>
          [VERSION <major>[.<minor>[.<patch>[.<tweak>]]]]
+         [COMPAT_VERSION <major>[.<minor>[.<patch>[.<tweak>]]]]
          [DESCRIPTION <project-description-string>]
          [HOMEPAGE_URL <url-string>]
          [LANGUAGES <language-name>...])
@@ -33,9 +34,29 @@ Also sets the variables:
 
   Boolean value indicating whether the project is top-level.
 
-Further variables are set by the optional arguments described in the following.
-If any of these arguments is not used, then the corresponding variables are
+Further variables are set by the optional arguments described in `Options`_
+further below. Where an option is not given, its corresponding variable is
 set to the empty string.
+
+Note that variables of the form ``<name>_SOURCE_DIR`` and ``<name>_BINARY_DIR``
+may also be set by other commands before ``project()`` is called (see the
+:command:`FetchContent_MakeAvailable` command for one example).
+Projects should not rely on ``<PROJECT-NAME>_SOURCE_DIR`` or
+``<PROJECT-NAME>_BINARY_DIR`` holding a particular value outside of the scope
+of the call to ``project()`` or one of its child scopes.
+
+.. versionchanged:: 3.30
+  ``<PROJECT-NAME>_SOURCE_DIR``, ``<PROJECT-NAME>_BINARY_DIR``, and
+  ``<PROJECT-NAME>_IS_TOP_LEVEL``, if already set as normal variables when
+  ``project(<PROJECT-NAME> ...)`` is called, are updated by the call.
+  Cache entries by the same names are always set as before.
+  See release notes for 3.30.3, 3.30.4, and 3.30.5 for details.
+
+.. versionchanged:: 3.31
+  ``<PROJECT-NAME>_SOURCE_DIR``, ``<PROJECT-NAME>_BINARY_DIR``, and
+  ``<PROJECT-NAME>_IS_TOP_LEVEL`` are always set as normal variables by
+  ``project(<PROJECT-NAME> ...)``.  See policy :policy:`CMP0180`.
+  Cache entries by the same names are always set as before.
 
 Options
 ^^^^^^^
@@ -65,6 +86,25 @@ The options are:
     When the ``project()`` command is called from the top-level
     ``CMakeLists.txt``, then the version is also stored in the variable
     :variable:`CMAKE_PROJECT_VERSION`.
+
+``COMPAT_VERSION <version>``
+  .. versionadded:: 4.1
+  .. note::
+
+    Experimental. Gated by ``CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_INFO``.
+
+  Optional; requires ``VERSION`` also be set.
+
+  Takes a ``<version>`` argument composed of non-negative integer components,
+  i.e. ``<major>[.<minor>[.<patch>[.<tweak>]]]``,
+  and sets the variables
+
+  * :variable:`PROJECT_COMPAT_VERSION`,
+    :variable:`<PROJECT-NAME>_COMPAT_VERSION`
+
+    When the ``project()`` command is called from the top-level
+    ``CMakeLists.txt``, then the compatibility version is also stored in the
+    variable :variable:`CMAKE_PROJECT_COMPAT_VERSION`.
 
 ``DESCRIPTION <project-description-string>``
   .. versionadded:: 3.9
@@ -103,14 +143,18 @@ The options are:
 
   Selects which programming languages are needed to build the project.
 
-.. include:: SUPPORTED_LANGUAGES.txt
+.. include:: include/SUPPORTED_LANGUAGES.rst
 
 By default ``C`` and ``CXX`` are enabled if no language options are given.
 Specify language ``NONE``, or use the ``LANGUAGES`` keyword and list no languages,
 to skip enabling any languages.
 
-The variables set through the ``VERSION``, ``DESCRIPTION`` and ``HOMEPAGE_URL``
-options are intended for use as default values in package metadata and documentation.
+The variables set through the ``VERSION``, ``COMPAT_VERSION``, ``DESCRIPTION``
+and ``HOMEPAGE_URL`` options are intended for use as default values in package
+metadata and documentation. The :command:`export` and :command:`install`
+commands use these accordingly when generating |CPS| package descriptions.
+
+.. |CPS| replace:: Common Package Specification
 
 .. _`Code Injection`:
 
@@ -123,12 +167,12 @@ The following outlines the steps performed during a ``project()`` call:
 
 * .. versionadded:: 3.15
     For every ``project()`` call regardless of the project
-    name, include the file named by :variable:`CMAKE_PROJECT_INCLUDE_BEFORE`,
-    if set.
+    name, include the file(s) and module(s) named by
+    :variable:`CMAKE_PROJECT_INCLUDE_BEFORE`, if set.
 
 * .. versionadded:: 3.17
     If the ``project()`` command specifies ``<PROJECT-NAME>`` as its project
-    name, include the file named by
+    name, include the file(s) and module(s) named by
     :variable:`CMAKE_PROJECT_<PROJECT-NAME>_INCLUDE_BEFORE`, if set.
 
 * Set the various project-specific variables detailed in the `Synopsis`_
@@ -156,11 +200,11 @@ The following outlines the steps performed during a ``project()`` call:
 
 * .. versionadded:: 3.15
     For every ``project()`` call regardless of the project
-    name, include the file named by :variable:`CMAKE_PROJECT_INCLUDE`,
-    if set.
+    name, include the file(s) and module(s) named by
+    :variable:`CMAKE_PROJECT_INCLUDE`, if set.
 
 * If the ``project()`` command specifies ``<PROJECT-NAME>`` as its project
-  name, include the file named by
+  name, include the file(s) and module(s) named by
   :variable:`CMAKE_PROJECT_<PROJECT-NAME>_INCLUDE`, if set.
 
 Usage

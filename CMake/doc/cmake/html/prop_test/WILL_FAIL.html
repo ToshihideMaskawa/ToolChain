@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>WILL_FAIL &mdash; CMake 3.27.4 Documentation</title>
+  <title>WILL_FAIL &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="WORKING_DIRECTORY" href="WORKING_DIRECTORY.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="TIMEOUT_SIGNAL_NAME.html" title="TIMEOUT_SIGNAL_NAME"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -61,11 +62,36 @@
           <div class="body" role="main">
             
   <section id="will-fail">
-<span id="prop_test:WILL_FAIL"></span><h1>WILL_FAIL<a class="headerlink" href="#will-fail" title="Permalink to this heading">¶</a></h1>
-<p>If set to true, this will invert the pass/fail flag of the test.</p>
-<p>This property can be used for tests that are expected to fail and return a
-non-zero return code. Note that system-level test failures such as segmentation
-faults or heap errors will still fail the test even if <code class="docutils literal notranslate"><span class="pre">WILL_FALL</span></code> is true.</p>
+<span id="prop_test:WILL_FAIL"></span><h1>WILL_FAIL<a class="headerlink" href="#will-fail" title="Link to this heading">¶</a></h1>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, inverts the pass / fail test criteria. Tests for which
+<code class="docutils literal notranslate"><span class="pre">WILL_FAIL</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> fail with return code 0 and pass with non-zero
+return code. Tests that exceed the timeout specified by <span class="target" id="index-0-prop_test:TIMEOUT"></span><a class="reference internal" href="TIMEOUT.html#prop_test:TIMEOUT" title="TIMEOUT"><code class="xref cmake cmake-prop_test docutils literal notranslate"><span class="pre">TIMEOUT</span></code></a>
+still fail regardless of <code class="docutils literal notranslate"><span class="pre">WILL_FAIL</span></code>.
+System-level test failures including segmentation faults,
+signal abort, or heap errors may fail the test even if <code class="docutils literal notranslate"><span class="pre">WILL_FAIL</span></code> is true.</p>
+<p>Example of a test that would ordinarily pass, but fails because <code class="docutils literal notranslate"><span class="pre">WILL_FAIL</span></code>
+is <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">failed</span><span class="w"> </span><span class="no">COMMAND</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_COMMAND</span><span class="o">}</span><span class="w"> </span><span class="p">-</span><span class="no">E</span><span class="w"> </span><span class="nb">true</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">TEST</span><span class="w"> </span><span class="nb">failed</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">WILL_FAIL</span><span class="w"> </span><span class="nb">true</span><span class="nf">)</span>
+</pre></div>
+</div>
+<p>To run a test that may have a system-level failure, but still pass if
+<code class="docutils literal notranslate"><span class="pre">WILL_FAIL</span></code> is set, use a CMake command to wrap the executable run.
+Note that this will prevent automatic handling of the
+<span class="target" id="index-0-prop_tgt:CROSSCOMPILING_EMULATOR"></span><a class="reference internal" href="../prop_tgt/CROSSCOMPILING_EMULATOR.html#prop_tgt:CROSSCOMPILING_EMULATOR" title="CROSSCOMPILING_EMULATOR"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">CROSSCOMPILING_EMULATOR</span></code></a> and <span class="target" id="index-0-prop_tgt:TEST_LAUNCHER"></span><a class="reference internal" href="../prop_tgt/TEST_LAUNCHER.html#prop_tgt:TEST_LAUNCHER" title="TEST_LAUNCHER"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">TEST_LAUNCHER</span></code></a>
+target property.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_executable(</span><span class="nb">main</span><span class="w"> </span><span class="nb">main.c</span><span class="nf">)</span>
+
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">sigabrt</span><span class="w"> </span><span class="no">COMMAND</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_COMMAND</span><span class="o">}</span><span class="w"> </span><span class="p">-</span><span class="no">E</span><span class="w"> </span><span class="nb">env</span><span class="w"> </span><span class="o">$&lt;</span><span class="no">TARGET_FILE</span><span class="o">:</span><span class="nb">main</span><span class="o">&gt;</span><span class="nf">)</span>
+
+<span class="nf">set_property(</span><span class="no">TEST</span><span class="w"> </span><span class="nb">sigabrt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">WILL_FAIL</span><span class="w"> </span><span class="no">TRUE</span><span class="nf">)</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="w"> </span><span class="n">raise</span><span class="p">(</span><span class="n">SIGABRT</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
 </section>
 
 
@@ -73,7 +99,7 @@ faults or heap errors will still fail the test even if <code class="docutils lit
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
@@ -92,7 +118,7 @@ faults or heap errors will still fail the test even if <code class="docutils lit
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -100,13 +126,13 @@ faults or heap errors will still fail the test even if <code class="docutils lit
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -119,14 +145,15 @@ faults or heap errors will still fail the test even if <code class="docutils lit
           <a href="TIMEOUT_SIGNAL_NAME.html" title="TIMEOUT_SIGNAL_NAME"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -135,8 +162,17 @@ faults or heap errors will still fail the test even if <code class="docutils lit
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

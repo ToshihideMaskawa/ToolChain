@@ -224,7 +224,7 @@ For example::
  They interpret the opening bracket as the start of an
  `Unquoted Argument`_.
 
-.. _`Lua`: http://www.lua.org/
+.. _`Lua`: https://www.lua.org/
 
 .. _`Quoted Argument`:
 
@@ -572,7 +572,7 @@ The :manual:`cmake-variables(7)` manual documents the many variables
 that are provided by CMake or have meaning to CMake when set
 by project code.
 
-.. include:: ID_RESERVE.txt
+.. include:: include/ID_RESERVE.rst
 
 .. _`CMake Language Environment Variables`:
 

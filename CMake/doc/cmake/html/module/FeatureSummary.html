@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FeatureSummary &mdash; CMake 3.27.4 Documentation</title>
+  <title>FeatureSummary &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FetchContent" href="FetchContent.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="ExternalProject.html" title="ExternalProject"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -61,159 +62,198 @@
           <div class="body" role="main">
             
   <section id="featuresummary">
-<span id="module:FeatureSummary"></span><h1>FeatureSummary<a class="headerlink" href="#featuresummary" title="Permalink to this heading">¶</a></h1>
+<span id="module:FeatureSummary"></span><h1>FeatureSummary<a class="headerlink" href="#featuresummary" title="Link to this heading">¶</a></h1>
 <p>Functions for generating a summary of enabled/disabled features.</p>
 <p>These functions can be used to generate a summary of enabled and disabled
-packages and/or feature for a build tree such as:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-- The following OPTIONAL packages have been found:
-LibXml2 (required version &gt;= 2.4), XML processing lib, &lt;http://xmlsoft.org&gt;
-   * Enables HTML-import in MyWordProcessor
-   * Enables odt-export in MyWordProcessor
-PNG, A PNG image library., &lt;http://www.libpng.org/pub/png/&gt;
-   * Enables saving screenshots
+packages and/or features for a build tree such as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-- The following features have been enabled:
+
+ * Example, usage example
+
+-- The following OPTIONAL packages have been found:
+
+ * LibXml2 (required version &gt;= 2.4), XML library, &lt;http://xmlsoft.org&gt;
+   Enables HTML-import in MyWordProcessor
+   Enables odt-export in MyWordProcessor
+ * PNG, image library, &lt;http://www.libpng.org/pub/png/&gt;
+   Enables saving screenshots
+
 -- The following OPTIONAL packages have not been found:
-Lua51, The Lua scripting language., &lt;http://www.lua.org&gt;
-   * Enables macros in MyWordProcessor
-Foo, Foo provides cool stuff.
+
+ * Lua, the Lua scripting language, &lt;https://www.lua.org&gt;
+   Enables macros in MyWordProcessor
+ * OpenGL, Open Graphics Library
 </pre></div>
 </div>
 <section id="global-properties">
-<h2>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this heading">¶</a></h2>
+<h2>Global Properties<a class="headerlink" href="#global-properties" title="Link to this heading">¶</a></h2>
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_PKG_TYPES">
-<span class="sig-name descname"><span class="pre">FeatureSummary_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_PKG_TYPES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>The global property <span class="target" id="index-0-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> defines the type of
-packages used by <cite>FeatureSummary</cite>.</p>
-<p>The order in this list is important, the first package type in the list is the
-least important, the last is the most important. the of a package can only be
-changed to higher types.</p>
-<p>The default package types are , <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code>, <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">RECOMMENDED</span></code> and
-<code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code>, and their importance is
+<span class="sig-name descname"><span class="pre">FeatureSummary_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_PKG_TYPES" title="Link to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.8.</span></p>
+</div>
+<p>This global property defines a
+<a class="reference internal" href="../manual/cmake-language.7.html#cmake-language-lists"><span class="std std-ref">semicolon-separated list</span></a> of package types used
+by the <code class="docutils literal notranslate"><span class="pre">FeatureSummary</span></code> module.</p>
+<p>The order in this list is important, the first package type in the list has
+the lowest importance, while the last has the highest importance.  The type of
+a package can only be changed to a type with higher importance.</p>
+<p>The default package types are <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code>, <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code>, <code class="docutils literal notranslate"><span class="pre">RECOMMENDED</span></code> and
+<code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code>, with their importance ranked as
 <code class="docutils literal notranslate"><span class="pre">RUNTIME</span> <span class="pre">&lt;</span> <span class="pre">OPTIONAL</span> <span class="pre">&lt;</span> <span class="pre">RECOMMENDED</span> <span class="pre">&lt;</span> <span class="pre">REQUIRED</span></code>.</p>
+</dd></dl>
+
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_REQUIRED_PKG_TYPES">
-<span class="sig-name descname"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>The global property <span class="target" id="index-0-variable:FeatureSummary_REQUIRED_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="FeatureSummary_REQUIRED_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></code></a> defines which
-package types are required.</p>
-<p>If one or more package in this categories has not been found, CMake will abort
-when calling <span class="target" id="index-0-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a> with the
-'FATAL_ON_MISSING_REQUIRED_PACKAGES' option enabled.</p>
+<span class="sig-name descname"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="Link to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.8.</span></p>
+</div>
+<p>This global property defines a
+<a class="reference internal" href="../manual/cmake-language.7.html#cmake-language-lists"><span class="std std-ref">semicolon-separated list</span></a> of package types that
+are considered required.</p>
+<p>If one or more packages in these categories are not found, CMake will abort
+when the <span class="target" id="index-0-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a> command is called with the
+<code class="docutils literal notranslate"><span class="pre">FATAL_ON_MISSING_REQUIRED_PACKAGES</span></code> option enabled.</p>
 <p>The default value for this global property is <code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code>.</p>
+</dd></dl>
+
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_DEFAULT_PKG_TYPE">
-<span class="sig-name descname"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></span><a class="headerlink" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>The global property <span class="target" id="index-0-variable:FeatureSummary_DEFAULT_PKG_TYPE"></span><a class="reference internal" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="FeatureSummary_DEFAULT_PKG_TYPE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></code></a> defines which
-package type is the default one.
-When calling <span class="target" id="index-1-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a>, if the user did not set the package type
-explicitly, the package will be assigned to this category.</p>
+<span class="sig-name descname"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></span><a class="headerlink" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="Link to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.8.</span></p>
+</div>
+<p>This global property defines the default package type.</p>
+<p>When the <span class="target" id="index-1-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a> command is called, and the user has not
+explicitly set a type of some package, its type will be set to this value.</p>
 <p>This value must be one of the types defined in the
-<span class="target" id="index-1-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> global property unless the package type
-is set for all the packages.</p>
+<span class="target" id="index-0-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> global property.</p>
 <p>The default value for this global property is <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code>.</p>
+</dd></dl>
+
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_&lt;TYPE&gt;_DESCRIPTION">
-<span class="sig-name descname"><span class="pre">FeatureSummary_&lt;TYPE&gt;_DESCRIPTION</span></span><a class="headerlink" href="#variable:FeatureSummary_<TYPE>_DESCRIPTION" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.9.</span></p>
+<span class="sig-name descname"><span class="pre">FeatureSummary_&lt;TYPE&gt;_DESCRIPTION</span></span><a class="headerlink" href="#variable:FeatureSummary_<TYPE>_DESCRIPTION" title="Link to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>The global property <span class="target" id="index-0-variable:FeatureSummary_&lt;TYPE&gt;_DESCRIPTION"></span><a class="reference internal" href="#variable:FeatureSummary_&lt;TYPE&gt;_DESCRIPTION" title="FeatureSummary_&lt;TYPE&gt;_DESCRIPTION"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_&lt;TYPE&gt;_DESCRIPTION</span></code></a> can be defined
-for each type to replace the type name with the specified string whenever the
-package type is used in an output string.</p>
-<p>If not set, the string &quot;<code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> packages&quot; is used.</p>
-</section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
-<dl class="cmake command">
-<dt class="sig sig-object cmake" id="command:feature_summary">
-<span class="sig-name descname"><span class="pre">feature_summary</span></span><a class="headerlink" href="#command:feature_summary" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>feature_summary( [FILENAME &lt;file&gt;]
-                 [APPEND]
-                 [VAR &lt;variable_name&gt;]
-                 [INCLUDE_QUIET_PACKAGES]
-                 [FATAL_ON_MISSING_REQUIRED_PACKAGES]
-                 [DESCRIPTION &quot;&lt;description&gt;&quot; | DEFAULT_DESCRIPTION]
-                 [QUIET_ON_EMPTY]
-                 WHAT (ALL
-                      | PACKAGES_FOUND | PACKAGES_NOT_FOUND
-                      | &lt;TYPE&gt;_PACKAGES_FOUND | &lt;TYPE&gt;_PACKAGES_NOT_FOUND
-                      | ENABLED_FEATURES | DISABLED_FEATURES)
-               )
+<p>This global property can be defined for each package <code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> to a string
+that will be used in the output titles of the
+<span class="target" id="index-2-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a> command.  For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The following &lt;FeatureSummary_&lt;TYPE&gt;_DESCRIPTION&gt; have been found:
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">feature_summary()</span></code> macro can be used to print information about
-enabled or disabled packages or features of a project.  By default,
+<p>If not set, default string <code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span> <span class="pre">packages</span></code> is used.</p>
+</dd></dl>
+
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:feature_summary">
+<span class="sig-name descname"><span class="pre">feature_summary</span></span><a class="headerlink" href="#command:feature_summary" title="Link to this definition">¶</a></dt>
+<dd><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="p">[</span><span class="no">FILENAME</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">APPEND</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">VAR</span><span class="w"> </span><span class="nv">&lt;variable_name&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">INCLUDE_QUIET_PACKAGES</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">FATAL_ON_MISSING_REQUIRED_PACKAGES</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="nv">&lt;description&gt;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">DEFAULT_DESCRIPTION</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">QUIET_ON_EMPTY</span><span class="p">]</span>
+<span class="w">                </span><span class="nf">WHAT</span> <span class="nf">(</span><span class="no">ALL</span>
+<span class="w">                     </span><span class="p">|</span><span class="w"> </span><span class="no">PACKAGES_FOUND</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">PACKAGES_NOT_FOUND</span>
+<span class="w">                     </span><span class="p">|</span><span class="w"> </span><span class="nv">&lt;TYPE&gt;</span><span class="nb">_PACKAGES_FOUND</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">&lt;TYPE&gt;</span><span class="nb">_PACKAGES_NOT_FOUND</span>
+<span class="w">                     </span><span class="p">|</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="nf">)</span>
+<span class="w">               </span><span class="nf">)</span>
+</pre></div>
+</div>
+<p>This function can be used to print information about
+enabled or disabled packages and features of a project.  By default,
 only the names of the features/packages will be printed and their
-required version when one was specified.  Use <code class="docutils literal notranslate"><span class="pre">set_package_properties()</span></code>
-to add more useful information, like e.g.  a download URL for the
-respective package or their purpose in the project.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">WHAT</span></code> option is the only mandatory option.  Here you specify what
-information will be printed:</p>
+required version when one was specified.  Use
+<span class="target" id="index-0-command:set_package_properties"></span><a class="reference internal" href="#command:set_package_properties" title="set_package_properties"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set_package_properties()</span></code></a> to add more useful information, like e.g.
+a homepage URL for the respective package or their purpose in the project.</p>
+<p>The options are:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">WHAT</span></code></dt><dd><p>This is the only mandatory option.  It specifies what information will be
+printed:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ALL</span></code></dt><dd><p>print everything</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ALL</span></code></dt><dd><p>Print everything.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ENABLED_FEATURES</span></code></dt><dd><p>the list of all features which are enabled</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ENABLED_FEATURES</span></code></dt><dd><p>The list of all features which are enabled.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">DISABLED_FEATURES</span></code></dt><dd><p>the list of all features which are disabled</p>
+<dt><code class="docutils literal notranslate"><span class="pre">DISABLED_FEATURES</span></code></dt><dd><p>The list of all features which are disabled.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">PACKAGES_FOUND</span></code></dt><dd><p>the list of all packages which have been found</p>
+<dt><code class="docutils literal notranslate"><span class="pre">PACKAGES_FOUND</span></code></dt><dd><p>The list of all packages which have been found.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">PACKAGES_NOT_FOUND</span></code></dt><dd><p>the list of all packages which have not been found</p>
+<dt><code class="docutils literal notranslate"><span class="pre">PACKAGES_NOT_FOUND</span></code></dt><dd><p>The list of all packages which have not been found.</p>
 </dd>
 </dl>
 <p>For each package type <code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> defined by the
-<span class="target" id="index-2-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> global property, the following
+<span class="target" id="index-1-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> global property, the following
 information can also be used:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;_PACKAGES_FOUND</span></code></dt><dd><p>only those packages which have been found which have the type &lt;TYPE&gt;</p>
+<dt><code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;_PACKAGES_FOUND</span></code></dt><dd><p>The list of only packages of type <code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> which have been found.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;_PACKAGES_NOT_FOUND</span></code></dt><dd><p>only those packages which have not been found which have the type &lt;TYPE&gt;</p>
+<dt><code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;_PACKAGES_NOT_FOUND</span></code></dt><dd><p>The list of only packages of type <code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> which have not been found.</p>
 </dd>
 </dl>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 3.1: </span>With the exception of the <code class="docutils literal notranslate"><span class="pre">ALL</span></code> value, these values can be combined
-in order to customize the output. For example:</p>
+<p><span class="versionmodified changed">Changed in version 3.1: </span>The <code class="docutils literal notranslate"><span class="pre">WHAT</span></code> option is now a multi-value keyword, so that these values can
+be combined, with the exception of the <code class="docutils literal notranslate"><span class="pre">ALL</span></code> value, in order to
+customize the output.  For example:</p>
+</div>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="nf">)</span>
 </pre></div>
 </div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FILENAME</span> <span class="pre">&lt;file&gt;</span></code></dt><dd><p>If this option is given, the information is printed into this file instead
+of the terminal.  Relative <code class="docutils literal notranslate"><span class="pre">&lt;file&gt;</span></code> path is interpreted as being relative
+to the current source directory (i.e. <span class="target" id="index-0-variable:CMAKE_CURRENT_SOURCE_DIR"></span><a class="reference internal" href="../variable/CMAKE_CURRENT_SOURCE_DIR.html#variable:CMAKE_CURRENT_SOURCE_DIR" title="CMAKE_CURRENT_SOURCE_DIR"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_CURRENT_SOURCE_DIR</span></code></a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">APPEND</span></code></dt><dd><p>If this option is given, the output is appended to the <code class="docutils literal notranslate"><span class="pre">&lt;file&gt;</span></code> provided
+by the <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code> option, otherwise the file is overwritten if it already
+exists.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">VAR</span> <span class="pre">&lt;variable_name&gt;</span></code></dt><dd><p>If this option is given, the information is stored into the specified
+variable <code class="docutils literal notranslate"><span class="pre">&lt;variable_name&gt;</span></code> instead of the terminal.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span> <span class="pre">&lt;description&gt;</span></code></dt><dd><p>A description or headline which will be printed above the actual content.
+Without this option, if only one package type was requested, no title is
+printed, unless a custom string is explicitly set using this option or
+<code class="docutils literal notranslate"><span class="pre">DEFAULT_DESCRIPTION</span></code> option is used that outputs a default title for the
+requested type.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DEFAULT_DESCRIPTION</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>If a <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code> is given, the information is printed into this file.  If
-<code class="docutils literal notranslate"><span class="pre">APPEND</span></code> is used, it is appended to this file, otherwise the file is
-overwritten if it already existed.  If the VAR option is used, the
-information is &quot;printed&quot; into the specified variable.  If <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code> is
-not used, the information is printed to the terminal.  Using the
-<code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> option a description or headline can be set which will be
-printed above the actual content.  If only one type of
-package was requested, no title is printed, unless it is explicitly set using
-either <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> to use a custom string, or <code class="docutils literal notranslate"><span class="pre">DEFAULT_DESCRIPTION</span></code> to
-use a default title for the requested type.
-If <code class="docutils literal notranslate"><span class="pre">INCLUDE_QUIET_PACKAGES</span></code> is given, packages which have been searched with
-<code class="docutils literal notranslate"><span class="pre">find_package(...</span> <span class="pre">QUIET)</span></code> will also be listed. By default they are skipped.
-If <code class="docutils literal notranslate"><span class="pre">FATAL_ON_MISSING_REQUIRED_PACKAGES</span></code> is given, CMake will abort if a
-package which is marked as one of the package types listed in the
-<span class="target" id="index-1-variable:FeatureSummary_REQUIRED_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="FeatureSummary_REQUIRED_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></code></a> global property has not been
-found.
-The default value for the <span class="target" id="index-2-variable:FeatureSummary_REQUIRED_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="FeatureSummary_REQUIRED_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></code></a> global
-property is <code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.9: </span>The <code class="docutils literal notranslate"><span class="pre">DEFAULT_DESCRIPTION</span></code> option.</p>
-</div>
-<p>The <span class="target" id="index-1-variable:FeatureSummary_DEFAULT_PKG_TYPE"></span><a class="reference internal" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="FeatureSummary_DEFAULT_PKG_TYPE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></code></a> global property can be
+<p>The default description or headline to be printed above the content as
+opposed to the customizable <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span> <span class="pre">&lt;description&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">INCLUDE_QUIET_PACKAGES</span></code></dt><dd><p>If this option is given, packages which have been searched with
+<span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package(... quiet)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package(...</span> <span class="pre">QUIET)</span></code></a> will also be listed.  By default they are
+skipped.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FATAL_ON_MISSING_REQUIRED_PACKAGES</span></code></dt><dd><p>If this option is given, CMake will abort with fatal error if a package
+which is marked as one of the package types listed in the
+<span class="target" id="index-0-variable:FeatureSummary_REQUIRED_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="FeatureSummary_REQUIRED_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></code></a> global property has not been
+found.</p>
+</dd>
+</dl>
+<p>The <span class="target" id="index-0-variable:FeatureSummary_DEFAULT_PKG_TYPE"></span><a class="reference internal" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="FeatureSummary_DEFAULT_PKG_TYPE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></code></a> global property can be
 modified to change the default package type assigned when not explicitly
 assigned by the user.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.8: </span>If the <code class="docutils literal notranslate"><span class="pre">QUIET_ON_EMPTY</span></code> option is used, if only one type of package was
-requested, and no packages belonging to that category were found, then no
-output (including the <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code>) is printed or added to the <code class="docutils literal notranslate"><span class="pre">VAR</span></code>
-variable.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">QUIET_ON_EMPTY</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
+<p>If this option is given, when only one package type was requested, and no
+packages belonging to that category were found, then no output (including
+the <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code>) is printed nor added to the <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code>, or the
+<code class="docutils literal notranslate"><span class="pre">VAR</span></code> variable.</p>
+</dd>
+</dl>
 <p>Example 1, append everything to a file:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
 <span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ALL</span>
@@ -221,26 +261,26 @@ variable.</p>
 </pre></div>
 </div>
 <p>Example 2, print the enabled features into the variable
-enabledFeaturesText, including QUIET packages:</p>
+<code class="docutils literal notranslate"><span class="pre">enabledFeaturesText</span></code>, including the <code class="docutils literal notranslate"><span class="pre">QUIET</span></code> packages:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
 <span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span>
-<span class="w">                </span><span class="no">INCLUDE_QUIET_PACKAGES</span>
-<span class="w">                </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled Features:&quot;</span>
-<span class="w">                </span><span class="no">VAR</span><span class="w"> </span><span class="nb">enabledFeaturesText</span><span class="nf">)</span>
+<span class="w">               </span><span class="no">INCLUDE_QUIET_PACKAGES</span>
+<span class="w">               </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled Features:&quot;</span>
+<span class="w">               </span><span class="no">VAR</span><span class="w"> </span><span class="nb">enabledFeaturesText</span><span class="nf">)</span>
 <span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;${enabledFeaturesText}&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
-<p>Example 3, change default package types and print only the categories that
-are not empty:</p>
+<p>Example 3, add custom package type and print only the categories that are not
+empty:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
 <span class="nf">set_property(</span><span class="no">GLOBAL</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="nb">FeatureSummary_PKG_TYPES</span><span class="w"> </span><span class="no">BUILD</span><span class="nf">)</span>
 <span class="nf">find_package(</span><span class="no">FOO</span><span class="nf">)</span>
 <span class="nf">set_package_properties(</span><span class="no">FOO</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">TYPE</span><span class="w"> </span><span class="no">BUILD</span><span class="nf">)</span>
 <span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">BUILD_PACKAGES_FOUND</span>
-<span class="w">                </span><span class="nb">Description</span><span class="w"> </span><span class="s">&quot;Build tools found:&quot;</span>
+<span class="w">                </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Build tools found:&quot;</span>
 <span class="w">                </span><span class="no">QUIET_ON_EMPTY</span><span class="nf">)</span>
 <span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">BUILD_PACKAGES_NOT_FOUND</span>
-<span class="w">                </span><span class="nb">Description</span><span class="w"> </span><span class="s">&quot;Build tools not found:&quot;</span>
+<span class="w">                </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Build tools not found:&quot;</span>
 <span class="w">                </span><span class="no">QUIET_ON_EMPTY</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -248,26 +288,30 @@ are not empty:</p>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:set_package_properties">
-<span class="sig-name descname"><span class="pre">set_package_properties</span></span><a class="headerlink" href="#command:set_package_properties" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_package_properties(&lt;name&gt; PROPERTIES
-                       [ URL &lt;url&gt; ]
-                       [ DESCRIPTION &lt;description&gt; ]
-                       [ TYPE (RUNTIME|OPTIONAL|RECOMMENDED|REQUIRED) ]
-                       [ PURPOSE &lt;purpose&gt; ]
-                      )
+<span class="sig-name descname"><span class="pre">set_package_properties</span></span><a class="headerlink" href="#command:set_package_properties" title="Link to this definition">¶</a></dt>
+<dd><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_package_properties(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">                       </span><span class="p">[</span><span class="no">URL</span><span class="w"> </span><span class="nv">&lt;url&gt;</span><span class="p">]</span>
+<span class="w">                       </span><span class="p">[</span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="nv">&lt;description&gt;</span><span class="p">]</span>
+<span class="w">                       </span><span class="p">[</span><span class="nf">TYPE</span> <span class="nf">(</span><span class="no">RUNTIME</span><span class="p">|</span><span class="no">OPTIONAL</span><span class="p">|</span><span class="no">RECOMMENDED</span><span class="p">|</span><span class="no">REQUIRED</span><span class="nf">)</span><span class="p">]</span>
+<span class="w">                       </span><span class="p">[</span><span class="no">PURPOSE</span><span class="w"> </span><span class="nv">&lt;purpose&gt;</span><span class="p">]</span>
+<span class="w">                      </span><span class="nf">)</span>
 </pre></div>
 </div>
-<p>Use this macro to set up information about the named package, which
-can then be displayed via FEATURE_SUMMARY().  This can be done either
-directly in the Find-module or in the project which uses the module
-after the find_package() call.  The features for which information can
-be set are added automatically by the find_package() command.</p>
+<p>Use this function to configure and provide information about the package named
+<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>, which can then be displayed using the
+<span class="target" id="index-3-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a> command.  This can be performed either directly
+within the corresponding <a class="reference internal" href="../manual/cmake-developer.7.html#find-modules"><span class="std std-ref">Find module</span></a> or in the project
+that uses the module after invoking the <span class="target" id="index-1-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> call.  The
+features for which information can be set are determined automatically after
+the <span class="target" id="index-2-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> command.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">URL</span> <span class="pre">&lt;url&gt;</span></code></dt><dd><p>This should be the homepage of the package, or something similar.
-Ideally this is set already directly in the Find-module.</p>
+Ideally this is set already directly in the
+<a class="reference internal" href="../manual/cmake-developer.7.html#find-modules"><span class="std std-ref">Find module</span></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span> <span class="pre">&lt;description&gt;</span></code></dt><dd><p>A short description what that package is, at most one sentence.
-Ideally this is set already directly in the Find-module.</p>
+Ideally this is set already directly in the
+<a class="reference internal" href="../manual/cmake-developer.7.html#find-modules"><span class="std std-ref">Find module</span></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">TYPE</span> <span class="pre">&lt;type&gt;</span></code></dt><dd><p>What type of dependency has the using project on that package.
 Default is <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code>.  In this case it is a package which can be used
@@ -276,33 +320,35 @@ by the project when available at buildtime, but it also work without.
 the package is not present, but the functionality of the resulting
 binaries will be severely limited.  If a <code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code> package is not
 available at buildtime, the project may not even build.  This can be
-combined with the <code class="docutils literal notranslate"><span class="pre">FATAL_ON_MISSING_REQUIRED_PACKAGES</span></code> argument for
-<code class="docutils literal notranslate"><span class="pre">feature_summary()</span></code>.  Last, a <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> package is a package which is
-actually not used at all during the build, but which is required for
-actually running the resulting binaries.  So if such a package is
+combined with the
+<span class="target" id="index-4-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary(fatal_on_missing_required_packages)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary(FATAL_ON_MISSING_REQUIRED_PACKAGES)</span></code></a> command
+option.  Last, a <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> package is a package which is actually not used
+at all during the build, but which is required for actually running the
+resulting binaries.  So if such a package is
 missing, the project can still be built, but it may not work later on.
 If <code class="docutils literal notranslate"><span class="pre">set_package_properties()</span></code> is called multiple times for the same
 package with different TYPEs, the <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> is only changed to higher
 TYPEs (<code class="docutils literal notranslate"><span class="pre">RUNTIME</span> <span class="pre">&lt;</span> <span class="pre">OPTIONAL</span> <span class="pre">&lt;</span> <span class="pre">RECOMMENDED</span> <span class="pre">&lt;</span> <span class="pre">REQUIRED</span></code>), lower TYPEs are
 ignored.  The <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> property is project-specific, so it cannot be set
-by the Find-module, but must be set in the project.
-Type accepted can be changed by setting the
-<span class="target" id="index-3-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> global property.</p>
+by the <a class="reference internal" href="../manual/cmake-developer.7.html#find-modules"><span class="std std-ref">Find module</span></a>, but must be set in the project.
+The accepted types can be changed by setting the
+<span class="target" id="index-2-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> global property.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PURPOSE</span> <span class="pre">&lt;purpose&gt;</span></code></dt><dd><p>This describes which features this package enables in the
-project, i.e.  it tells the user what functionality he gets in the
-resulting binaries.  If set_package_properties() is called multiple
-times for a package, all PURPOSE properties are appended to a list of
-purposes of the package in the project.  As the TYPE property, also
-the PURPOSE property is project-specific, so it cannot be set by the
-Find-module, but must be set in the project.</p>
+project, i.e.  it tells the user what functionality they get in the
+resulting binaries.  If <code class="docutils literal notranslate"><span class="pre">set_package_properties()</span></code> is called multiple
+times for a package, all <code class="docutils literal notranslate"><span class="pre">PURPOSE</span></code> properties are appended to a list of
+purposes of the package in the project.  As the <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> property, also
+the <code class="docutils literal notranslate"><span class="pre">PURPOSE</span></code> property is project-specific, so it cannot be set by the
+<a class="reference internal" href="../manual/cmake-developer.7.html#find-modules"><span class="std std-ref">Find module</span></a>, but must be set in the project.</p>
 </dd>
 </dl>
 <p>Example for setting the info for a package:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">LibXml2</span><span class="nf">)</span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
+<span class="nf">find_package(</span><span class="nb">LibXml2</span><span class="nf">)</span>
 <span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span>
-<span class="w">                       </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;A XML processing library.&quot;</span>
-<span class="w">                       </span><span class="no">URL</span><span class="w"> </span><span class="s">&quot;http://xmlsoft.org/&quot;</span><span class="nf">)</span>
+<span class="w">                       </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;XML library&quot;</span>
+<span class="w">                       </span><span class="no">URL</span><span class="w"> </span><span class="s">&quot;http://xmlsoft.org&quot;</span><span class="nf">)</span>
 <span class="c"># or</span>
 <span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span>
 <span class="w">                       </span><span class="no">TYPE</span><span class="w"> </span><span class="no">RECOMMENDED</span>
@@ -322,63 +368,105 @@ Find-module, but must be set in the project.</p>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:add_feature_info">
-<span class="sig-name descname"><span class="pre">add_feature_info</span></span><a class="headerlink" href="#command:add_feature_info" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>add_feature_info(&lt;name&gt; &lt;enabled&gt; &lt;description&gt;)
+<span class="sig-name descname"><span class="pre">add_feature_info</span></span><a class="headerlink" href="#command:add_feature_info" title="Link to this definition">¶</a></dt>
+<dd><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_feature_info(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;enabled&gt;</span><span class="w"> </span><span class="nv">&lt;description&gt;</span><span class="nf">)</span>
 </pre></div>
 </div>
-<p>Use this macro to add information about a feature with the given <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.
-<code class="docutils literal notranslate"><span class="pre">&lt;enabled&gt;</span></code> contains whether this feature is enabled or not. It can be a
-variable or a list of conditions.
+<p>Use this function to add information about a feature identified with a given
+<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.  The <code class="docutils literal notranslate"><span class="pre">&lt;enabled&gt;</span></code> contains whether this feature is enabled or
+not.  It can be a variable or a list of conditions.
 <code class="docutils literal notranslate"><span class="pre">&lt;description&gt;</span></code> is a text describing the feature.  The information can
-be displayed using <code class="docutils literal notranslate"><span class="pre">feature_summary()</span></code> for <code class="docutils literal notranslate"><span class="pre">ENABLED_FEATURES</span></code> and
+be displayed using <span class="target" id="index-5-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a> for <code class="docutils literal notranslate"><span class="pre">ENABLED_FEATURES</span></code> and
 <code class="docutils literal notranslate"><span class="pre">DISABLED_FEATURES</span></code> respectively.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.8: </span><code class="docutils literal notranslate"><span class="pre">&lt;enabled&gt;</span></code> can be a list of conditions.</p>
 </div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 4.0: </span>Full <a class="reference internal" href="../command/if.html#condition-syntax"><span class="std std-ref">Condition Syntax</span></a> is now supported for <code class="docutils literal notranslate"><span class="pre">&lt;enabled&gt;</span></code>.
+See policy <span class="target" id="index-0-policy:CMP0183"></span><a class="reference internal" href="../policy/CMP0183.html#policy:CMP0183" title="CMP0183"><code class="xref cmake cmake-policy docutils literal notranslate"><span class="pre">CMP0183</span></code></a>.</p>
+</div>
 <p>Example for setting the info for a feature:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
+
+<span class="nf">option(</span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;Help for foo&quot;</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
+<span class="nf">add_feature_info(</span><span class="nb">Foo</span><span class="w"> </span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;this feature provides very cool stuff&quot;</span><span class="nf">)</span>
+</pre></div>
+</div>
+<p>Example for setting feature info based on a list of conditions:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">option(</span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;Help for foo&quot;</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
-<span class="nf">add_feature_info(</span><span class="nb">Foo</span><span class="w"> </span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;The Foo feature provides very cool stuff.&quot;</span><span class="nf">)</span>
+<span class="nf">option(</span><span class="no">WITH_BAR</span><span class="w"> </span><span class="s">&quot;Help for bar&quot;</span><span class="w"> </span><span class="no">OFF</span><span class="nf">)</span>
+<span class="nf">add_feature_info(</span>
+<span class="w">  </span><span class="nb">FooBar</span>
+<span class="w">  </span><span class="s">&quot;WITH_FOO;NOT WITH_BAR&quot;</span>
+<span class="w">  </span><span class="s">&quot;this feature is enabled when WITH_FOO is ON and WITH_BAR turned OFF&quot;</span>
+<span class="nf">)</span>
+</pre></div>
+</div>
+<p>Example for setting feature info depending on a full condition syntax:</p>
+<p>Unlike semicolon-separated list of conditions, this enables using entire
+condition syntax as being the <code class="docutils literal notranslate"><span class="pre">if</span></code> clause argument, such as grouping
+conditions with parens and similar.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">option(</span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;Help for foo&quot;</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
+<span class="nf">option(</span><span class="no">WITH_BAR</span><span class="w"> </span><span class="s">&quot;Help for bar&quot;</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
+<span class="nf">option(</span><span class="no">WITH_BAZ</span><span class="w"> </span><span class="s">&quot;Help for baz&quot;</span><span class="w"> </span><span class="no">OFF</span><span class="nf">)</span>
+<span class="nf">add_feature_info(</span>
+<span class="w">  </span><span class="nb">FooBarBaz</span>
+<span class="w">  </span><span class="s">&quot;WITH_FOO AND (WITH_BAR OR WITH_BAZ)&quot;</span>
+<span class="w">  </span><span class="s">&quot;this feature is enabled when the entire condition is true&quot;</span>
+<span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 </section>
-<section id="legacy-macros">
-<h2>Legacy Macros<a class="headerlink" href="#legacy-macros" title="Permalink to this heading">¶</a></h2>
-<p>The following macros are provided for compatibility with previous
-CMake versions:</p>
+<section id="deprecated-functions">
+<h2>Deprecated Functions<a class="headerlink" href="#deprecated-functions" title="Link to this heading">¶</a></h2>
+<p>The following legacy and deprecated functions are provided for backward
+compatibility with previous CMake versions:</p>
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:set_package_info">
-<span class="sig-name descname"><span class="pre">set_package_info</span></span><a class="headerlink" href="#command:set_package_info" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_package_info(&lt;name&gt; &lt;description&gt; [ &lt;url&gt; [&lt;purpose&gt;] ])
+<span class="sig-name descname"><span class="pre">set_package_info</span></span><a class="headerlink" href="#command:set_package_info" title="Link to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.8.</span></p>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_package_info(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;description&gt;</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">&lt;url&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;purpose&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
-<p>Use this macro to set up information about the named package, which
-can then be displayed via <code class="docutils literal notranslate"><span class="pre">feature_summary()</span></code>.  This can be done either
-directly in the Find-module or in the project which uses the module
-after the <span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> call.  The features for which information
-can be set are added automatically by the <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> command.</p>
+<p>Set up information about the package <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>, which can then be displayed
+via <span class="target" id="index-6-command:feature_summary"></span><a class="reference internal" href="#command:feature_summary" title="feature_summary"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">feature_summary()</span></code></a>.  This can be done either directly in the
+<a class="reference internal" href="../manual/cmake-developer.7.html#find-modules"><span class="std std-ref">Find module</span></a> or in the project which uses the
+<code class="docutils literal notranslate"><span class="pre">FeatureSummary</span></code> module after the <span class="target" id="index-3-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> call.  The
+features for which information can be set are added automatically by the
+<code class="docutils literal notranslate"><span class="pre">find_package()</span></code> command.</p>
+<p>This function is deprecated.  Use the <span class="target" id="index-1-command:set_package_properties"></span><a class="reference internal" href="#command:set_package_properties" title="set_package_properties"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set_package_properties()</span></code></a>, and
+<span class="target" id="index-0-command:add_feature_info"></span><a class="reference internal" href="#command:add_feature_info" title="add_feature_info"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_feature_info()</span></code></a> functions instead.</p>
 </dd></dl>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:set_feature_info">
-<span class="sig-name descname"><span class="pre">set_feature_info</span></span><a class="headerlink" href="#command:set_feature_info" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_feature_info(&lt;name&gt; &lt;description&gt; [&lt;url&gt;])
+<span class="sig-name descname"><span class="pre">set_feature_info</span></span><a class="headerlink" href="#command:set_feature_info" title="Link to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.8.</span></p>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_feature_info(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;description&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;url&gt;</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Does the same as:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_package_info(&lt;name&gt; &lt;description&gt; &lt;url&gt;)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_package_info(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;description&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;url&gt;</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:print_enabled_features">
-<span class="sig-name descname"><span class="pre">print_enabled_features</span></span><a class="headerlink" href="#command:print_enabled_features" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print_enabled_features()
+<span class="sig-name descname"><span class="pre">print_enabled_features</span></span><a class="headerlink" href="#command:print_enabled_features" title="Link to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.8.</span></p>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">print_enabled_features()</span>
 </pre></div>
 </div>
-<p>Does the same as</p>
+<p>Does the same as:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled features:&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -386,11 +474,14 @@ can be set are added automatically by the <code class="docutils literal notransl
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:print_disabled_features">
-<span class="sig-name descname"><span class="pre">print_disabled_features</span></span><a class="headerlink" href="#command:print_disabled_features" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print_disabled_features()
+<span class="sig-name descname"><span class="pre">print_disabled_features</span></span><a class="headerlink" href="#command:print_disabled_features" title="Link to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.8.</span></p>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">print_disabled_features()</span>
 </pre></div>
 </div>
-<p>Does the same as</p>
+<p>Does the same as:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="w"> </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Disabled features:&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -404,15 +495,15 @@ can be set are added automatically by the <code class="docutils literal notransl
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">FeatureSummary</a><ul>
 <li><a class="reference internal" href="#global-properties">Global Properties</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#legacy-macros">Legacy Macros</a></li>
+<li><a class="reference internal" href="#deprecated-functions">Deprecated Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -435,7 +526,7 @@ can be set are added automatically by the <code class="docutils literal notransl
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -443,13 +534,13 @@ can be set are added automatically by the <code class="docutils literal notransl
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -462,14 +553,15 @@ can be set are added automatically by the <code class="docutils literal notransl
           <a href="ExternalProject.html" title="ExternalProject"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -478,8 +570,17 @@ can be set are added automatically by the <code class="docutils literal notransl
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

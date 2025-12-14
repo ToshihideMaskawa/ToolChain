@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindwxWidgets &mdash; CMake 3.27.4 Documentation</title>
+  <title>FindwxWidgets &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindX11" href="FindX11.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="FindWish.html" title="FindWish"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -61,7 +62,7 @@
           <div class="body" role="main">
             
   <section id="findwxwidgets">
-<span id="module:FindwxWidgets"></span><h1>FindwxWidgets<a class="headerlink" href="#findwxwidgets" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindwxWidgets"></span><h1>FindwxWidgets<a class="headerlink" href="#findwxwidgets" title="Link to this heading">¶</a></h1>
 <p>Find a wxWidgets (a.k.a., wxWindows) installation.</p>
 <p>This module finds if wxWidgets is installed and selects a default
 configuration to use.  wxWidgets is a modular library.  To specify the
@@ -69,10 +70,10 @@ modules that you will use, you need to name them as components to the
 package:</p>
 <p>find_package(wxWidgets COMPONENTS core base ... OPTIONAL_COMPONENTS net ...)</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.4: </span>Support for <span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> version argument; <code class="docutils literal notranslate"><span class="pre">webview</span></code> component.</p>
+<p><span class="versionmodified added">Added in version 3.4: </span>Support for <span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> version argument; <code class="docutils literal notranslate"><span class="pre">webview</span></code> component.</p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.14: </span><code class="docutils literal notranslate"><span class="pre">OPTIONAL_COMPONENTS</span></code> support.</p>
+<p><span class="versionmodified added">Added in version 3.14: </span><code class="docutils literal notranslate"><span class="pre">OPTIONAL_COMPONENTS</span></code> support.</p>
 </div>
 <p>There are two search branches: a windows style and a unix style.  For
 windows, the following variables are searched for and set to defaults
@@ -88,7 +89,7 @@ wxWidgets_CONFIGURATION - Configuration to use
 wxWidgets_EXCLUDE_COMMON_LIBRARIES
                         - Set to TRUE to exclude linking of
                           commonly required libs (e.g., png tiff
-                          jpeg zlib regex expat).
+                          jpeg zlib regex expat scintilla lexilla).
 </pre></div>
 </div>
 <p>For unix style it uses the wx-config utility.  You can select between
@@ -105,7 +106,7 @@ wxWidgets_USE_STATIC
 options that need to be passed to the wx-config utility.  For example,
 to use the base toolkit found in the /usr/local path, set the variable
 (before calling the FIND_PACKAGE command) as such:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set(wxWidgets_CONFIG_OPTIONS --toolkit=base --prefix=/usr)
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">wxWidgets_CONFIG_OPTIONS</span><span class="w"> </span><span class="p">--</span><span class="nb">toolkit</span><span class="p">=</span><span class="nb">base</span><span class="w"> </span><span class="p">--</span><span class="nb">prefix</span><span class="p">=</span><span class="na">/usr</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>The following are set after the configuration is done for both windows
@@ -129,30 +130,30 @@ wxWidgets_USE_FILE         - Convenience include file.
 </pre></div>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.11: </span>The following environment variables can be used as hints: <code class="docutils literal notranslate"><span class="pre">WX_CONFIG</span></code>,
+<p><span class="versionmodified added">Added in version 3.11: </span>The following environment variables can be used as hints: <code class="docutils literal notranslate"><span class="pre">WX_CONFIG</span></code>,
 <code class="docutils literal notranslate"><span class="pre">WXRC_CMD</span></code>.</p>
 </div>
 <p>Sample usage:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Note that for MinGW users the order of libs is important!
-find_package(wxWidgets COMPONENTS gl core base OPTIONAL_COMPONENTS net)
-if(wxWidgets_FOUND)
-  include(${wxWidgets_USE_FILE})
-  # and for each of your dependent executable/library targets:
-  target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
-endif()
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Note that for MinGW users the order of libs is important!</span>
+<span class="nf">find_package(</span><span class="nb">wxWidgets</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">gl</span><span class="w"> </span><span class="nb">core</span><span class="w"> </span><span class="nb">base</span><span class="w"> </span><span class="no">OPTIONAL_COMPONENTS</span><span class="w"> </span><span class="nb">net</span><span class="nf">)</span>
+<span class="nf">if(</span><span class="nb">wxWidgets_FOUND</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">include(</span><span class="o">${</span><span class="nt">wxWidgets_USE_FILE</span><span class="o">}</span><span class="nf">)</span>
+<span class="w">  </span><span class="c"># and for each of your dependent executable/library targets:</span>
+<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nv">&lt;YourTarget&gt;</span><span class="w"> </span><span class="o">${</span><span class="nt">wxWidgets_LIBRARIES</span><span class="o">}</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 <p>If wxWidgets is required (i.e., not an optional part):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find_package(wxWidgets REQUIRED gl core base OPTIONAL_COMPONENTS net)
-include(${wxWidgets_USE_FILE})
-# and for each of your dependent executable/library targets:
-target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">wxWidgets</span><span class="w"> </span><span class="no">REQUIRED</span><span class="w"> </span><span class="nb">gl</span><span class="w"> </span><span class="nb">core</span><span class="w"> </span><span class="nb">base</span><span class="w"> </span><span class="no">OPTIONAL_COMPONENTS</span><span class="w"> </span><span class="nb">net</span><span class="nf">)</span>
+<span class="nf">include(</span><span class="o">${</span><span class="nt">wxWidgets_USE_FILE</span><span class="o">}</span><span class="nf">)</span>
+<span class="c"># and for each of your dependent executable/library targets:</span>
+<span class="nf">target_link_libraries(</span><span class="nv">&lt;YourTarget&gt;</span><span class="w"> </span><span class="o">${</span><span class="nt">wxWidgets_LIBRARIES</span><span class="o">}</span><span class="nf">)</span>
 </pre></div>
 </div>
 <section id="imported-targets">
-<h2>Imported targets<a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h2>
+<h2>Imported Targets<a class="headerlink" href="#imported-targets" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.27.</span></p>
+<p><span class="versionmodified added">Added in version 3.27.</span></p>
 </div>
 <p>This module defines the following <span class="target" id="index-0-prop_tgt:IMPORTED"></span><a class="reference internal" href="../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> targets:</p>
 <dl class="simple">
@@ -167,13 +168,13 @@ target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">FindwxWidgets</a><ul>
-<li><a class="reference internal" href="#imported-targets">Imported targets</a></li>
+<li><a class="reference internal" href="#imported-targets">Imported Targets</a></li>
 </ul>
 </li>
 </ul>
@@ -196,7 +197,7 @@ target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -204,13 +205,13 @@ target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -223,14 +224,15 @@ target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
           <a href="FindWish.html" title="FindWish"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -239,8 +241,17 @@ target_link_libraries(&lt;YourTarget&gt; ${wxWidgets_LIBRARIES})
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

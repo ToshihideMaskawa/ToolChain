@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Importing and Exporting Guide &mdash; CMake 3.27.4 Documentation</title>
+  <title>Importing and Exporting Guide &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="IDE Integration Guide" href="../ide-integration/index.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="../using-dependencies/index.html" title="Using Dependencies Guide"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../../index.html">Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">Importing and Exporting Guide</a></li> 
@@ -60,7 +61,7 @@
           <div class="body" role="main">
             
   <section id="importing-and-exporting-guide">
-<span id="guide:Importing and Exporting Guide"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">Importing and Exporting Guide</a><a class="headerlink" href="#importing-and-exporting-guide" title="Permalink to this heading">¶</a></h1>
+<span id="guide:Importing and Exporting Guide"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">Importing and Exporting Guide</a><a class="headerlink" href="#importing-and-exporting-guide" title="Link to this heading">¶</a></h1>
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
@@ -93,7 +94,7 @@
 </ul>
 </nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>In this guide, we will present the concept of <span class="target" id="index-0-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> targets
 and demonstrate how to import existing executable or library files from disk
 into a CMake project. We will then show how CMake supports exporting targets
@@ -104,7 +105,7 @@ example source code can be found in the <code class="docutils literal notranslat
 directory of the CMake source code tree.</p>
 </section>
 <section id="importing-targets">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Importing Targets</a><a class="headerlink" href="#importing-targets" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Importing Targets</a><a class="headerlink" href="#importing-targets" title="Link to this heading">¶</a></h2>
 <p><span class="target" id="index-1-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> targets are used to convert files outside of a CMake
 project into logical targets inside of the project. <span class="target" id="index-2-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a>
 targets are created using the <code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> option of the
@@ -121,7 +122,7 @@ properties whose names begin in <code class="docutils literal notranslate"><span
 <span class="target" id="index-0-prop_tgt:IMPORTED_LOCATION"></span><a class="reference internal" href="../../prop_tgt/IMPORTED_LOCATION.html#prop_tgt:IMPORTED_LOCATION" title="IMPORTED_LOCATION"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED_LOCATION</span></code></a> contains the full path to the target on
 disk.</p>
 <section id="importing-executables">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Importing Executables</a><a class="headerlink" href="#importing-executables" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Importing Executables</a><a class="headerlink" href="#importing-executables" title="Link to this heading">¶</a></h3>
 <p>To start, we will walk through a simple example that creates an
 <span class="target" id="index-7-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> executable target and then references it from the
 <span class="target" id="index-0-command:add_custom_command"></span><a class="reference internal" href="../../command/add_custom_command.html#command:add_custom_command" title="add_custom_command"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_command()</span></code></a> command.</p>
@@ -175,7 +176,7 @@ replaced by the location of the executable given by the
 </div>
 </section>
 <section id="importing-libraries">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Importing Libraries</a><a class="headerlink" href="#importing-libraries" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Importing Libraries</a><a class="headerlink" href="#importing-libraries" title="Link to this heading">¶</a></h3>
 <p>In a similar manner, libraries from other projects may be accessed through
 <span class="target" id="index-11-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> targets.</p>
 <p>Note: The full source code for the examples in this section is not provided
@@ -220,7 +221,7 @@ release configuration, and <code class="docutils literal notranslate"><span clas
 </section>
 </section>
 <section id="exporting-targets">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Exporting Targets</a><a class="headerlink" href="#exporting-targets" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Exporting Targets</a><a class="headerlink" href="#exporting-targets" title="Link to this heading">¶</a></h2>
 <p>While <span class="target" id="index-14-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> targets on their own are useful, they still
 require that the project that imports them knows the locations of the target
 files on disk. The real power of <span class="target" id="index-15-prop_tgt:IMPORTED"></span><a class="reference internal" href="../../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a>  targets is when the
@@ -297,10 +298,10 @@ and will not be valid for other projects. We can use
 that if we're building the library include the current source directory.
 Otherwise, when installed, include the <code class="docutils literal notranslate"><span class="pre">include</span></code> directory. See the <a class="reference internal" href="#creating-relocatable-packages">Creating
 Relocatable Packages</a> section for more details.</p>
-<p>The <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> and <span class="target" id="index-1-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> commands
+<p>The <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../../command/install.html#targets" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> and <span class="target" id="index-1-command:install"></span><a class="reference internal" href="../../command/install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> commands
 work together to install both targets (a library in our case) and a CMake
 file designed to make it easy to import the targets into another CMake project.</p>
-<p>First, in the <span class="target" id="index-2-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> command we will specify the target,
+<p>First, in the <span class="target" id="index-2-command:install"></span><a class="reference internal" href="../../command/install.html#targets" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> command we will specify the target,
 the <code class="docutils literal notranslate"><span class="pre">EXPORT</span></code> name and the destinations that tell CMake where to install the
 targets.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">TARGETS</span><span class="w"> </span><span class="nb">MathFunctions</span>
@@ -329,7 +330,7 @@ relative path was given, it is treated as relative to the
 <span class="target" id="index-0-variable:CMAKE_INSTALL_PREFIX"></span><a class="reference internal" href="../../variable/CMAKE_INSTALL_PREFIX.html#variable:CMAKE_INSTALL_PREFIX" title="CMAKE_INSTALL_PREFIX"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code></a>.</p>
 <p>Note, we have <em>not</em> asked CMake to install the export yet.</p>
 <p>We don't want to forget to install the <code class="docutils literal notranslate"><span class="pre">MathFunctions.h</span></code> header file with the
-<span class="target" id="index-3-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(files)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(FILES)</span></code></a> command. The header file should be installed to the
+<span class="target" id="index-3-command:install"></span><a class="reference internal" href="../../command/install.html#files" title="install(files)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(FILES)</span></code></a> command. The header file should be installed to the
 <code class="docutils literal notranslate"><span class="pre">include</span></code> directory, as specified by the
 <span class="target" id="index-1-command:target_include_directories"></span><a class="reference internal" href="../../command/target_include_directories.html#command:target_include_directories" title="target_include_directories"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_include_directories()</span></code></a> command above.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="nb">MathFunctions.h</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_INCLUDEDIR</span><span class="o">}</span><span class="nf">)</span>
@@ -337,8 +338,8 @@ relative path was given, it is treated as relative to the
 </div>
 <p>Now that the <code class="docutils literal notranslate"><span class="pre">MathFunctions</span></code> library and header file are installed, we also
 need to explicitly install the <code class="docutils literal notranslate"><span class="pre">MathFunctionsTargets</span></code>  export details. Use
-the <span class="target" id="index-4-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> command to export the targets in
-<code class="docutils literal notranslate"><span class="pre">MathFunctionsTargets</span></code>, as defined by the  <span class="target" id="index-5-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a>
+the <span class="target" id="index-4-command:install"></span><a class="reference internal" href="../../command/install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> command to export the targets in
+<code class="docutils literal notranslate"><span class="pre">MathFunctionsTargets</span></code>, as defined by the  <span class="target" id="index-5-command:install"></span><a class="reference internal" href="../../command/install.html#targets" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a>
 command.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">EXPORT</span><span class="w"> </span><span class="nb">MathFunctionsTargets</span>
 <span class="w">        </span><span class="no">FILE</span><span class="w"> </span><span class="nb">MathFunctionsTargets.cmake</span>
@@ -373,7 +374,7 @@ reference the <code class="docutils literal notranslate"><span class="pre">MathF
 were built in its own tree. For example:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="nf">include(</span><span class="nb">GNUInstallDirs</span><span class="nf">)</span>
 <span class="linenos">2</span><span class="w"> </span><span class="nf">include(</span><span class="o">${</span><span class="nt">INSTALL_PREFIX</span><span class="o">}</span><span class="na">/</span><span class="o">${</span><span class="nt">CMAKE_INSTALL_LIBDIR</span><span class="o">}</span><span class="na">/cmake/MathFunctions/MathFunctionTargets.cmake</span><span class="nf">)</span>
-<span class="linenos">3</span><span class="w"> </span><span class="nf">add_executable(</span><span class="nb">myexe</span><span class="w"> </span><span class="nb">src1.c</span><span class="w"> </span><span class="nb">src2.c</span><span class="w"> </span><span class="nf">)</span>
+<span class="linenos">3</span><span class="w"> </span><span class="nf">add_executable(</span><span class="nb">myexe</span><span class="w"> </span><span class="nb">src1.c</span><span class="w"> </span><span class="nb">src2.c</span><span class="nf">)</span>
 <span class="linenos">4</span><span class="w"> </span><span class="nf">target_link_libraries(</span><span class="nb">myexe</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">MathFunctions</span><span class="o">::</span><span class="nb">MathFunctions</span><span class="nf">)</span>
 </pre></div>
 </div>
@@ -385,7 +386,7 @@ resulting build system will link to the library from its installed location.</p>
 <p>Executables may also be exported and imported using the same process.</p>
 <p>Any number of target installations may be associated with the same
 export name. Export names are considered global so any directory may
-contribute a target installation. The <span class="target" id="index-6-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> command only
+contribute a target installation. The <span class="target" id="index-6-command:install"></span><a class="reference internal" href="../../command/install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> command only
 needs to be called once to install a file that references all targets. Below
 is an example of how multiple exports may be combined into a single
 export file, even if they are in different subdirectories of the project.</p>
@@ -405,7 +406,7 @@ export file, even if they are in different subdirectories of the project.</p>
 </pre></div>
 </div>
 <section id="creating-packages">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Creating Packages</a><a class="headerlink" href="#creating-packages" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Creating Packages</a><a class="headerlink" href="#creating-packages" title="Link to this heading">¶</a></h3>
 <p>At this point, the <code class="docutils literal notranslate"><span class="pre">MathFunctions</span></code> project is exporting the target
 information required to be used by other projects. We can make this project
 even easier for other projects to use by generating a configuration file so
@@ -418,7 +419,7 @@ access to some helper functions for creating config files.</p>
 </div>
 <p>Then we will create a package configuration file and a package version file.</p>
 <section id="creating-a-package-configuration-file">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Creating a Package Configuration File</a><a class="headerlink" href="#creating-a-package-configuration-file" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Creating a Package Configuration File</a><a class="headerlink" href="#creating-a-package-configuration-file" title="Link to this heading">¶</a></h4>
 <p>Use the <span class="target" id="index-0-command:configure_package_config_file"></span><a class="reference internal" href="../../module/CMakePackageConfigHelpers.html#command:configure_package_config_file" title="configure_package_config_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">configure_package_config_file()</span></code></a> command provided by the
 <span class="target" id="index-1-module:CMakePackageConfigHelpers"></span><a class="reference internal" href="../../module/CMakePackageConfigHelpers.html#module:CMakePackageConfigHelpers" title="CMakePackageConfigHelpers"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">CMakePackageConfigHelpers</span></code></a> to generate the package configuration
 file. Note that this command should be used instead of the plain
@@ -434,7 +435,7 @@ section.</p>
 <span class="nf">)</span>
 </pre></div>
 </div>
-<p>Install the generated configuration files with the <span class="target" id="index-7-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(files)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">INSTALL(files)</span></code></a>
+<p>Install the generated configuration files with the <span class="target" id="index-7-command:install"></span><a class="reference internal" href="../../command/install.html#files" title="install(files)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(FILES)</span></code></a>
 command. Both <code class="docutils literal notranslate"><span class="pre">MathFunctionsConfigVersion.cmake</span></code> and
 <code class="docutils literal notranslate"><span class="pre">MathFunctionsConfig.cmake</span></code> are installed to the same location, completing
 the package.</p>
@@ -497,7 +498,7 @@ the <code class="docutils literal notranslate"><span class="pre">Stats</span></c
 <p><strong>Exercise:</strong> Add a required library to the <code class="docutils literal notranslate"><span class="pre">MathFunctions</span></code> project.</p>
 </section>
 <section id="creating-a-package-version-file">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">Creating a Package Version File</a><a class="headerlink" href="#creating-a-package-version-file" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Creating a Package Version File</a><a class="headerlink" href="#creating-a-package-version-file" title="Link to this heading">¶</a></h4>
 <p>The <span class="target" id="index-2-module:CMakePackageConfigHelpers"></span><a class="reference internal" href="../../module/CMakePackageConfigHelpers.html#module:CMakePackageConfigHelpers" title="CMakePackageConfigHelpers"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">CMakePackageConfigHelpers</span></code></a> module provides the
 <span class="target" id="index-0-command:write_basic_package_version_file"></span><a class="reference internal" href="../../module/CMakePackageConfigHelpers.html#command:write_basic_package_version_file" title="write_basic_package_version_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">write_basic_package_version_file()</span></code></a> command for creating a simple
 package version file.  This file is read by CMake when <span class="target" id="index-1-command:find_package"></span><a class="reference internal" href="../../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a>
@@ -534,7 +535,7 @@ are designed to be incompatible.</p>
 </section>
 </section>
 <section id="exporting-targets-from-the-build-tree">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Exporting Targets from the Build Tree</a><a class="headerlink" href="#exporting-targets-from-the-build-tree" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Exporting Targets from the Build Tree</a><a class="headerlink" href="#exporting-targets-from-the-build-tree" title="Link to this heading">¶</a></h3>
 <p>Typically, projects are built and installed before being used by an outside
 project. However, in some cases, it is desirable to export targets directly
 from a build tree. The targets may then be used by an outside project that
@@ -565,7 +566,7 @@ built on the host platform and then the project that is being cross-compiled
 for another platform may load it.</p>
 </section>
 <section id="building-and-installing-a-package">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Building and Installing a Package</a><a class="headerlink" href="#building-and-installing-a-package" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Building and Installing a Package</a><a class="headerlink" href="#building-and-installing-a-package" title="Link to this heading">¶</a></h3>
 <p>At this point, we have generated a relocatable CMake configuration for our
 project that can be used after the project has been installed. Let's try to
 build the <code class="docutils literal notranslate"><span class="pre">MathFunctions</span></code> project:</p>
@@ -584,8 +585,8 @@ has been created in the <code class="docutils literal notranslate"><span class="
 </section>
 </section>
 <section id="creating-relocatable-packages">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Creating Relocatable Packages</a><a class="headerlink" href="#creating-relocatable-packages" title="Permalink to this heading">¶</a></h2>
-<p>Packages created by <span class="target" id="index-8-command:install"></span><a class="reference internal" href="../../command/install.html#command:install" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> are designed to be relocatable,
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Creating Relocatable Packages</a><a class="headerlink" href="#creating-relocatable-packages" title="Link to this heading">¶</a></h2>
+<p>Packages created by <span class="target" id="index-8-command:install"></span><a class="reference internal" href="../../command/install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> are designed to be relocatable,
 using paths relative to the location of the package itself. They must not
 reference absolute paths of files on the machine where the package is built
 that will not exist on the machines where the package may be installed.</p>
@@ -647,7 +648,7 @@ macro described above) to find the dependencies and populate the
 imported targets with appropriate paths on their own machine.</p>
 </section>
 <section id="using-the-package-configuration-file">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Using the Package Configuration File</a><a class="headerlink" href="#using-the-package-configuration-file" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Using the Package Configuration File</a><a class="headerlink" href="#using-the-package-configuration-file" title="Link to this heading">¶</a></h2>
 <p>Now we're ready to create a project to use the installed <code class="docutils literal notranslate"><span class="pre">MathFunctions</span></code>
 library. In this section we will be using source code from
 <code class="docutils literal notranslate"><span class="pre">Help\guide\importing-exporting\Downstream</span></code>. In this directory, there is a
@@ -667,10 +668,10 @@ calculate the square root of a given number and then prints the results:</p>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// convert input to double</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">inputValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">inputValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 
 <span class="w">  </span><span class="c1">// calculate square root</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">sqrt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MathFunctions</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="n">inputValue</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">sqrt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MathFunctions</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="n">inputValue</span><span class="p">);</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The square root of &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inputValue</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sqrt</span>
 <span class="w">            </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
@@ -730,7 +731,7 @@ we'll also specify the C++ standard.</p>
 and try again. Ensure that the newly created executable runs as expected.</p>
 </section>
 <section id="adding-components">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Adding Components</a><a class="headerlink" href="#adding-components" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Adding Components</a><a class="headerlink" href="#adding-components" title="Link to this heading">¶</a></h2>
 <p>Let's edit the <code class="docutils literal notranslate"><span class="pre">MathFunctions</span></code> project to use components. The source code for
 this section can be found in
 <code class="docutils literal notranslate"><span class="pre">Help\guide\importing-exporting\MathFunctionsComponents</span></code>. The CMakeLists file
@@ -862,7 +863,7 @@ the package components. Change the <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 <p>Finally, use the <code class="docutils literal notranslate"><span class="pre">Addition</span></code> library:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MathFunctions</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="n">inputValue</span><span class="p">,</span><span class="w"> </span><span class="n">inputValue</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MathFunctions</span><span class="o">::</span><span class="n">add</span><span class="p">(</span><span class="n">inputValue</span><span class="p">,</span><span class="w"> </span><span class="n">inputValue</span><span class="p">);</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inputValue</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; + &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inputValue</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
 </pre></div>
@@ -877,10 +878,10 @@ package components.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">Importing and Exporting Guide</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -924,7 +925,7 @@ package components.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -932,13 +933,13 @@ package components.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -951,14 +952,15 @@ package components.</p>
           <a href="../using-dependencies/index.html" title="Using Dependencies Guide"
              >previous</a> |</li>
   <li>
-    <img src="../../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../../index.html">Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">Importing and Exporting Guide</a></li> 
@@ -966,8 +968,17 @@ package components.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

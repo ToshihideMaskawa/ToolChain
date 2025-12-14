@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>ENVIRONMENT_MODIFICATION &mdash; CMake 3.27.4 Documentation</title>
+  <title>ENVIRONMENT_MODIFICATION &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FAIL_REGULAR_EXPRESSION" href="FAIL_REGULAR_EXPRESSION.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="ENVIRONMENT.html" title="ENVIRONMENT"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -61,9 +62,9 @@
           <div class="body" role="main">
             
   <section id="environment-modification">
-<span id="prop_test:ENVIRONMENT_MODIFICATION"></span><h1>ENVIRONMENT_MODIFICATION<a class="headerlink" href="#environment-modification" title="Permalink to this heading">¶</a></h1>
+<span id="prop_test:ENVIRONMENT_MODIFICATION"></span><h1>ENVIRONMENT_MODIFICATION<a class="headerlink" href="#environment-modification" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.22.</span></p>
+<p><span class="versionmodified added">Added in version 3.22.</span></p>
 </div>
 <p>Specify environment variables that should be modified for running a test. Note
 that the operations performed by this property are performed after the
@@ -73,8 +74,7 @@ environment variables and values of the form <code class="docutils literal notra
 where <code class="docutils literal notranslate"><span class="pre">MYVAR</span></code> is the case-sensitive name of an environment variable
 to be modified.  Entries are considered in the order specified in the
 property's value.  The <code class="docutils literal notranslate"><span class="pre">OP</span></code> may be one of:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">reset</span></code>: Reset to the unmodified value, ignoring all modifications to
 <code class="docutils literal notranslate"><span class="pre">MYVAR</span></code> prior to this entry. Note that this will reset the variable to
 the value set by <span class="target" id="index-1-prop_test:ENVIRONMENT"></span><a class="reference internal" href="ENVIRONMENT.html#prop_test:ENVIRONMENT" title="ENVIRONMENT"><code class="xref cmake cmake-prop_test docutils literal notranslate"><span class="pre">ENVIRONMENT</span></code></a>, if it was set, and otherwise
@@ -96,7 +96,6 @@ and <code class="docutils literal notranslate"><span class="pre">:</span></code>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake_list_prepend</span></code>: Prepends singular <code class="docutils literal notranslate"><span class="pre">VALUE</span></code> to the current value of
 <code class="docutils literal notranslate"><span class="pre">MYVAR</span></code> using <code class="docutils literal notranslate"><span class="pre">;</span></code> as the separator.</p></li>
 </ul>
-</div></blockquote>
 <p>Unrecognized <code class="docutils literal notranslate"><span class="pre">OP</span></code> values will result in the test failing before it is
 executed. This is so that future operations may be added without changing
 valid behavior of existing tests.</p>
@@ -108,7 +107,7 @@ valid behavior of existing tests.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
@@ -127,7 +126,7 @@ valid behavior of existing tests.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -135,13 +134,13 @@ valid behavior of existing tests.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -154,14 +153,15 @@ valid behavior of existing tests.</p>
           <a href="ENVIRONMENT.html" title="ENVIRONMENT"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -170,8 +170,17 @@ valid behavior of existing tests.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

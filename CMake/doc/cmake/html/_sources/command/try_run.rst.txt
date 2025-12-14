@@ -13,6 +13,7 @@ Try Compiling and Running Source Files
 .. code-block:: cmake
 
   try_run(<runResultVar> <compileResultVar>
+          [SOURCES_TYPE <type>]
           <SOURCES <srcfile...>                 |
            SOURCE_FROM_CONTENT <name> <content> |
            SOURCE_FROM_VAR <name> <var>         |
@@ -39,13 +40,14 @@ Try Compiling and Running Source Files
 .. versionadded:: 3.25
 
 Try building an executable from one or more source files.  Build success
-returns ``TRUE`` and build failure returns ``FALSE`` in ``<compileResultVar>``.
-If the build succeeds, this runs the executable and stores the exit code in
-``<runResultVar>``.  If the executable was built, but failed to run, then
-``<runResultVar>`` will be set to ``FAILED_TO_RUN``.  See command
-:command:`try_compile` for documentation of options common to both commands,
-and for information on how the test project is constructed to build the source
-file.
+returns boolean ``true`` and build failure returns boolean ``false`` in
+``<compileResultVar>`` (cached unless ``NO_CACHE`` is specified).
+If the build succeeds, this runs the executable and stores the exit code
+in ``<runResultVar>`` (cached unless ``NO_CACHE`` is specified).
+If the executable was built, but failed to run, then ``<runResultVar>``
+will be set to ``FAILED_TO_RUN``.  See command :command:`try_compile` for
+documentation of options common to both commands, and for information on
+how the test project is constructed to build the source file.
 
 One or more source files must be provided. Additionally, one of ``SOURCES``
 and/or ``SOURCE_FROM_*`` must precede other keywords.
@@ -66,6 +68,7 @@ The signature above is recommended for clarity.
           [COMPILE_DEFINITIONS <defs>...]
           [LINK_OPTIONS <options>...]
           [LINK_LIBRARIES <libs>...]
+          [LINKER_LANGUAGE <lang>]
           [COMPILE_OUTPUT_VARIABLE <var>]
           [COPY_FILE <fileName> [COPY_FILE_ERROR <var>]]
           [<LANG>_STANDARD <std>]
@@ -76,6 +79,11 @@ The signature above is recommended for clarity.
           [WORKING_DIRECTORY <var>]
           [ARGS <args>...]
           )
+
+.. _`try_run Options`:
+
+Options
+^^^^^^^
 
 The options specific to ``try_run`` are:
 

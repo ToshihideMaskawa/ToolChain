@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindArmadillo &mdash; CMake 3.27.4 Documentation</title>
+  <title>FindArmadillo &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindASPELL" href="FindASPELL.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="FindALSA.html" title="FindALSA"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -61,30 +62,57 @@
           <div class="body" role="main">
             
   <section id="findarmadillo">
-<span id="module:FindArmadillo"></span><h1>FindArmadillo<a class="headerlink" href="#findarmadillo" title="Permalink to this heading">¶</a></h1>
-<p>Find the Armadillo C++ library.
-Armadillo is a library for linear algebra &amp; scientific computing.</p>
+<span id="module:FindArmadillo"></span><h1>FindArmadillo<a class="headerlink" href="#findarmadillo" title="Link to this heading">¶</a></h1>
+<p>Finds the Armadillo C++ library.  Armadillo is a library for linear algebra and
+scientific computing.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.18: </span>Support for linking wrapped libraries directly (<code class="docutils literal notranslate"><span class="pre">ARMA_DONT_USE_WRAPPER</span></code>).</p>
+<p><span class="versionmodified added">Added in version 3.18: </span>Support for linking wrapped libraries directly (see the
+<code class="docutils literal notranslate"><span class="pre">ARMA_DONT_USE_WRAPPER</span></code> preprocessor macro that needs to be defined before
+including the <code class="docutils literal notranslate"><span class="pre">&lt;armadillo&gt;</span></code> header).</p>
 </div>
-<p>Using Armadillo:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find_package(Armadillo REQUIRED)
-include_directories(${ARMADILLO_INCLUDE_DIRS})
-add_executable(foo foo.cc)
-target_link_libraries(foo ${ARMADILLO_LIBRARIES})
-</pre></div>
-</div>
+<section id="result-variables">
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Link to this heading">¶</a></h2>
 <p>This module sets the following variables:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ARMADILLO_FOUND - set to true if the library is found
-ARMADILLO_INCLUDE_DIRS - list of required include directories
-ARMADILLO_LIBRARIES - list of libraries to be linked
-ARMADILLO_VERSION_MAJOR - major version number
-ARMADILLO_VERSION_MINOR - minor version number
-ARMADILLO_VERSION_PATCH - patch version number
-ARMADILLO_VERSION_STRING - version number as a string (ex: &quot;1.0.4&quot;)
-ARMADILLO_VERSION_NAME - name of the version (ex: &quot;Antipodean Antileech&quot;)
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Armadillo_FOUND</span></code></dt><dd><p>Set to true if the library is found.  For backward compatibility, the
+<code class="docutils literal notranslate"><span class="pre">ARMADILLO_FOUND</span></code> variable is also set to the same value.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_INCLUDE_DIRS</span></code></dt><dd><p>List of required include directories.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_LIBRARIES</span></code></dt><dd><p>List of libraries to be linked.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_VERSION_STRING</span></code></dt><dd><p>Version as a string (ex: <code class="docutils literal notranslate"><span class="pre">1.0.4</span></code>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_VERSION_MAJOR</span></code></dt><dd><p>Major version number.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_VERSION_MINOR</span></code></dt><dd><p>Minor version number.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_VERSION_PATCH</span></code></dt><dd><p>Patch version number.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ARMADILLO_VERSION_NAME</span></code></dt><dd><p>Name of the version (ex: <code class="docutils literal notranslate"><span class="pre">Antipodean</span> <span class="pre">Antileech</span></code>).</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<p>Using Armadillo:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">Armadillo</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span>
+
+<span class="nf">if(</span><span class="nb">Armadillo_FOUND</span><span class="w"> </span><span class="no">AND</span><span class="w"> </span><span class="no">NOT</span><span class="w"> </span><span class="no">TARGET</span><span class="w"> </span><span class="nb">Armadillo</span><span class="o">::</span><span class="nb">Armadillo</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">add_library(</span><span class="nb">Armadillo</span><span class="o">::</span><span class="nb">Armadillo</span><span class="w"> </span><span class="no">INTERFACE</span><span class="w"> </span><span class="no">IMPORTED</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set_target_properties(</span>
+<span class="w">    </span><span class="nb">Armadillo</span><span class="o">::</span><span class="nb">Armadillo</span>
+<span class="w">    </span><span class="no">PROPERTIES</span>
+<span class="w">      </span><span class="no">INTERFACE_LINK_LIBRARIES</span><span class="w"> </span><span class="s">&quot;${ARMADILLO_LIBRARIES}&quot;</span>
+<span class="w">      </span><span class="no">INTERFACE_INCLUDE_DIRECTORIES</span><span class="w"> </span><span class="s">&quot;${ARMADILLO_INCLUDE_DIRS}&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
+<span class="nf">endif()</span>
+
+<span class="nf">add_executable(</span><span class="nb">foo</span><span class="w"> </span><span class="nb">foo.cc</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">Armadillo</span><span class="o">::</span><span class="nb">Armadillo</span><span class="nf">)</span>
 </pre></div>
 </div>
+</section>
 </section>
 
 
@@ -92,8 +120,19 @@ ARMADILLO_VERSION_NAME - name of the version (ex: &quot;Antipodean Antileech&quo
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3>Table of Contents</h3>
+    <ul>
+<li><a class="reference internal" href="#">FindArmadillo</a><ul>
+<li><a class="reference internal" href="#result-variables">Result Variables</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="FindALSA.html"
@@ -111,7 +150,7 @@ ARMADILLO_VERSION_NAME - name of the version (ex: &quot;Antipodean Antileech&quo
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -119,13 +158,13 @@ ARMADILLO_VERSION_NAME - name of the version (ex: &quot;Antipodean Antileech&quo
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -138,14 +177,15 @@ ARMADILLO_VERSION_NAME - name of the version (ex: &quot;Antipodean Antileech&quo
           <a href="FindALSA.html" title="FindALSA"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -154,8 +194,17 @@ ARMADILLO_VERSION_NAME - name of the version (ex: &quot;Antipodean Antileech&quo
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

@@ -22,7 +22,7 @@ The named ``<target>`` must have been created by a command such as
   ``<target>`` can be a custom target.
 
 The ``INTERFACE``, ``PUBLIC`` and ``PRIVATE`` keywords are required to
-specify the :ref:`scope <Target Usage Requirements>` of the source file paths
+specify the :ref:`scope <Target Command Scope>` of the source file paths
 (``<items>``) that follow them.  ``PRIVATE`` and ``PUBLIC`` items will
 populate the :prop_tgt:`SOURCES` property of ``<target>``, which are used when
 building the target itself. ``PUBLIC`` and ``INTERFACE`` items will populate the
@@ -60,6 +60,8 @@ expressions to ensure the sources are correctly assigned to the target.
 See the :manual:`cmake-buildsystem(7)` manual for more on defining
 buildsystem properties.
 
+.. _`File Sets`:
+
 File Sets
 ^^^^^^^^^
 
@@ -82,10 +84,7 @@ files within those directories. The acceptable types include:
   Sources intended to be used via a language's ``#include`` mechanism.
 
 ``CXX_MODULES``
-
-  .. note ::
-
-    Experimental. Gated by ``CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API``
+  .. versionadded:: 3.28
 
   Sources which contain C++ interface module or partition units (i.e., those
   using the ``export`` keyword). This file set type may not have an

@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>cmake-modules(7) &mdash; CMake 3.27.4 Documentation</title>
+  <title>cmake-modules(7) &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="AndroidTestUtilities" href="../module/AndroidTestUtilities.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="cmake-language.7.html" title="cmake-language(7)"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">cmake-modules(7)</a></li> 
@@ -60,12 +61,12 @@
           <div class="body" role="main">
             
   <span class="target" id="manual:cmake-modules(7)"></span><section id="cmake-modules-7">
-<h1>cmake-modules(7)<a class="headerlink" href="#cmake-modules-7" title="Permalink to this heading">¶</a></h1>
+<h1>cmake-modules(7)<a class="headerlink" href="#cmake-modules-7" title="Link to this heading">¶</a></h1>
 <p>The modules listed here are part of the CMake distribution.
 Projects may provide further modules; their location(s)
 can be specified in the <span class="target" id="index-0-variable:CMAKE_MODULE_PATH"></span><a class="reference internal" href="../variable/CMAKE_MODULE_PATH.html#variable:CMAKE_MODULE_PATH" title="CMAKE_MODULE_PATH"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_MODULE_PATH</span></code></a> variable.</p>
 <section id="utility-modules">
-<h2>Utility Modules<a class="headerlink" href="#utility-modules" title="Permalink to this heading">¶</a></h2>
+<h2>Utility Modules<a class="headerlink" href="#utility-modules" title="Link to this heading">¶</a></h2>
 <p>These modules are loaded using the <span class="target" id="index-0-command:include"></span><a class="reference internal" href="../command/include.html#command:include" title="include"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">include()</span></code></a> command.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -109,7 +110,6 @@ can be specified in the <span class="target" id="index-0-variable:CMAKE_MODULE_P
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeBackwardCompatibilityCXX.html">CMakeBackwardCompatibilityCXX</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeDependentOption.html">CMakeDependentOption</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeFindDependencyMacro.html">CMakeFindDependencyMacro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/CMakeFindFrameworks.html">CMakeFindFrameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeFindPackageMode.html">CMakeFindPackageMode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeGraphVizOptions.html">CMakeGraphVizOptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakePackageConfigHelpers.html">CMakePackageConfigHelpers</a></li>
@@ -126,7 +126,6 @@ can be specified in the <span class="target" id="index-0-variable:CMAKE_MODULE_P
 <li class="toctree-l1"><a class="reference internal" href="../module/CTestCoverageCollectGCOV.html">CTestCoverageCollectGCOV</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CTestScriptMode.html">CTestScriptMode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CTestUseLaunchers.html">CTestUseLaunchers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/Dart.html">Dart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/DeployQt4.html">DeployQt4</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/ExternalData.html">ExternalData</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/ExternalProject.html">ExternalProject</a></li>
@@ -136,14 +135,11 @@ can be specified in the <span class="target" id="index-0-variable:CMAKE_MODULE_P
 <li class="toctree-l1"><a class="reference internal" href="../module/FindPackageMessage.html">FindPackageMessage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FortranCInterface.html">FortranCInterface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/GenerateExportHeader.html">GenerateExportHeader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/GetPrerequisites.html">GetPrerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/GNUInstallDirs.html">GNUInstallDirs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/GoogleTest.html">GoogleTest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/InstallRequiredSystemLibraries.html">InstallRequiredSystemLibraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/ProcessorCount.html">ProcessorCount</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/SelectLibraryConfigurations.html">SelectLibraryConfigurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/SquishTestScript.html">SquishTestScript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/TestBigEndian.html">TestBigEndian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/TestForANSIForScope.html">TestForANSIForScope</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/TestForANSIStreamHeaders.html">TestForANSIStreamHeaders</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/TestForSSTREAM.html">TestForSSTREAM</a></li>
@@ -156,7 +152,7 @@ can be specified in the <span class="target" id="index-0-variable:CMAKE_MODULE_P
 </div>
 </section>
 <section id="find-modules">
-<h2>Find Modules<a class="headerlink" href="#find-modules" title="Permalink to this heading">¶</a></h2>
+<h2>Find Modules<a class="headerlink" href="#find-modules" title="Link to this heading">¶</a></h2>
 <p>These modules search for third-party software.
 They are normally called through the <span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> command.</p>
 <div class="toctree-wrapper compound">
@@ -168,10 +164,8 @@ They are normally called through the <span class="target" id="index-0-command:fi
 <li class="toctree-l1"><a class="reference internal" href="../module/FindBacktrace.html">FindBacktrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindBISON.html">FindBISON</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindBLAS.html">FindBLAS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/FindBoost.html">FindBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindBullet.html">FindBullet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindBZip2.html">FindBZip2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/FindCABLE.html">FindCABLE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCoin3D.html">FindCoin3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCUDAToolkit.html">FindCUDAToolkit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCups.html">FindCups</a></li>
@@ -180,7 +174,6 @@ They are normally called through the <span class="target" id="index-0-command:fi
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCVS.html">FindCVS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCxxTest.html">FindCxxTest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCygwin.html">FindCygwin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/FindDart.html">FindDart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindDCMTK.html">FindDCMTK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindDevIL.html">FindDevIL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindDoxygen.html">FindDoxygen</a></li>
@@ -191,8 +184,6 @@ They are normally called through the <span class="target" id="index-0-command:fi
 <li class="toctree-l1"><a class="reference internal" href="../module/FindFLTK2.html">FindFLTK2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindFontconfig.html">FindFontconfig</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindFreetype.html">FindFreetype</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/FindGCCXML.html">FindGCCXML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/FindGDAL.html">FindGDAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindGettext.html">FindGettext</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindGIF.html">FindGIF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindGit.html">FindGit</a></li>
@@ -288,8 +279,8 @@ They are normally called through the <span class="target" id="index-0-command:fi
 <li class="toctree-l1"><a class="reference internal" href="../module/FindRTI.html">FindRTI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindRuby.html">FindRuby</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindSDL.html">FindSDL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/FindSDL_image.html">FindSDL_image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindSDL_gfx.html">FindSDL_gfx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/FindSDL_image.html">FindSDL_image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindSDL_mixer.html">FindSDL_mixer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindSDL_net.html">FindSDL_net</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindSDL_sound.html">FindSDL_sound</a></li>
@@ -318,33 +309,43 @@ They are normally called through the <span class="target" id="index-0-command:fi
 </div>
 </section>
 <section id="deprecated-modules">
-<h2>Deprecated Modules<a class="headerlink" href="#deprecated-modules" title="Permalink to this heading">¶</a></h2>
+<h2>Deprecated Modules<a class="headerlink" href="#deprecated-modules" title="Link to this heading">¶</a></h2>
 <section id="deprecated-utility-modules">
-<h3>Deprecated Utility Modules<a class="headerlink" href="#deprecated-utility-modules" title="Permalink to this heading">¶</a></h3>
+<h3>Deprecated Utility Modules<a class="headerlink" href="#deprecated-utility-modules" title="Link to this heading">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../module/AddFileDependencies.html">AddFileDependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeDetermineVSServicePack.html">CMakeDetermineVSServicePack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeExpandImportedTargets.html">CMakeExpandImportedTargets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/CMakeFindFrameworks.html">CMakeFindFrameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeForceCompiler.html">CMakeForceCompiler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/CMakeParseArguments.html">CMakeParseArguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/Dart.html">Dart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/Documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/GetPrerequisites.html">GetPrerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/MacroAddFileDependencies.html">MacroAddFileDependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/SquishTestScript.html">SquishTestScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/TestBigEndian.html">TestBigEndian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/TestCXXAcceptsFlag.html">TestCXXAcceptsFlag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/Use_wxWindows.html">Use_wxWindows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/UseJavaClassFilelist.html">UseJavaClassFilelist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/UseJavaSymlinks.html">UseJavaSymlinks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/UsePkgConfig.html">UsePkgConfig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/Use_wxWindows.html">Use_wxWindows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/WriteBasicConfigVersionFile.html">WriteBasicConfigVersionFile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/WriteCompilerDetectionHeader.html">WriteCompilerDetectionHeader</a></li>
 </ul>
 </div>
 </section>
 <section id="deprecated-find-modules">
-<h3>Deprecated Find Modules<a class="headerlink" href="#deprecated-find-modules" title="Permalink to this heading">¶</a></h3>
+<h3>Deprecated Find Modules<a class="headerlink" href="#deprecated-find-modules" title="Link to this heading">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/FindBoost.html">FindBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/FindCABLE.html">FindCABLE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindCUDA.html">FindCUDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/FindDart.html">FindDart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/FindGCCXML.html">FindGCCXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/FindGDAL.html">FindGDAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindITK.html">FindITK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindPythonInterp.html">FindPythonInterp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/FindPythonLibs.html">FindPythonLibs</a></li>
@@ -356,7 +357,7 @@ They are normally called through the <span class="target" id="index-0-command:fi
 </div>
 </section>
 <section id="legacy-cpack-modules">
-<h3>Legacy CPack Modules<a class="headerlink" href="#legacy-cpack-modules" title="Permalink to this heading">¶</a></h3>
+<h3>Legacy CPack Modules<a class="headerlink" href="#legacy-cpack-modules" title="Link to this heading">¶</a></h3>
 <p>These modules used to be mistakenly exposed to the user, and have been moved
 out of user visibility. They are for CPack internal use, and should never be
 used directly.</p>
@@ -384,10 +385,10 @@ used directly.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">cmake-modules(7)</a><ul>
 <li><a class="reference internal" href="#utility-modules">Utility Modules</a></li>
@@ -420,7 +421,7 @@ used directly.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -428,13 +429,13 @@ used directly.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -447,14 +448,15 @@ used directly.</p>
           <a href="cmake-language.7.html" title="cmake-language(7)"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">cmake-modules(7)</a></li> 
@@ -462,8 +464,17 @@ used directly.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

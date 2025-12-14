@@ -41,13 +41,15 @@ Compound conditions are evaluated in the following order of precedence:
 
 1. `Parentheses`_.
 
-2. Unary tests such as `EXISTS`_, `COMMAND`_, and `DEFINED`_.
+2. Unary tests such as `COMMAND`_, `POLICY`_, `TARGET`_, `TEST`_,
+   `EXISTS`_, `IS_READABLE`_, `IS_WRITABLE`_, `IS_EXECUTABLE`_,
+   `IS_DIRECTORY`_, `IS_SYMLINK`_, `IS_ABSOLUTE`_, and `DEFINED`_.
 
 3. Binary tests such as `EQUAL`_, `LESS`_, `LESS_EQUAL`_, `GREATER`_,
    `GREATER_EQUAL`_, `STREQUAL`_, `STRLESS`_, `STRLESS_EQUAL`_,
    `STRGREATER`_, `STRGREATER_EQUAL`_, `VERSION_EQUAL`_, `VERSION_LESS`_,
    `VERSION_LESS_EQUAL`_, `VERSION_GREATER`_, `VERSION_GREATER_EQUAL`_,
-   `PATH_EQUAL`_, and `MATCHES`_.
+   `PATH_EQUAL`_, `IN_LIST`_, `IS_NEWER_THAN`_, and `MATCHES`_.
 
 4. Unary logical operator `NOT`_.
 
@@ -85,9 +87,9 @@ Basic Expressions
   A quoted string always evaluates to false unless:
 
   * The string's value is one of the true constants, or
-  * Policy :policy:`CMP0054` is not set to ``NEW`` and the string's value
-    happens to be a variable name that is affected by :policy:`CMP0054`'s
-    behavior.
+  * in CMake versions prior to 4.0, policy :policy:`CMP0054` is not set
+    to ``NEW`` and the string's value happens to be a variable name that
+    is affected by :policy:`CMP0054`'s behavior.
 
 Logic Operators
 """""""""""""""
@@ -147,7 +149,7 @@ Existence Checks
   does not matter. Note the following caveats:
 
   * Macro arguments are not variables.
-  * It is not possible to test directly whether a `<name>` is a non-cache
+  * It is not possible to test directly whether a ``<name>`` is a non-cache
     variable.  The expression ``if(DEFINED someName)`` will evaluate to true
     if either a cache or non-cache variable ``someName`` exists.  In
     comparison, the expression ``if(DEFINED CACHE{someName})`` will only
@@ -175,6 +177,46 @@ File Operations
   expanded as a home directory and is considered a relative path).
   Resolves symbolic links, i.e. if the named file or directory is a
   symbolic link, returns true if the target of the symbolic link exists.
+
+  False if the given path is an empty string.
+
+  .. note::
+    Prefer ``if(IS_READABLE)`` to check file readability.  ``if(EXISTS)``
+    may be changed in the future to only check file existence.
+
+.. signature:: if(IS_READABLE <path-to-file-or-directory>)
+
+  .. versionadded:: 3.29
+
+  True if the named file or directory is readable.  Behavior
+  is well-defined only for explicit full paths (a leading ``~/`` is not
+  expanded as a home directory and is considered a relative path).
+  Resolves symbolic links, i.e. if the named file or directory is a
+  symbolic link, returns true if the target of the symbolic link is readable.
+
+  False if the given path is an empty string.
+
+.. signature:: if(IS_WRITABLE <path-to-file-or-directory>)
+
+  .. versionadded:: 3.29
+
+  True if the named file or directory is writable.  Behavior
+  is well-defined only for explicit full paths (a leading ``~/`` is not
+  expanded as a home directory and is considered a relative path).
+  Resolves symbolic links, i.e. if the named file or directory is a
+  symbolic link, returns true if the target of the symbolic link is writable.
+
+  False if the given path is an empty string.
+
+.. signature:: if(IS_EXECUTABLE <path-to-file-or-directory>)
+
+  .. versionadded:: 3.29
+
+  True if the named file or directory is executable.  Behavior
+  is well-defined only for explicit full paths (a leading ``~/`` is not
+  expanded as a home directory and is considered a relative path).
+  Resolves symbolic links, i.e. if the named file or directory is a
+  symbolic link, returns true if the target of the symbolic link is executable.
 
   False if the given path is an empty string.
 
@@ -228,36 +270,36 @@ Comparisons
 .. signature:: if(<variable|string> LESS <variable|string>)
   :target: LESS
 
-  True if the given string or variable's value is a valid number and less
-  than that on the right.
+  True if the given string or variable's value parses as a real number
+  (like a C ``double``) and less than that on the right.
 
 .. signature:: if(<variable|string> GREATER <variable|string>)
   :target: GREATER
 
-  True if the given string or variable's value is a valid number and greater
-  than that on the right.
+  True if the given string or variable's value parses as a real number
+  (like a C ``double``) and greater than that on the right.
 
 .. signature:: if(<variable|string> EQUAL <variable|string>)
   :target: EQUAL
 
-  True if the given string or variable's value is a valid number and equal
-  to that on the right.
+  True if the given string or variable's value parses as a real number
+  (like a C ``double``) and equal to that on the right.
 
 .. signature:: if(<variable|string> LESS_EQUAL <variable|string>)
   :target: LESS_EQUAL
 
   .. versionadded:: 3.7
 
-  True if the given string or variable's value is a valid number and less
-  than or equal to that on the right.
+  True if the given string or variable's value parses as a real number
+  (like a C ``double``) and less than or equal to that on the right.
 
 .. signature:: if(<variable|string> GREATER_EQUAL <variable|string>)
   :target: GREATER_EQUAL
 
   .. versionadded:: 3.7
 
-  True if the given string or variable's value is a valid number and greater
-  than or equal to that on the right.
+  True if the given string or variable's value parses as a real number
+  (like a C ``double``) and greater than or equal to that on the right.
 
 .. signature:: if(<variable|string> STRLESS <variable|string>)
   :target: STRLESS
@@ -348,11 +390,13 @@ Path Comparisons
 
   .. versionadded:: 3.24
 
-  Compares the two paths component-by-component.  Only if every component of
-  both paths match will the two paths compare equal.  Multiple path separators
-  are effectively collapsed into a single separator, but note that backslashes
-  are not converted to forward slashes.  No other
-  :ref:`path normalization <Normalization>` is performed.
+  Lexicographically compares two CMake paths component-by-component without
+  accessing the filesystem. Only if every component of both paths match will
+  the two paths compare equal.  Multiple path separators are effectively
+  collapsed into a single separator, but note that backslashes are not
+  converted to forward slashes.
+  No other :ref:`path normalization <Normalization>` is performed.
+  Trailing slashes are preserved, thus ``/a/b`` and ``/a/b/`` are not equal.
 
   Component-wise comparison is superior to string-based comparison due to the
   handling of multiple path separators.  In the following example, the
@@ -430,6 +474,10 @@ above-documented condition syntax accepts ``<variable|string>``:
   `VERSION_GREATER_EQUAL`_ are independently tested to see if they are defined
   variables.  If so, their defined values are used otherwise the original value
   is used.
+
+* The left hand argument to `IN_LIST`_ is tested to see if it is a defined
+  variable.  If so, the variable's value is used, otherwise the original
+  value is used.
 
 * The right hand argument to `NOT`_ is tested to see if it is a boolean
   constant.  If so, the value is used, otherwise it is assumed to be a

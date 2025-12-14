@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CMake 3.5 Release Notes &mdash; CMake 3.27.4 Documentation</title>
+  <title>CMake 3.5 Release Notes &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMake 3.4 Release Notes" href="3.4.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="3.6.html" title="CMake 3.6 Release Notes"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CMake Release Notes</a> &#187;</li>
@@ -61,7 +62,7 @@
           <div class="body" role="main">
             
   <section id="cmake-3-5-release-notes">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink">CMake 3.5 Release Notes</a><a class="headerlink" href="#cmake-3-5-release-notes" title="Permalink to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">CMake 3.5 Release Notes</a><a class="headerlink" href="#cmake-3-5-release-notes" title="Link to this heading">¶</a></h1>
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
@@ -88,9 +89,9 @@
 </nav>
 <p>Changes made since CMake 3.4 include the following.</p>
 <section id="new-features">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">New Features</a><a class="headerlink" href="#new-features" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">New Features</a><a class="headerlink" href="#new-features" title="Link to this heading">¶</a></h2>
 <section id="gui">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">GUI</a><a class="headerlink" href="#gui" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">GUI</a><a class="headerlink" href="#gui" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-manual:cmake-gui(1)"></span><a class="reference internal" href="../manual/cmake-gui.1.html#manual:cmake-gui(1)" title="cmake-gui(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake-gui(1)</span></code></a> gained options to control warnings about
 deprecated functionality.</p></li>
@@ -103,7 +104,7 @@ The explorer window is available via the <code class="docutils literal notransla
 </ul>
 </section>
 <section id="command-line">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Command-Line</a><a class="headerlink" href="#command-line" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Command-Line</a><a class="headerlink" href="#command-line" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">-Wdev</span></code> and <code class="docutils literal notranslate"><span class="pre">-Wno-dev</span></code> <span class="target" id="index-1-manual:cmake(1)"></span><a class="reference internal" href="../manual/cmake.1.html#manual:cmake(1)" title="cmake(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake(1)</span></code></a> options now also enable
 and suppress the deprecated warnings output by default.</p></li>
@@ -115,18 +116,18 @@ learned to support multiple input files or directories.</p></li>
 </ul>
 </section>
 <section id="commands">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Commands</a><a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Commands</a><a class="headerlink" href="#commands" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-command:cmake_parse_arguments"></span><a class="reference internal" href="../command/cmake_parse_arguments.html#command:cmake_parse_arguments" title="cmake_parse_arguments"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_parse_arguments()</span></code></a> command is now implemented natively.
 The <span class="target" id="index-0-module:CMakeParseArguments"></span><a class="reference internal" href="../module/CMakeParseArguments.html#module:CMakeParseArguments" title="CMakeParseArguments"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">CMakeParseArguments</span></code></a> module remains as an empty placeholder
 for compatibility.</p></li>
-<li><p>The <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#command:install" title="install(directory)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(DIRECTORY)</span></code></a> command learned to support
+<li><p>The <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#directory" title="install(directory)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(DIRECTORY)</span></code></a> command learned to support
 <span class="target" id="index-0-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">generator</span> <span class="pre">expressions</span></code></a>
 in the list of directories.</p></li>
 </ul>
 </section>
 <section id="variables">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Variables</a><a class="headerlink" href="#variables" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Variables</a><a class="headerlink" href="#variables" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-variable:CMAKE_ERROR_DEPRECATED"></span><a class="reference internal" href="../variable/CMAKE_ERROR_DEPRECATED.html#variable:CMAKE_ERROR_DEPRECATED" title="CMAKE_ERROR_DEPRECATED"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_ERROR_DEPRECATED</span></code></a> variable can now be set using the
 <code class="docutils literal notranslate"><span class="pre">-Werror=deprecated</span></code> and <code class="docutils literal notranslate"><span class="pre">-Wno-error=deprecated</span></code> <span class="target" id="index-4-manual:cmake(1)"></span><a class="reference internal" href="../manual/cmake.1.html#manual:cmake(1)" title="cmake(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake(1)</span></code></a>
@@ -136,20 +137,20 @@ options.</p></li>
 </ul>
 </section>
 <section id="properties">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Properties</a><a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Properties</a><a class="headerlink" href="#properties" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-prop_tgt:VS_GLOBAL_&lt;variable&gt;"></span><a class="reference internal" href="../prop_tgt/VS_GLOBAL_variable.html#prop_tgt:VS_GLOBAL_&lt;variable&gt;" title="VS_GLOBAL_&lt;variable&gt;"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">VS_GLOBAL_&lt;variable&gt;</span></code></a> target property is now implemented
 for VS 2010 and above.  Previously it worked only in VS 2008 and below.</p></li>
 </ul>
 </section>
 <section id="modules">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Modules</a><a class="headerlink" href="#modules" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Modules</a><a class="headerlink" href="#modules" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-module:ExternalProject"></span><a class="reference internal" href="../module/ExternalProject.html#module:ExternalProject" title="ExternalProject"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">ExternalProject</span></code></a> module learned a new <code class="docutils literal notranslate"><span class="pre">GIT_REMOTE_NAME</span></code>
 option to control the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--origin</span></code> value.</p></li>
 <li><p>The <span class="target" id="index-0-module:FindBoost"></span><a class="reference internal" href="../module/FindBoost.html#module:FindBoost" title="FindBoost"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindBoost</span></code></a> module now provides imported targets
 such as <code class="docutils literal notranslate"><span class="pre">Boost::boost</span></code> and <code class="docutils literal notranslate"><span class="pre">Boost::filesystem</span></code>.</p></li>
-<li><p>The <span class="target" id="index-0-module:FindFLEX"></span><a class="reference internal" href="../module/FindFLEX.html#module:FindFLEX" title="FindFLEX"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindFLEX</span></code></a> module <code class="docutils literal notranslate"><span class="pre">FLEX_TARGET</span></code> macro learned a
+<li><p>The <span class="target" id="index-0-module:FindFLEX"></span><a class="reference internal" href="../module/FindFLEX.html#module:FindFLEX" title="FindFLEX"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindFLEX</span></code></a> module <code class="docutils literal notranslate"><span class="pre">flex_target()</span></code> command learned a
 new <code class="docutils literal notranslate"><span class="pre">DEFINES_FILE</span></code> option to specify a custom output header
 to be generated.</p></li>
 <li><p>The <span class="target" id="index-0-module:FindGTest"></span><a class="reference internal" href="../module/FindGTest.html#module:FindGTest" title="FindGTest"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindGTest</span></code></a> module now provides imported targets.</p></li>
@@ -169,7 +170,7 @@ Apache Xalan-C++ XSL transform processing library.</p></li>
 </ul>
 </section>
 <section id="platforms">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Platforms</a><a class="headerlink" href="#platforms" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Platforms</a><a class="headerlink" href="#platforms" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Support was added for the ARM Compiler (arm.com) with compiler id <code class="docutils literal notranslate"><span class="pre">ARMCC</span></code>.</p></li>
 <li><p>A new platform file for cross-compiling in the Cray Linux Environment to
@@ -185,7 +186,7 @@ target property.</p></li>
 </ul>
 </section>
 <section id="cpack">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">CPack</a><a class="headerlink" href="#cpack" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">CPack</a><a class="headerlink" href="#cpack" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-cpack_gen:CPack DragNDrop Generator"></span><a class="reference internal" href="../cpack_gen/dmg.html#cpack_gen:CPack DragNDrop Generator" title="CPack DragNDrop Generator"><code class="xref cmake cmake-cpack_gen docutils literal notranslate"><span class="pre">CPack</span> <span class="pre">DragNDrop</span> <span class="pre">Generator</span></code></a> learned new variable to
 specify AppleScript file run to customize appearance of <code class="docutils literal notranslate"><span class="pre">DragNDrop</span></code>
@@ -215,7 +216,7 @@ and <span class="target" id="index-0-variable:CPACK_RPM_&lt;component&gt;_PACKAG
 </ul>
 </section>
 <section id="other">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Other</a><a class="headerlink" href="#other" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Other</a><a class="headerlink" href="#other" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Warnings about deprecated functionality are now enabled by default.
 They may be suppressed with <code class="docutils literal notranslate"><span class="pre">-Wno-deprecated</span></code> or by setting the
@@ -224,7 +225,7 @@ They may be suppressed with <code class="docutils literal notranslate"><span cla
 </section>
 </section>
 <section id="deprecated-and-removed-features">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Deprecated and Removed Features</a><a class="headerlink" href="#deprecated-and-removed-features" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Deprecated and Removed Features</a><a class="headerlink" href="#deprecated-and-removed-features" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>The <span class="target" id="index-6-manual:cmake(1)"></span><a class="reference internal" href="../manual/cmake.1.html#manual:cmake(1)" title="cmake(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake(1)</span></code></a> <code class="docutils literal notranslate"><span class="pre">-E</span> <span class="pre">time</span></code> command now properly passes arguments
 with spaces or special characters through to the child process.  This
@@ -232,13 +233,13 @@ may break scripts that worked around the bug with their own extra
 quoting or escaping.</p></li>
 <li><p>The <span class="target" id="index-0-generator:Xcode"></span><a class="reference internal" href="../generator/Xcode.html#generator:Xcode" title="Xcode"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Xcode</span></code></a> generator was fixed to escape backslashes in
 strings consistently with other generators.  Projects that previously
-worked around the inconsistecy with an extra level of backslashes
+worked around the inconsistency with an extra level of backslashes
 conditioned on the Xcode generator must be updated to remove the
 workaround for CMake 3.5 and greater.</p></li>
 </ul>
 </section>
 <section id="other-changes">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Other Changes</a><a class="headerlink" href="#other-changes" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Other Changes</a><a class="headerlink" href="#other-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>The <span class="target" id="index-0-generator:Visual Studio 14 2015"></span><a class="reference internal" href="../generator/Visual%20Studio%2014%202015.html#generator:Visual Studio 14 2015" title="Visual Studio 14 2015"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">14</span> <span class="pre">2015</span></code></a> generator learned to map the
 <code class="docutils literal notranslate"><span class="pre">/debug:fastlink</span></code> linker flag to the <code class="docutils literal notranslate"><span class="pre">.vcxproj</span></code> file property.</p></li>
@@ -257,10 +258,10 @@ the new package.</p></li>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">CMake 3.5 Release Notes</a><ul>
 <li><a class="reference internal" href="#new-features">New Features</a><ul>
@@ -299,7 +300,7 @@ the new package.</p></li>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -307,13 +308,13 @@ the new package.</p></li>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -326,14 +327,15 @@ the new package.</p></li>
           <a href="3.6.html" title="CMake 3.6 Release Notes"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >CMake Release Notes</a> &#187;</li>
@@ -342,8 +344,17 @@ the new package.</p></li>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

@@ -27,9 +27,11 @@ find_path
 
 .. |SYSTEM_ENVIRONMENT_PATH_XXX| replace:: The directories in ``INCLUDE``
    and ``PATH``.
-.. |SYSTEM_ENVIRONMENT_PATH_WINDOWS_XXX| replace:: On Windows hosts:
-      ``<prefix>/include/<arch>`` if :variable:`CMAKE_LIBRARY_ARCHITECTURE`
-      is set, and |SYSTEM_ENVIRONMENT_PREFIX_PATH_XXX_SUBDIR|.
+.. |SYSTEM_ENVIRONMENT_PATH_WINDOWS_XXX| replace::
+   On Windows hosts, CMake 3.3 through 3.27 searched additional paths:
+   ``<prefix>/include/<arch>`` if :variable:`CMAKE_LIBRARY_ARCHITECTURE`
+   is set, and |SYSTEM_ENVIRONMENT_PREFIX_PATH_XXX_SUBDIR|.
+   This behavior was removed by CMake 3.28.
 
 .. |CMAKE_SYSTEM_PREFIX_PATH_XXX| replace::
    ``<prefix>/include/<arch>`` if :variable:`CMAKE_LIBRARY_ARCHITECTURE`
@@ -42,7 +44,7 @@ find_path
 .. |CMAKE_FIND_ROOT_PATH_MODE_XXX| replace::
    :variable:`CMAKE_FIND_ROOT_PATH_MODE_INCLUDE`
 
-.. include:: FIND_XXX.txt
+.. include:: include/FIND_XXX.rst
 
 When searching for frameworks, if the file is specified as ``A/b.h``, then
 the framework search will look for ``A.framework/Headers/b.h``.  If that

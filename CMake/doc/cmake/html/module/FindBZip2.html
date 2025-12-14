@@ -1,53 +1,54 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindBZip2 &mdash; CMake 3.27.4 Documentation</title>
+  <title>FindBZip2 &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FindCABLE" href="FindCABLE.html" />
+    <link rel="next" title="FindCoin3D" href="FindCoin3D.html" />
     <link rel="prev" title="FindBullet" href="FindBullet.html" />
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="FindCABLE.html" title="FindCABLE"
+          <a href="FindCoin3D.html" title="FindCoin3D"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="FindBullet.html" title="FindBullet"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -61,55 +62,78 @@
           <div class="body" role="main">
             
   <section id="findbzip2">
-<span id="module:FindBZip2"></span><h1>FindBZip2<a class="headerlink" href="#findbzip2" title="Permalink to this heading">¶</a></h1>
-<p>Try to find BZip2</p>
-<section id="imported-targets">
-<h2>IMPORTED Targets<a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h2>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 3.12.</span></p>
+<span id="module:FindBZip2"></span><h1>FindBZip2<a class="headerlink" href="#findbzip2" title="Link to this heading">¶</a></h1>
+<p>Finds the BZip2 data compression library (libbz2):</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">BZip2</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;version&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[...]</span><span class="nf">)</span>
+</pre></div>
 </div>
-<p>This module defines <span class="target" id="index-0-prop_tgt:IMPORTED"></span><a class="reference internal" href="../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a> target <code class="docutils literal notranslate"><span class="pre">BZip2::BZip2</span></code>, if
-BZip2 has been found.</p>
+<section id="imported-targets">
+<h2>Imported Targets<a class="headerlink" href="#imported-targets" title="Link to this heading">¶</a></h2>
+<p>This module provides the following <a class="reference internal" href="../manual/cmake-buildsystem.7.html#imported-targets"><span class="std std-ref">Imported Targets</span></a>:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">BZip2::BZip2</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.12.</span></p>
+</div>
+<p>Target encapsulating the usage requirements of BZip2 library.  This target is
+available only when BZip2 is found.</p>
+</dd>
+</dl>
 </section>
 <section id="result-variables">
-<h2>Result Variables<a class="headerlink" href="#result-variables" title="Permalink to this heading">¶</a></h2>
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Link to this heading">¶</a></h2>
 <p>This module defines the following variables:</p>
 <dl>
-<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_FOUND</span></code></dt><dd><p>system has BZip2</p>
+<dt><code class="docutils literal notranslate"><span class="pre">BZip2_FOUND</span></code></dt><dd><p>Boolean indicating whether the BZip2 library is found.  For backward
+compatibility, the <code class="docutils literal notranslate"><span class="pre">BZIP2_FOUND</span></code> variable is also set to the same value.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">BZIP2_INCLUDE_DIRS</span></code></dt><dd><div class="versionadded">
-<p><span class="versionmodified added">New in version 3.12: </span>the BZip2 include directories</p>
+<p><span class="versionmodified added">Added in version 3.12.</span></p>
 </div>
+<p>Include directories needed to use BZip2 library.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_LIBRARIES</span></code></dt><dd><p>Link these to use BZip2</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_NEED_PREFIX</span></code></dt><dd><p>this is set if the functions are prefixed with <code class="docutils literal notranslate"><span class="pre">BZ2_</span></code></p>
+<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_LIBRARIES</span></code></dt><dd><p>Libraries needed for linking to use BZip2.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">BZIP2_VERSION</span></code></dt><dd><div class="versionadded">
-<p><span class="versionmodified added">New in version 3.26: </span>the version of BZip2 found.</p>
+<p><span class="versionmodified added">Added in version 3.26.</span></p>
 </div>
-<p>See also legacy variable <code class="docutils literal notranslate"><span class="pre">BZIP2_VERSION_STRING</span></code>.</p>
+<p>The version of BZip2 found.</p>
 </dd>
 </dl>
 </section>
 <section id="cache-variables">
-<h2>Cache variables<a class="headerlink" href="#cache-variables" title="Permalink to this heading">¶</a></h2>
+<h2>Cache Variables<a class="headerlink" href="#cache-variables" title="Link to this heading">¶</a></h2>
 <p>The following cache variables may also be set:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_INCLUDE_DIR</span></code></dt><dd><p>the BZip2 include directory</p>
+<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_INCLUDE_DIR</span></code></dt><dd><p>The directory containing the BZip2 headers.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_LIBRARY_RELEASE</span></code></dt><dd><p>The path to the BZip2 library for release configurations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_LIBRARY_DEBUG</span></code></dt><dd><p>The path to the BZip2 library for debug configurations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_NEED_PREFIX</span></code></dt><dd><p>Boolean indicating whether BZip2 functions are prefixed with <code class="docutils literal notranslate"><span class="pre">BZ2_</span></code>
+(e.g., <code class="docutils literal notranslate"><span class="pre">BZ2_bzCompressInit()</span></code>).  Versions of BZip2 prior to 1.0.0 used
+unprefixed function names (e.g., <code class="docutils literal notranslate"><span class="pre">bzCompressInit()</span></code>).</p>
 </dd>
 </dl>
 </section>
 <section id="legacy-variables">
-<h2>Legacy Variables<a class="headerlink" href="#legacy-variables" title="Permalink to this heading">¶</a></h2>
+<h2>Legacy Variables<a class="headerlink" href="#legacy-variables" title="Link to this heading">¶</a></h2>
 <p>The following variables are provided for backward compatibility:</p>
 <dl>
-<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_VERSION_STRING</span></code></dt><dd><p>the version of BZip2 found.</p>
-<div class="versionchanged">
+<dt><code class="docutils literal notranslate"><span class="pre">BZIP2_VERSION_STRING</span></code></dt><dd><div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.26: </span>Superseded by <code class="docutils literal notranslate"><span class="pre">BZIP2_VERSION</span></code>.</p>
 </div>
+<p>The version of BZip2 found.</p>
 </dd>
 </dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<p>Finding BZip2 library and linking it to a project target:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">BZip2</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">project_target</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">BZip2</span><span class="o">::</span><span class="nb">BZip2</span><span class="nf">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -118,16 +142,17 @@ BZip2 has been found.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">FindBZip2</a><ul>
-<li><a class="reference internal" href="#imported-targets">IMPORTED Targets</a></li>
+<li><a class="reference internal" href="#imported-targets">Imported Targets</a></li>
 <li><a class="reference internal" href="#result-variables">Result Variables</a></li>
-<li><a class="reference internal" href="#cache-variables">Cache variables</a></li>
+<li><a class="reference internal" href="#cache-variables">Cache Variables</a></li>
 <li><a class="reference internal" href="#legacy-variables">Legacy Variables</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -140,8 +165,8 @@ BZip2 has been found.</p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="FindCABLE.html"
-                          title="next chapter">FindCABLE</a></p>
+    <p class="topless"><a href="FindCoin3D.html"
+                          title="next chapter">FindCoin3D</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -150,7 +175,7 @@ BZip2 has been found.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -158,33 +183,34 @@ BZip2 has been found.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="FindCABLE.html" title="FindCABLE"
+          <a href="FindCoin3D.html" title="FindCoin3D"
              >next</a> |</li>
         <li class="right" >
           <a href="FindBullet.html" title="FindBullet"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -193,8 +219,17 @@ BZip2 has been found.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

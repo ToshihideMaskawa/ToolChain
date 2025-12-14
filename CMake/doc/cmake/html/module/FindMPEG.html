@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindMPEG &mdash; CMake 3.27.4 Documentation</title>
+  <title>FindMPEG &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindMPEG2" href="FindMPEG2.html" />
@@ -26,8 +22,12 @@
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,15 @@
           <a href="FindMotif.html" title="FindMotif"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -61,19 +62,61 @@
           <div class="body" role="main">
             
   <section id="findmpeg">
-<span id="module:FindMPEG"></span><h1>FindMPEG<a class="headerlink" href="#findmpeg" title="Permalink to this heading">¶</a></h1>
-<p>Find the native MPEG includes and library</p>
-<p>This module defines</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MPEG_INCLUDE_DIR, where to find MPEG.h, etc.
-MPEG_LIBRARIES, the libraries required to use MPEG.
-MPEG_FOUND, If false, do not try to use MPEG.
+<span id="module:FindMPEG"></span><h1>FindMPEG<a class="headerlink" href="#findmpeg" title="Link to this heading">¶</a></h1>
+<p>Finds the native MPEG library (libmpeg2).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is functionally identical to the <span class="target" id="index-0-module:FindMPEG2"></span><a class="reference internal" href="FindMPEG2.html#module:FindMPEG2" title="FindMPEG2"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindMPEG2</span></code></a> module, which
+also finds the libmpeg2 library.  Both modules were introduced in the past to
+provide flexibility in handling potential differences in future versions of
+the MPEG library and to maintain backward compatibility across CMake releases.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FindMPEG2</span></code> module additionally checks for the SDL dependency and
+includes it in its usage requirements.  For working with libmpeg2, it is
+recommended to use the <span class="target" id="index-1-module:FindMPEG2"></span><a class="reference internal" href="FindMPEG2.html#module:FindMPEG2" title="FindMPEG2"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindMPEG2</span></code></a> module instead of this one.</p>
+</div>
+<section id="result-variables">
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Link to this heading">¶</a></h2>
+<p>This module defines the following variables:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">MPEG_FOUND</span></code></dt><dd><p>Boolean indicating whether the libmpeg2 library is found.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">MPEG_LIBRARIES</span></code></dt><dd><p>Libraries needed to link against to use libmpeg2.</p>
+</dd>
+</dl>
+</section>
+<section id="cache-variables">
+<h2>Cache Variables<a class="headerlink" href="#cache-variables" title="Link to this heading">¶</a></h2>
+<p>The following cache variables may be also set:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">MPEG_INCLUDE_DIR</span></code></dt><dd><p>The directory containing the <code class="docutils literal notranslate"><span class="pre">mpeg2.h</span></code> and related headers needed to use
+libmpeg2 library.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">MPEG_mpeg2_LIBRARY</span></code></dt><dd><p>The path to the libmpeg2 library.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">MPEG_vo_LIBRARY</span></code></dt><dd><p>The path to the vo (Video Out) library.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<p>Finding libmpeg2 library and creating an imported interface target for linking
+it to a project target:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="no">MPEG</span><span class="nf">)</span>
+
+<span class="nf">if(</span><span class="no">MPEG_FOUND</span><span class="w"> </span><span class="no">AND</span><span class="w"> </span><span class="no">NOT</span><span class="w"> </span><span class="no">TARGET</span><span class="w"> </span><span class="no">MPEG</span><span class="o">::</span><span class="no">MPEG</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">add_library(</span><span class="no">MPEG</span><span class="o">::</span><span class="no">MPEG</span><span class="w"> </span><span class="no">INTERFACE</span><span class="w"> </span><span class="no">IMPORTED</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set_target_properties(</span>
+<span class="w">    </span><span class="no">MPEG</span><span class="o">::</span><span class="no">MPEG</span>
+<span class="w">    </span><span class="no">PROPERTIES</span>
+<span class="w">      </span><span class="no">INTERFACE_LINK_LIBRARIES</span><span class="w"> </span><span class="s">&quot;${MPEG_LIBRARIES}&quot;</span>
+<span class="w">      </span><span class="no">INTERFACE_INCLUDE_DIRECTORIES</span><span class="w"> </span><span class="s">&quot;${MPEG_INCLUDE_DIR}&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
+<span class="nf">endif()</span>
+
+<span class="nf">target_link_libraries(</span><span class="nb">project_target</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="no">MPEG</span><span class="o">::</span><span class="no">MPEG</span><span class="nf">)</span>
 </pre></div>
 </div>
-<p>also defined, but not for general use are</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MPEG_mpeg2_LIBRARY, where to find the MPEG library.
-MPEG_vo_LIBRARY, where to find the vo library.
-</pre></div>
-</div>
+</section>
 </section>
 
 
@@ -81,8 +124,20 @@ MPEG_vo_LIBRARY, where to find the vo library.
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3>Table of Contents</h3>
+    <ul>
+<li><a class="reference internal" href="#">FindMPEG</a><ul>
+<li><a class="reference internal" href="#result-variables">Result Variables</a></li>
+<li><a class="reference internal" href="#cache-variables">Cache Variables</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="FindMotif.html"
@@ -100,7 +155,7 @@ MPEG_vo_LIBRARY, where to find the vo library.
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -108,13 +163,13 @@ MPEG_vo_LIBRARY, where to find the vo library.
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -127,14 +182,15 @@ MPEG_vo_LIBRARY, where to find the vo library.
           <a href="FindMotif.html" title="FindMotif"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -143,8 +199,17 @@ MPEG_vo_LIBRARY, where to find the vo library.
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

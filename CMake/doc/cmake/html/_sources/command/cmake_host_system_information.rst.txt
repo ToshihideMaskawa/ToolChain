@@ -129,7 +129,15 @@ queried.  The list of queried values is stored in ``<variable>``.
 ``OS_NAME``
   .. versionadded:: 3.10
 
-  See :variable:`CMAKE_HOST_SYSTEM_NAME`
+  The host operating system name:
+
+  * On UNIX platforms, this is ``uname -s``.
+
+  * On Apple platforms, this is ``sw_vers -productName``.
+
+  * On Windows, this is ``Windows``.
+
+  See also :variable:`CMAKE_HOST_SYSTEM_NAME`.
 
 ``OS_RELEASE``
   .. versionadded:: 3.10
@@ -145,6 +153,13 @@ queried.  The list of queried values is stored in ``<variable>``.
   .. versionadded:: 3.10
 
   See :variable:`CMAKE_HOST_SYSTEM_PROCESSOR`
+
+``MSYSTEM_PREFIX``
+  .. versionadded:: 3.28
+
+  Available only on Windows hosts.  In a MSYS or MinGW development
+  environment that sets the ``MSYSTEM`` environment variable, this
+  is its installation prefix.  Otherwise, this is the empty string.
 
 ``DISTRIB_INFO``
   .. versionadded:: 3.22
@@ -199,7 +214,7 @@ Fallback Interface Variables
 .. variable:: CMAKE_GET_OS_RELEASE_FALLBACK_SCRIPTS
 
   In addition to the scripts shipped with CMake, a user may append full
-  paths to his script(s) to the this list.  The script filename has the
+  paths of their script(s) to this list.  The script filename has the
   following format: ``NNN-<name>.cmake``, where ``NNN`` is three digits
   used to apply collected scripts in a specific order.
 
@@ -219,6 +234,8 @@ Example:
 
 .. code-block:: cmake
 
+  # 000-FallbackScript.cmake
+  #
   # Try to detect some old distribution
   # See also
   # - http://linuxmafia.com/faq/Admin/release-files.html
@@ -253,12 +270,24 @@ Example:
   endif()
   unset(CMAKE_GET_OS_RELEASE_FALLBACK_CONTENT)
 
+Then this script can be applied as a fallback to determine the missing host
+system information:
+
+.. code-block:: cmake
+
+  list(
+    APPEND
+    CMAKE_GET_OS_RELEASE_FALLBACK_SCRIPTS
+    ${CMAKE_CURRENT_SOURCE_DIR}/000-FallbackScript.cmake
+  )
+
+  cmake_host_system_information(RESULT info QUERY DISTRIB_INFO)
 
 .. rubric:: Footnotes
 
 .. [#mebibytes] One MiB (mebibyte) is equal to 1024x1024 bytes.
 
-.. _man 5 os-release: https://www.freedesktop.org/software/systemd/man/os-release.html
+.. _man 5 os-release: https://www.freedesktop.org/software/systemd/man/latest/os-release.html
 .. _various distribution-specific files: http://linuxmafia.com/faq/Admin/release-files.html
 
 .. _Query Windows registry:
@@ -268,7 +297,7 @@ Query Windows registry
 
 .. versionadded:: 3.24
 
-::
+.. code-block:: cmake
 
   cmake_host_system_information(RESULT <variable>
                                 QUERY WINDOWS_REGISTRY <key> [VALUE_NAMES|SUBKEYS|VALUE <name>]

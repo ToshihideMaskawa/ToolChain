@@ -195,6 +195,12 @@ Two forms of conditional generator expressions are supported:
   if ``condition`` is ``0``.  Any other value for ``condition`` results in an
   error.
 
+  .. versionadded:: 3.28
+
+    This generator expression short-circuits such that generator expressions in
+    ``false_string`` will not evaluate when ``condition`` is ``1``, and generator
+    expressions in ``true_string`` will not evaluate when condition is ``0``.
+
 Typically, the ``condition`` is itself a generator expression.  For instance,
 the following expression expands to ``DEBUG_MODE`` when the ``Debug``
 configuration is used, and the empty string for all other configurations:
@@ -251,6 +257,11 @@ The common boolean logic operators are supported:
 
   ``condition`` must be ``0`` or ``1``.  The result of the expression is
   ``0`` if ``condition`` is ``1``, else ``1``.
+
+.. versionadded:: 3.28
+
+  Logical operators short-circuit such that generator expressions in the
+  arguments list will not be evaluated once a return value can be determined.
 
 .. _`Comparison Expressions`:
 
@@ -521,6 +532,11 @@ List Transformations
 
         $<LIST:TRANSFORM,list,REPLACE,regular_expression,replace_expression[,SELECTOR]>
 
+      .. versionchanged:: 4.1
+        The ``^`` anchor now matches only at the beginning of the input
+        element instead of the beginning of each repeated search.
+        See policy :policy:`CMP0186`.
+
   ``SELECTOR`` determines which items of the list will be transformed.
   Only one type of selector can be specified at a time. When given,
   ``SELECTOR`` must be one of the following:
@@ -555,7 +571,7 @@ List Transformations
   :ref:`$\<LIST:JOIN,list,glue\> <GenEx LIST-JOIN>`, but the two have
   different behavior with regard to empty items.
   :ref:`$\<LIST:JOIN,list,glue\> <GenEx LIST-JOIN>` preserves all empty items,
-  whereas ``$<JOIN,list,glue>`` drops all empty items from the list.
+  whereas ``$<JOIN:list,glue>`` drops all empty items from the list.
 
 .. genex:: $<REMOVE_DUPLICATES:list>
 
@@ -680,7 +696,7 @@ All paths are expected to be in cmake-style format.
   present, ``0`` otherwise. See :ref:`Path Structure And Terminology` for the
   meaning of each path component.
 
-  ::
+  .. code-block:: cmake
 
     $<PATH:HAS_ROOT_NAME,path>
     $<PATH:HAS_ROOT_DIRECTORY,path>
@@ -742,7 +758,7 @@ command.  All paths are expected to be in cmake-style format.
     All operations now accept a list of paths as argument. When a list of paths
     is specified, the operation will be applied to each path.
 
-  ::
+  .. code-block:: cmake
 
     $<PATH:GET_ROOT_NAME,path...>
     $<PATH:GET_ROOT_DIRECTORY,path...>
@@ -783,6 +799,16 @@ in cmake-style format.
 
   When the ``NORMALIZE`` option is specified, the path is :ref:`normalized
   <Normalization>` after the conversion.
+
+.. genex:: $<PATH:NATIVE_PATH[,NORMALIZE],path...>
+
+  .. versionadded:: 4.0
+
+  Returns ``path`` converted into a native format with platform-specific
+  slashes (``\`` on Windows hosts and ``/`` elsewhere).
+
+  When the ``NORMALIZE`` option is specified, the path is :ref:`normalized
+  <Normalization>` before the conversion.
 
 .. genex:: $<PATH:APPEND,path...,input,...>
 
@@ -956,7 +982,7 @@ closely related to the expressions in this sub-section.
 
 .. genex:: $<CXX_COMPILER_VERSION:version>
 
-  ``1`` if the version of the CXX compiler matches ``version``, otherwise ``0``.
+  ``1`` if the version of the C++ compiler matches ``version``, otherwise ``0``.
 
 .. genex:: $<CUDA_COMPILER_VERSION>
 
@@ -968,31 +994,31 @@ closely related to the expressions in this sub-section.
 
   .. versionadded:: 3.15
 
-  ``1`` if the version of the CXX compiler matches ``version``, otherwise ``0``.
+  ``1`` if the version of the C++ compiler matches ``version``, otherwise ``0``.
 
 .. genex:: $<OBJC_COMPILER_VERSION>
 
   .. versionadded:: 3.16
 
-  The version of the OBJC compiler used.
+  The version of the Objective-C compiler used.
 
 .. genex:: $<OBJC_COMPILER_VERSION:version>
 
   .. versionadded:: 3.16
 
-  ``1`` if the version of the OBJC compiler matches ``version``, otherwise ``0``.
+  ``1`` if the version of the Objective-C compiler matches ``version``, otherwise ``0``.
 
 .. genex:: $<OBJCXX_COMPILER_VERSION>
 
   .. versionadded:: 3.16
 
-  The version of the OBJCXX compiler used.
+  The version of the Objective-C++ compiler used.
 
 .. genex:: $<OBJCXX_COMPILER_VERSION:version>
 
   .. versionadded:: 3.16
 
-  ``1`` if the version of the OBJCXX compiler matches ``version``, otherwise ``0``.
+  ``1`` if the version of the Objective-C++ compiler matches ``version``, otherwise ``0``.
 
 .. genex:: $<Fortran_COMPILER_VERSION>
 
@@ -1026,10 +1052,11 @@ closely related to the expressions in this sub-section.
 
   ``1`` if the version of the ISPC compiler matches ``version``, otherwise ``0``.
 
-Compiler Language And ID
-^^^^^^^^^^^^^^^^^^^^^^^^
+Compiler Language, ID, and Frontend-Variant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See also the :variable:`CMAKE_<LANG>_COMPILER_ID` variable, which is closely
+See also the :variable:`CMAKE_<LANG>_COMPILER_ID` and
+:variable:`CMAKE_<LANG>_COMPILER_FRONTEND_VARIANT` variables, which are closely
 related to most of the expressions in this sub-section.
 
 .. genex:: $<C_COMPILER_ID>
@@ -1042,15 +1069,23 @@ related to most of the expressions in this sub-section.
   ``1`` if CMake's compiler id of the C compiler matches any one
   of the entries in ``compiler_ids``, otherwise ``0``.
 
+  .. versionchanged:: 3.15
+    Multiple ``compiler_ids`` can be specified.
+    CMake 3.14 and earlier only accepted a single compiler ID.
+
 .. genex:: $<CXX_COMPILER_ID>
 
-  CMake's compiler id of the CXX compiler used.
+  CMake's compiler id of the C++ compiler used.
 
 .. genex:: $<CXX_COMPILER_ID:compiler_ids>
 
   where ``compiler_ids`` is a comma-separated list.
-  ``1`` if CMake's compiler id of the CXX compiler matches any one
+  ``1`` if CMake's compiler id of the C++ compiler matches any one
   of the entries in ``compiler_ids``, otherwise ``0``.
+
+  .. versionchanged:: 3.15
+    Multiple ``compiler_ids`` can be specified.
+    CMake 3.14 and earlier only accepted a single compiler ID.
 
 .. genex:: $<CUDA_COMPILER_ID>
 
@@ -1070,7 +1105,7 @@ related to most of the expressions in this sub-section.
 
   .. versionadded:: 3.16
 
-  CMake's compiler id of the OBJC compiler used.
+  CMake's compiler id of the Objective-C compiler used.
 
 .. genex:: $<OBJC_COMPILER_ID:compiler_ids>
 
@@ -1084,7 +1119,7 @@ related to most of the expressions in this sub-section.
 
   .. versionadded:: 3.16
 
-  CMake's compiler id of the OBJCXX compiler used.
+  CMake's compiler id of the Objective-C++ compiler used.
 
 .. genex:: $<OBJCXX_COMPILER_ID:compiler_ids>
 
@@ -1103,6 +1138,10 @@ related to most of the expressions in this sub-section.
   where ``compiler_ids`` is a comma-separated list.
   ``1`` if CMake's compiler id of the Fortran compiler matches any one
   of the entries in ``compiler_ids``, otherwise ``0``.
+
+  .. versionchanged:: 3.15
+    Multiple ``compiler_ids`` can be specified.
+    CMake 3.14 and earlier only accepted a single compiler ID.
 
 .. genex:: $<HIP_COMPILER_ID>
 
@@ -1132,19 +1171,129 @@ related to most of the expressions in this sub-section.
   ``1`` if CMake's compiler id of the ISPC compiler matches any one
   of the entries in ``compiler_ids``, otherwise ``0``.
 
+.. genex:: $<C_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler frontend variant of the C compiler used.
+
+.. genex:: $<C_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the C compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<CXX_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler frontend variant of the C++ compiler used.
+
+.. genex:: $<CXX_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the C++ compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<CUDA_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler id of the CUDA compiler used.
+
+.. genex:: $<CUDA_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the CUDA compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<OBJC_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler frontend variant of the Objective-C compiler used.
+
+.. genex:: $<OBJC_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the Objective-C compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<OBJCXX_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler frontend variant of the Objective-C++ compiler used.
+
+.. genex:: $<OBJCXX_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the Objective-C++ compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<Fortran_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler id of the Fortran compiler used.
+
+.. genex:: $<Fortran_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the Fortran compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<HIP_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler id of the HIP compiler used.
+
+.. genex:: $<HIP_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the HIP compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
+.. genex:: $<ISPC_COMPILER_FRONTEND_VARIANT>
+
+  .. versionadded:: 3.30
+
+  CMake's compiler id of the ISPC compiler used.
+
+.. genex:: $<ISPC_COMPILER_FRONTEND_VARIANT:compiler_ids>
+
+  .. versionadded:: 3.30
+
+  where ``compiler_ids`` is a comma-separated list.
+  ``1`` if CMake's compiler frontend variant of the ISPC compiler matches any one
+  of the entries in ``compiler_ids``, otherwise ``0``.
+
 .. genex:: $<COMPILE_LANGUAGE>
 
   .. versionadded:: 3.3
 
   The compile language of source files when evaluating compile options.
-  See :ref:`the related boolean expression
-  <Boolean COMPILE_LANGUAGE Generator Expression>`
-  ``$<COMPILE_LANGUAGE:language>``
+  See the related boolean expression
+  :genex:`$<COMPILE_LANGUAGE:languages> <COMPILE_LANGUAGE:languages>`
   for notes about the portability of this generator expression.
 
-.. _`Boolean COMPILE_LANGUAGE Generator Expression`:
-
 .. genex:: $<COMPILE_LANGUAGE:languages>
+  :target: COMPILE_LANGUAGE:languages
 
   .. versionadded:: 3.3
 
@@ -1258,7 +1407,8 @@ Compile Context
 
   .. versionadded:: 3.27
 
-  Content of ``...``, when collecting :ref:`Target Usage Requirements`,
+  Content of ``...``, when collecting
+  :ref:`transitive compile properties <Transitive Compile Properties>`,
   otherwise it is the empty string.  This is intended for use in an
   :prop_tgt:`INTERFACE_LINK_LIBRARIES` and :prop_tgt:`LINK_LIBRARIES` target
   properties, typically populated via the :command:`target_link_libraries` command.
@@ -1268,7 +1418,7 @@ Compile Context
   linking requirements (e.g., all-``inline`` or C++ template libraries).
 
   Note that for proper evaluation of this expression requires policy :policy:`CMP0099`
-  to be set to `NEW`.
+  to be set to ``NEW``.
 
 Linker Language And ID
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1421,7 +1571,7 @@ Link Features
   underscores.  Feature names defined in all uppercase are reserved for CMake's
   own built-in features.  The pre-defined built-in library features are:
 
-  .. include:: ../variable/LINK_LIBRARY_PREDEFINED_FEATURES.txt
+  .. include:: ../variable/include/LINK_LIBRARY_PREDEFINED_FEATURES.rst
 
   Built-in and custom library features are defined in terms of the following
   variables:
@@ -1513,7 +1663,7 @@ Link Features
   own built-in features.  Currently, there is only one pre-defined built-in
   group feature:
 
-  .. include:: ../variable/LINK_GROUP_PREDEFINED_FEATURES.txt
+  .. include:: ../variable/include/LINK_GROUP_PREDEFINED_FEATURES.rst
 
   Built-in and custom group features are defined in terms of the following
   variables:
@@ -1646,7 +1796,8 @@ Link Context
 
   .. versionadded:: 3.1
 
-  Content of ``...``, except while collecting :ref:`Target Usage Requirements`,
+  Content of ``...``, except while collecting usage requirements from
+  :ref:`transitive compile properties <Transitive Compile Properties>`,
   in which case it is the empty string.  This is intended for use in an
   :prop_tgt:`INTERFACE_LINK_LIBRARIES` target property, typically populated
   via the :command:`target_link_libraries` command, to specify private link
@@ -1677,22 +1828,15 @@ Link Context
   only be used to specify link options.
 
 
-.. _`Target-Dependent Queries`:
+.. _`Target-Dependent Expressions`:
 
 Target-Dependent Expressions
 ----------------------------
 
-These queries refer to a target ``tgt``. Unless otherwise stated, this can
-be any runtime artifact, namely:
+Target Meta-Data
+^^^^^^^^^^^^^^^^
 
-* An executable target created by :command:`add_executable`.
-* A shared library target (``.so``, ``.dll`` but not their ``.lib`` import
-  library) created by :command:`add_library`.
-* A static library target created by :command:`add_library`.
-
-In the following, the phrase "the ``tgt`` filename" means the name of the
-``tgt`` binary file. This has to be distinguished from the phrase
-"the target name", which is just the string ``tgt``.
+These expressions look up information about a target.
 
 .. genex:: $<TARGET_EXISTS:tgt>
 
@@ -1709,15 +1853,32 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
 
-.. genex:: $<TARGET_NAME:...>
+.. genex:: $<TARGET_NAME:tgt>
 
-  Marks ``...`` as being the name of a target.  This is required if exporting
-  targets to multiple dependent export sets.  The ``...`` must be a literal
-  name of a target, it may not contain generator expressions.
+  The target name ``tgt`` as written.  This marks ``tgt`` as being the name
+  of a target inside a larger expression, which is required if exporting
+  targets to multiple dependent export sets.  The ``tgt`` text must be a
+  literal name of a target; it may not contain generator expressions.
+  The target does not have to exist.
+
+.. genex:: $<TARGET_POLICY:policy>
+
+  ``1`` if the ``policy`` was ``NEW`` when the 'head' target was created,
+  else ``0``.  If the ``policy`` was not set, the warning message for the policy
+  will be emitted. This generator expression only works for a subset of
+  policies.
+
+
+Target Properties
+^^^^^^^^^^^^^^^^^
+
+These expressions look up the values of
+:ref:`target properties <Target Properties>`.
 
 .. genex:: $<TARGET_PROPERTY:tgt,prop>
 
-  Value of the property ``prop`` on the target ``tgt``.
+  Value of the property ``prop`` on the target ``tgt``, or empty if
+  the property is not set.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -1733,23 +1894,135 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   :target: TARGET_PROPERTY:prop
 
   Value of the property ``prop`` on the target for which the expression
-  is being evaluated. Note that for generator expressions in
-  :ref:`Target Usage Requirements` this is the consuming target rather
-  than the target specifying the requirement.
+  is being evaluated, or empty if the property is not set.
+  Note that for generator expressions in :ref:`Target Usage Requirements`
+  this is the consuming target rather than the target specifying the
+  requirement.
 
-.. genex:: $<TARGET_OBJECTS:tgt>
+The expressions have special evaluation rules for some properties:
 
-  .. versionadded:: 3.1
+:ref:`Target Build Specification Properties <Target Build Specification>`
+  These evaluate as a :ref:`semicolon-separated list <CMake Language Lists>`
+  representing the union of the value on the target itself with the values
+  of the corresponding :ref:`Target Usage Requirements` on targets named by
+  the target's :prop_tgt:`LINK_LIBRARIES`:
 
-  List of objects resulting from building ``tgt``.  This would typically be
-  used on :ref:`object library <Object Libraries>` targets.
+  * For :ref:`Target Compile Properties`, evaluation of corresponding usage
+    requirements is transitive over the closure of the linked targets'
+    :prop_tgt:`INTERFACE_LINK_LIBRARIES` *excluding* entries guarded by the
+    :genex:`LINK_ONLY` generator expression.
 
-.. genex:: $<TARGET_POLICY:policy>
+  * For :ref:`Target Link Properties`, evaluation of corresponding usage
+    requirements is transitive over the closure of the linked targets'
+    :prop_tgt:`INTERFACE_LINK_LIBRARIES` *including* entries guarded by the
+    :genex:`LINK_ONLY` generator expression.  See policy :policy:`CMP0166`.
 
-  ``1`` if the ``policy`` was ``NEW`` when the 'head' target was created,
-  else ``0``.  If the ``policy`` was not set, the warning message for the policy
-  will be emitted. This generator expression only works for a subset of
-  policies.
+  .. versionchanged:: 4.1
+
+    Evaluation of :prop_tgt:`LINK_LIBRARIES` itself is now transitive.
+    See policy :policy:`CMP0189`.
+
+:ref:`Target Usage Requirement Properties <Target Usage Requirements>`
+  These evaluate as a :ref:`semicolon-separated list <CMake Language Lists>`
+  representing the union of the value on the target itself with the values
+  of the same properties on targets named by the target's
+  :prop_tgt:`INTERFACE_LINK_LIBRARIES`:
+
+  * For :ref:`Transitive Compile Properties`, evaluation is transitive over
+    the closure of the target's :prop_tgt:`INTERFACE_LINK_LIBRARIES`
+    *excluding* entries guarded by the :genex:`LINK_ONLY` generator expression.
+
+  * For :ref:`Transitive Link Properties`, evaluation is transitive over
+    the closure of the target's :prop_tgt:`INTERFACE_LINK_LIBRARIES`
+    *including* entries guarded by the :genex:`LINK_ONLY` generator expression.
+    See policy :policy:`CMP0166`.
+
+  .. versionchanged:: 4.1
+
+    Evaluation of :prop_tgt:`INTERFACE_LINK_LIBRARIES` itself is now
+    transitive.  See policy :policy:`CMP0189`.
+
+:ref:`Custom Transitive Properties`
+  .. versionadded:: 3.30
+
+  These are processed during evaluation as follows:
+
+  * Evaluation of :genex:`$<TARGET_PROPERTY:tgt,PROP>` for some property
+    ``PROP``, named without an ``INTERFACE_`` prefix,
+    checks the :prop_tgt:`TRANSITIVE_COMPILE_PROPERTIES`
+    and :prop_tgt:`TRANSITIVE_LINK_PROPERTIES` properties on target ``tgt``,
+    on targets named by its :prop_tgt:`LINK_LIBRARIES`, and on the
+    transitive closure of targets named by the linked targets'
+    :prop_tgt:`INTERFACE_LINK_LIBRARIES`.
+
+    If ``PROP`` is listed by one of those properties, then it evaluates as
+    a :ref:`semicolon-separated list <CMake Language Lists>` representing
+    the union of the value on the target itself with the values of the
+    corresponding ``INTERFACE_PROP`` on targets named by the target's
+    :prop_tgt:`LINK_LIBRARIES`:
+
+    * If ``PROP`` is named by :prop_tgt:`TRANSITIVE_COMPILE_PROPERTIES`,
+      evaluation of the corresponding ``INTERFACE_PROP`` is transitive over
+      the closure of the linked targets' :prop_tgt:`INTERFACE_LINK_LIBRARIES`,
+      excluding entries guarded by the :genex:`LINK_ONLY` generator expression.
+
+    * If ``PROP`` is named by :prop_tgt:`TRANSITIVE_LINK_PROPERTIES`,
+      evaluation of the corresponding ``INTERFACE_PROP`` is transitive over
+      the closure of the linked targets' :prop_tgt:`INTERFACE_LINK_LIBRARIES`,
+      including entries guarded by the :genex:`LINK_ONLY` generator expression.
+
+  * Evaluation of :genex:`$<TARGET_PROPERTY:tgt,INTERFACE_PROP>` for some
+    property ``INTERFACE_PROP``, named with an ``INTERFACE_`` prefix,
+    checks the :prop_tgt:`TRANSITIVE_COMPILE_PROPERTIES`
+    and :prop_tgt:`TRANSITIVE_LINK_PROPERTIES` properties on target ``tgt``,
+    and on the transitive closure of targets named by its
+    :prop_tgt:`INTERFACE_LINK_LIBRARIES`.
+
+    If the corresponding ``PROP`` is listed by one of those properties,
+    then ``INTERFACE_PROP`` evaluates as a
+    :ref:`semicolon-separated list <CMake Language Lists>` representing the
+    union of the value on the target itself with the value of the same
+    property on targets named by the target's
+    :prop_tgt:`INTERFACE_LINK_LIBRARIES`:
+
+    * If ``PROP`` is named by :prop_tgt:`TRANSITIVE_COMPILE_PROPERTIES`,
+      evaluation of the corresponding ``INTERFACE_PROP`` is transitive over
+      the closure of the target's :prop_tgt:`INTERFACE_LINK_LIBRARIES`,
+      excluding entries guarded by the :genex:`LINK_ONLY` generator expression.
+
+    * If ``PROP`` is named by :prop_tgt:`TRANSITIVE_LINK_PROPERTIES`,
+      evaluation of the corresponding ``INTERFACE_PROP`` is transitive over
+      the closure of the target's :prop_tgt:`INTERFACE_LINK_LIBRARIES`,
+      including entries guarded by the :genex:`LINK_ONLY` generator expression.
+
+  If a ``PROP`` is named by both :prop_tgt:`TRANSITIVE_COMPILE_PROPERTIES`
+  and :prop_tgt:`TRANSITIVE_LINK_PROPERTIES`, the latter takes precedence.
+
+:ref:`Compatible Interface Properties`
+  These evaluate as a single value combined from the target itself,
+  from targets named by the target's :prop_tgt:`LINK_LIBRARIES`, and
+  from the transitive closure of the linked targets'
+  :prop_tgt:`INTERFACE_LINK_LIBRARIES`.  Values of a compatible
+  interface property from multiple targets combine based on the type
+  of compatibility required by the ``COMPATIBLE_INTERFACE_*`` property
+  defining it.
+
+
+Target Artifacts
+^^^^^^^^^^^^^^^^
+
+These expressions look up information about artifacts associated with
+a given target ``tgt``.  Unless otherwise stated, this can be any
+runtime artifact, namely:
+
+* An executable target created by :command:`add_executable`.
+* A shared library target (``.so``, ``.dll`` but not their ``.lib`` import
+  library) created by :command:`add_library`.
+* A static library target created by :command:`add_library`.
+
+In the following, the phrase "the ``tgt`` filename" means the name of the
+``tgt`` binary file. This has to be distinguished from the phrase
+"the target name", which is just the string ``tgt``.
 
 .. genex:: $<TARGET_FILE:tgt>
 
@@ -1769,13 +2042,12 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
 
   See also the :prop_tgt:`OUTPUT_NAME`, :prop_tgt:`ARCHIVE_OUTPUT_NAME`,
   :prop_tgt:`LIBRARY_OUTPUT_NAME` and :prop_tgt:`RUNTIME_OUTPUT_NAME`
-  target properties and their configuration specific variants
+  target properties, their configuration-specific variants
   :prop_tgt:`OUTPUT_NAME_<CONFIG>`, :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>`,
   :prop_tgt:`LIBRARY_OUTPUT_NAME_<CONFIG>` and
-  :prop_tgt:`RUNTIME_OUTPUT_NAME_<CONFIG>`.
-
-  The :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
-  properties can also be considered.
+  :prop_tgt:`RUNTIME_OUTPUT_NAME_<CONFIG>`, and
+  the :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
+  properties.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -1837,11 +2109,11 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   name is ``base``.
 
   See also the :prop_tgt:`OUTPUT_NAME` and :prop_tgt:`ARCHIVE_OUTPUT_NAME`
-  target properties and their configuration specific variants
-  :prop_tgt:`OUTPUT_NAME_<CONFIG>` and :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>`.
-
-  The :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
-  properties can also be considered.
+  target properties, their configuration-specific variants
+  :prop_tgt:`OUTPUT_NAME_<CONFIG>` and
+  :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>`, and
+  the :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
+  properties.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -1913,13 +2185,12 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   example, if target file name is ``libbase.a``, the base name is ``base``.
 
   See also the :prop_tgt:`OUTPUT_NAME`, :prop_tgt:`ARCHIVE_OUTPUT_NAME`,
-  and :prop_tgt:`LIBRARY_OUTPUT_NAME` target properties and their configuration
-  specific variants :prop_tgt:`OUTPUT_NAME_<CONFIG>`,
+  and :prop_tgt:`LIBRARY_OUTPUT_NAME` target properties, their
+  configuration-specific variants :prop_tgt:`OUTPUT_NAME_<CONFIG>`,
   :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>` and
-  :prop_tgt:`LIBRARY_OUTPUT_NAME_<CONFIG>`.
-
-  The :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
-  properties can also be considered.
+  :prop_tgt:`LIBRARY_OUTPUT_NAME_<CONFIG>`, and
+  the :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
+  properties.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -1982,13 +2253,12 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   For example, if target file name is ``libbase.a``, the base name is ``base``.
 
   See also the :prop_tgt:`OUTPUT_NAME`, :prop_tgt:`ARCHIVE_OUTPUT_NAME`,
-  and :prop_tgt:`LIBRARY_OUTPUT_NAME` target properties and their configuration
-  specific variants :prop_tgt:`OUTPUT_NAME_<CONFIG>`,
+  and :prop_tgt:`LIBRARY_OUTPUT_NAME` target properties, their
+  configuration-specific variants :prop_tgt:`OUTPUT_NAME_<CONFIG>`,
   :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>` and
-  :prop_tgt:`LIBRARY_OUTPUT_NAME_<CONFIG>`.
-
-  The :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
-  properties can also be considered.
+  :prop_tgt:`LIBRARY_OUTPUT_NAME_<CONFIG>`, and
+  the :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
+  properties.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -2053,12 +2323,11 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   For example, if target file name is ``libbase.tbd``, the base name is ``base``.
 
   See also the :prop_tgt:`OUTPUT_NAME` and :prop_tgt:`ARCHIVE_OUTPUT_NAME`,
-  target properties and their configuration
-  specific variants :prop_tgt:`OUTPUT_NAME_<CONFIG>` and
-  :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>`.
-
-  The :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
-  properties can also be considered.
+  target properties, their configuration-specific variants
+  :prop_tgt:`OUTPUT_NAME_<CONFIG>` and
+  :prop_tgt:`ARCHIVE_OUTPUT_NAME_<CONFIG>`, and
+  the :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
+  properties.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -2169,11 +2438,8 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
   ``$<TARGET_PDB_FILE_NAME:tgt>``) without prefix and suffix. For example,
   if target file name is ``base.pdb``, the base name is ``base``.
 
-  See also the :prop_tgt:`PDB_NAME` target property and its configuration
-  specific variant :prop_tgt:`PDB_NAME_<CONFIG>`.
-
-  The :prop_tgt:`<CONFIG>_POSTFIX` and :prop_tgt:`DEBUG_POSTFIX` target
-  properties can also be considered.
+  See also the :prop_tgt:`PDB_NAME` target property, and its
+  configuration-specific variant :prop_tgt:`PDB_NAME_<CONFIG>`.
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on.
@@ -2230,6 +2496,13 @@ In the following, the phrase "the ``tgt`` filename" means the name of the
 
   Note that ``tgt`` is not added as a dependency of the target this
   expression is evaluated on (see policy :policy:`CMP0112`).
+
+.. genex:: $<TARGET_OBJECTS:tgt>
+
+  .. versionadded:: 3.1
+
+  List of objects resulting from building ``tgt``.  This would typically be
+  used on :ref:`object library <Object Libraries>` targets.
 
 .. genex:: $<TARGET_RUNTIME_DLLS:tgt>
 
@@ -2310,10 +2583,13 @@ Export And Install Expressions
 
   Content of the install prefix when the target is exported via
   :command:`install(EXPORT)`, or when evaluated in the
-  :prop_tgt:`INSTALL_NAME_DIR` property, the ``INSTALL_NAME_DIR`` argument of
-  :command:`install(RUNTIME_DEPENDENCY_SET)`, the code argument of
-  :command:`install(CODE)`, or the file argument of :command:`install(SCRIPT)`,
-  and empty otherwise.
+  :prop_tgt:`INSTALL_NAME_DIR` property or the ``INSTALL_NAME_DIR`` argument of
+  :command:`install(RUNTIME_DEPENDENCY_SET)`, and empty otherwise.
+
+  .. versionchanged:: 3.27
+    Evaluates to the content of the install prefix
+    in the code argument of :command:`install(CODE)` or
+    the file argument of :command:`install(SCRIPT)`.
 
 Multi-level Expression Evaluation
 ---------------------------------
@@ -2383,6 +2659,13 @@ special meaning.
 .. genex:: $<SEMICOLON>
 
   A literal ``;``. Used to prevent list expansion on an argument with ``;``.
+
+.. genex:: $<QUOTE>
+
+  .. versionadded:: 3.30
+
+  A literal ``"``. Used to allow string literal quotes inside a generator expression.
+
 
 Deprecated Expressions
 ----------------------

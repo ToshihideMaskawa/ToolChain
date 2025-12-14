@@ -1,53 +1,54 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CMakeFindDependencyMacro &mdash; CMake 3.27.4 Documentation</title>
+  <title>CMakeFindDependencyMacro &mdash; CMake 4.1.0 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=4d06bd55" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=42d1b3bd"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CMakeFindFrameworks" href="CMakeFindFrameworks.html" />
+    <link rel="next" title="CMakeFindPackageMode" href="CMakeFindPackageMode.html" />
     <link rel="prev" title="CMakeDependentOption" href="CMakeDependentOption.html" />
  
 
   </head><body>
+    <input id="sidebar-check" type="checkbox" />
+    <label id="sidebar-overlay" for="sidebar-check"></label>
 
-    <div class="related" role="navigation" aria-label="related navigation">
+
+
+    <div class="related relbar1" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="CMakeFindFrameworks.html" title="CMakeFindFrameworks"
+          <a href="CMakeFindPackageMode.html" title="CMakeFindPackageMode"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="CMakeDependentOption.html" title="CMakeDependentOption"
              accesskey="P">previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -61,13 +62,13 @@
           <div class="body" role="main">
             
   <section id="cmakefinddependencymacro">
-<span id="module:CMakeFindDependencyMacro"></span><h1>CMakeFindDependencyMacro<a class="headerlink" href="#cmakefinddependencymacro" title="Permalink to this heading">¶</a></h1>
+<span id="module:CMakeFindDependencyMacro"></span><h1>CMakeFindDependencyMacro<a class="headerlink" href="#cmakefinddependencymacro" title="Link to this heading">¶</a></h1>
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:find_dependency">
-<span class="sig-name descname"><span class="pre">find_dependency</span></span><a class="headerlink" href="#command:find_dependency" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_dependency</span></span><a class="headerlink" href="#command:find_dependency" title="Link to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">find_dependency()</span></code> macro wraps a <span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> call for
 a package dependency:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find_dependency(&lt;dep&gt; [...])
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_dependency(</span><span class="nv">&lt;dep&gt;</span><span class="w"> </span><span class="p">[...]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>It is designed to be used in a
@@ -88,7 +89,7 @@ from <a class="reference internal" href="../manual/cmake-developer.7.html#find-m
 </dd></dl>
 
 <section id="package-dependency-search-optimizations">
-<h2>Package Dependency Search Optimizations<a class="headerlink" href="#package-dependency-search-optimizations" title="Permalink to this heading">¶</a></h2>
+<h2>Package Dependency Search Optimizations<a class="headerlink" href="#package-dependency-search-optimizations" title="Link to this heading">¶</a></h2>
 <p>If <code class="docutils literal notranslate"><span class="pre">find_dependency</span></code> is called with arguments identical to a previous
 call in the same directory, perhaps due to diamond-shaped package
 dependencies, the underlying call to <span class="target" id="index-4-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> is optimized
@@ -116,10 +117,10 @@ heuristic to account for varying <code class="docutils literal notranslate"><spa
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
+    <h3>Table of Contents</h3>
     <ul>
 <li><a class="reference internal" href="#">CMakeFindDependencyMacro</a><ul>
 <li><a class="reference internal" href="#package-dependency-search-optimizations">Package Dependency Search Optimizations</a></li>
@@ -135,8 +136,8 @@ heuristic to account for varying <code class="docutils literal notranslate"><spa
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="CMakeFindFrameworks.html"
-                          title="next chapter">CMakeFindFrameworks</a></p>
+    <p class="topless"><a href="CMakeFindPackageMode.html"
+                          title="next chapter">CMakeFindPackageMode</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -145,7 +146,7 @@ heuristic to account for varying <code class="docutils literal notranslate"><spa
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -153,33 +154,34 @@ heuristic to account for varying <code class="docutils literal notranslate"><spa
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="CMakeFindFrameworks.html" title="CMakeFindFrameworks"
+          <a href="CMakeFindPackageMode.html" title="CMakeFindPackageMode"
              >next</a> |</li>
         <li class="right" >
           <a href="CMakeDependentOption.html" title="CMakeDependentOption"
              >previous</a> |</li>
   <li>
-    <img src="../_static/cmake-logo-16.png" alt=""
-         style="vertical-align: middle; margin-top: -2px" />
+    <label class="sidebar-toggle" for="sidebar-check"></label>
+  </li>
+  <li class="rootlink">
+    <img src="../_static/cmake-logo-16.png" width="16" height="16" alt=""/>
+    <a href="https://cmake.org/">CMake 4.1.0</a>
+    <span class="reldelim1"> &#187;</span>
   </li>
   <li>
-    <a href="https://cmake.org/">CMake</a> &#187;
-  </li>
-  <li>
-    <a href="../index.html">3.27.4 Documentation</a> &#187;
+    <a href="../index.html">Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -188,8 +190,17 @@ heuristic to account for varying <code class="docutils literal notranslate"><spa
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2000-2025 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     </div>
+<script type="text/javascript">
+(function() {
+  "use strict";
+  const hide = () => document.getElementById("sidebar-check").checked = false;
+  addEventListener("keydown", e => (e.key === "Escape") && hide());
+  addEventListener("click", e => (e.target.tagName === "A") && hide());
+  addEventListener("hashchange", hide)
+})();
+</script>
   </body>
 </html>

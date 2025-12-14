@@ -17,7 +17,7 @@ the ``Build and Run`` section will walk step-by-step through how to build and
 test the exercise. Finally, at the end of each exercise the intended solution
 is discussed.
 
-Also note that each step in the tutorial builds on the next. So, for example,
+Also note that each step in the tutorial builds on the previous. For example,
 the starting code for ``Step2`` is the complete solution to ``Step1``.
 
 Exercise 1 - Building a Basic Project
@@ -102,13 +102,25 @@ Then call that build system to actually compile/link the project:
 
   cmake --build .
 
-Finally, try to use the newly built ``Tutorial`` with these commands:
+For multi-config generators (e.g. Visual Studio), first navigate to the
+appropriate subdirectory, for example:
+
+.. code-block:: console
+
+  cd Debug
+
+Finally, try to use the newly built ``Tutorial``:
 
 .. code-block:: console
 
   Tutorial 4294967296
   Tutorial 10
   Tutorial
+
+
+**Note:** Depending on the shell, the correct syntax may be ``Tutorial``,
+``./Tutorial`` or ``.\Tutorial``. For simplicity, the exercises will use
+``Tutorial`` throughout.
 
 Solution
 --------
@@ -307,6 +319,7 @@ Files to Edit
 
 * ``CMakeLists.txt``
 * ``tutorial.cxx``
+* ``TutorialConfig.h.in``
 
 Getting Started
 ---------------
@@ -387,7 +400,7 @@ include files.
 
 **Note:** Throughout this tutorial, we will refer to the project build and
 the project binary directory interchangeably. These are the same and are not
-meant to refer to a `bin/` directory.
+meant to refer to a ``bin/`` directory.
 
 We used :command:`target_include_directories` to specify
 where the executable target should look for include files.
